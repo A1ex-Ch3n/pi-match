@@ -22,8 +22,12 @@ export default function MatchPage() {
   async function loadMatches() {
     try {
       const data = await getMatches(Number(studentId));
+      if (data.length === 0) {
+        localStorage.removeItem('lastStudentId');
+      }
       setMatches(data as MatchWithPI[]);
     } catch {
+      localStorage.removeItem('lastStudentId');
       setError('Could not load matches. Make sure the backend is running.');
     } finally {
       setLoading(false);
