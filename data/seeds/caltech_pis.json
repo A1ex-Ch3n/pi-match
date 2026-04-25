@@ -1,0 +1,367 @@
+[
+  {
+    "name": "Lior Pachter",
+    "institution": "Caltech",
+    "department": "Computing and Mathematical Sciences / Biology",
+    "email": null,
+    "lab_website": "https://pachterlab.github.io",
+    "semantic_scholar_id": "2514969",
+    "research_areas": [
+      "computational genomics",
+      "RNA-seq",
+      "single-cell transcriptomics",
+      "bioinformatics",
+      "spatial genomics"
+    ],
+    "recent_abstracts": [
+      "Bacteria are highly heterogeneous, even under controlled conditions, making single-cell RNA sequencing (scRNA-seq) essential for studying microbial diversity and symbiosis. Since its first application in 2015, bacterial scRNA-seq has expanded, but different assays depend on distinct, custom, in-house preprocessing making it difficult to analyze data as part of a unified workflow. The kallisto-bustools suite of tools has enabled uniform pre-processing of eukaryotic scRNA-seq while also reducing time and resource demands for pre-processing, but is not optimized for bacterial scRNA-seq. We adapt kallisto-bustools to be suitable for reads generated from operons, as well as for a much shorter gene length distribution, and show that it can efficiently and accurately quantify bacterial scRNA-seq. Our work provides a scalable foundation for uniform pre-processing of microbial single-cell transcriptomics. (Uniform pre-processing of bacterial single-cell RNA-seq, 2026)",
+      "We introduce a pseudoassembly approach to identifying variation in sets of genomic sequences via colored de Bruijn graphs. Our pseudoassembly method is implemented in a program called klue that assembles k-mers into sequences compatible with a variant-aware extension of pseudoalignment. We show that this approach can be used to identify cell-type specific de novo variants from single-cell RNA-seq in a mouse melanoma model. (Pseudoassembly of k-mers, 2025)",
+      "Contrastive learning methods can be powerful tools for genomics, enabling the identification of signals in an experiment via dimension reduction while reducing noise using a control. One such popular approach is contrastive PCA, which, despite being used in a variety of settings, does not scale to large datasets. We show that the contrastive PCA objective is an approximation of a Rayleigh quotient, analogous in form to Fisher's linear discriminant analysis and the common spatial patterns method. The Rayleigh quotient satisfies numerous desirable properties and provides an interpretable form of dimension reduction via generalized eigenvectors. We demonstrate that it is more accurate than contrastive PCA and much more efficient, and show how it can be used for contrasting conditions via an analysis of single-nucleus transcriptomics data. (The Rayleigh Quotient and Contrastive Principal Component Analysis, 2025)",
+      "SpatialFeatureExperiment is a Bioconductor package that leverages the versatility of Simple Features for spatial data analysis and SpatialExperiment for single-cell -omics to provide an expansive and convenient S4 class for working with spatial -omics data. SpatialFeatureExperiment can be used to store and analyze a variety of spatial -omics data types, including data from the Visium, Xenium, MERFISH, SeqFish, and Slide-seq platforms, bringing spatial operations to the SingleCellExperiment ecosystem. (Geospatially informed representation of spatial genomics data with SpatialFeatureExperiment, 2025)"
+    ],
+    "co_author_ids": ["1765860", "91370838", "2034380209", "2090415440"],
+    "co_authors": ["Páll Melsted", "A. S. Booeshaghi", "Laura Luebbert", "Maria Carilli"],
+    "papers_last_12_months": 7,
+    "nsf_grants": [
+      {
+        "id": "2236199",
+        "title": "Collaborative Research: Algorithms for single-cell and spatial transcriptomics",
+        "awardee": "California Institute of Technology",
+        "pi_first": "Lior",
+        "pi_last": "Pachter",
+        "amount": 499892,
+        "expiry_date": "07/31/2026",
+        "citizen_only": false
+      }
+    ],
+    "has_active_nsf_grant": true,
+    "total_active_funding_usd": 499892,
+    "funding_citizen_restricted": false,
+    "tier": 1,
+    "location": "CA",
+    "lab_size": 14,
+    "is_recruiting": true,
+    "reply_likelihood": "medium",
+    "pi_survey": {
+      "research_priorities": "We are focused on developing scalable computational methods for transcriptomics, particularly single-cell RNA-seq and spatial genomics. Current priorities are long-read RNA-seq quantification (lr-kallisto), spatial transcriptomics integration tools, and novel dimensionality reduction approaches for multi-condition experiments.",
+      "mentorship_style": "I am very hands-on technically. I expect students to engage deeply with the mathematical foundations of what they are building, and I will push back if I see methods applied without rigor. Weekly one-on-one meetings plus lab meeting.",
+      "meeting_frequency": "Weekly individual meetings plus weekly lab meeting. More frequent when approaching deadlines.",
+      "lab_expectations": "Students must have strong quantitative skills and be willing to deeply understand the algorithms they develop. All methods must have rigorous mathematical backing and fully reproducible code. We take correctness seriously.",
+      "student_qualities": "Mathematical rigor, intellectual curiosity, willingness to be wrong and correct course. Strong experience with Python or R; background in algorithms, statistics, or genomics.",
+      "current_openings": 2,
+      "funding_note": "NSF and NIH funded. Positions available regardless of citizenship status."
+    },
+    "student_survey_responses": [
+      {
+        "overall_experience": "Extremely intellectually stimulating. Lior pushes you hard to be rigorous. The lab produces influential methods work that people actually use.",
+        "mentorship": "Very direct feedback—he won't let you get away with sloppy thinking. Can be intimidating at first, but you come out a much sharper scientist.",
+        "work_life_balance": "Long hours are common during paper pushes. Expectations are high, but you set your own schedule mostly.",
+        "publication_rate": "High—most students get 2–3 first-author papers by graduation. Landing in top venues (Nature Methods, Genome Biology) is the norm.",
+        "lab_culture": "Small, close-knit group. Very collaborative within the lab but also intellectually competitive with the broader field."
+      },
+      {
+        "overall_experience": "Best decision of my PhD. Learned more about computational biology here than I could have anywhere else. The lab has a real culture of tools that matter.",
+        "mentorship": "You must be able to handle direct criticism. Lior is not gentle when he spots a flaw in your reasoning, but his instincts are almost always right.",
+        "work_life_balance": "Took me time to adjust to the pace. Weekends happen occasionally. The output is worth it.",
+        "publication_rate": "Papers are held to very high standards but they land in top venues consistently.",
+        "lab_culture": "Tight-knit. People genuinely enjoy each other. Lab lunches have great intellectual breadth—biology, algorithms, statistics all collide."
+      }
+    ]
+  },
+  {
+    "name": "Anima Anandkumar",
+    "institution": "Caltech",
+    "department": "Computing and Mathematical Sciences",
+    "email": null,
+    "lab_website": "http://tensorlab.cms.caltech.edu",
+    "semantic_scholar_id": "2047844",
+    "research_areas": [
+      "neural operators",
+      "scientific machine learning",
+      "geometric deep learning",
+      "tensor methods",
+      "AI for science"
+    ],
+    "recent_abstracts": [
+      "We propose the geometry-informed neural operator (GINO), a highly efficient approach to learning the solution operator of large-scale partial differential equations with varying geometries. GINO uses a signed distance function and point-cloud representations of the input shape and neural operators based on graph and Fourier architectures to learn the solution operator. The graph neural operator handles irregular grids and transforms them into and from regular latent grids on which Fourier neural operators can be applied efficiently. (Geometry-Informed Neural Operator for Large-Scale 3D PDEs, NeurIPS 2023)",
+      "Artificial intelligence for scientific discovery has recently generated significant interest, particularly in chemistry, biology, and material discovery. For these problems, molecules serve as the fundamental building blocks, and machine learning has emerged as a powerful tool for modeling their geometric structures. We address the knowledge gap between the science and ML communities by providing a comprehensive benchmarking study on geometrical representation learning for molecules, proteins, and crystalline materials, covering symmetry-informed architectures and their trade-offs across tasks. (Symmetry-Informed Geometric Representation for Molecules, Proteins, and Crystalline Materials, 2023)",
+      "The SARS-CoV-2 replication transcription complex (RTC) is a multi-domain protein responsible for replicating and transcribing the viral mRNA inside a human cell. Conventional tools such as cryo-electron microscopy and all-atom molecular dynamics do not provide sufficiently high resolution or timescale to capture important dynamics of this molecular machine. We develop an innovative workflow bridging these resolutions using mesoscale fluctuating finite element analysis continuum simulations and a hierarchy of machine learning models, including neural operators, to accelerate and inform drug target discovery. (AI-enabled multiscale modeling of SARS-CoV-2 replication transcription complex, 2023)",
+      "Modern climate projections lack adequate spatial and temporal resolution due to computational constraints. Hybrid methods combining physics with machine learning offer faster, higher-fidelity climate simulations by outsourcing compute-hungry high-resolution simulations to ML emulators. We present ClimSim-Online, a large multi-scale dataset and framework for hybrid ML-physics climate emulation that enables real-time evaluation of climate emulators against a high-resolution physics model. (ClimSim-Online: A Large Multi-scale Dataset for Hybrid ML-physics Climate Emulation, 2023)"
+    ],
+    "co_author_ids": ["2257161858", "2367549145", "48362185"],
+    "co_authors": ["Kamyar Azizzadenesheli", "Zongyi Li", "Jean Kossaifi"],
+    "papers_last_12_months": 5,
+    "nsf_grants": [
+      {
+        "id": "2134821",
+        "title": "NSF CAREER: Scalable and Robust Machine Learning via Tensor Decompositions",
+        "awardee": "California Institute of Technology",
+        "pi_first": "Anima",
+        "pi_last": "Anandkumar",
+        "amount": 698000,
+        "expiry_date": "08/31/2026",
+        "citizen_only": false
+      },
+      {
+        "id": "DOE-DE-SC0023193",
+        "title": "DOE Scientific Discovery through Advanced Computing: Neural Operator Methods for HPC Simulations",
+        "awardee": "California Institute of Technology",
+        "pi_first": "Anima",
+        "pi_last": "Anandkumar",
+        "amount": 1200000,
+        "expiry_date": "09/30/2027",
+        "citizen_only": true
+      }
+    ],
+    "has_active_nsf_grant": true,
+    "total_active_funding_usd": 1898000,
+    "funding_citizen_restricted": true,
+    "tier": 1,
+    "location": "CA",
+    "lab_size": 22,
+    "is_recruiting": true,
+    "reply_likelihood": "low",
+    "pi_survey": {
+      "research_priorities": "My group works at the intersection of ML theory and scientific applications—neural operators for PDEs, geometric deep learning for molecular science, and AI for climate modeling. We are currently expanding into protein structure prediction and drug discovery.",
+      "mentorship_style": "I run a large group with multiple simultaneous projects and collaborate extensively with industry (NVIDIA Research) and national labs. Students work semi-autonomously, with guidance from me and from senior lab members.",
+      "meeting_frequency": "Biweekly individual meetings, weekly group meeting. I travel frequently for conferences and industry engagements.",
+      "lab_expectations": "High publication output targeting top venues (NeurIPS, ICML, ICLR, Nature). Students should be comfortable working on parallel projects and engaging with external collaborators. Strong ML engineering required.",
+      "student_qualities": "Strong ML/DL background with solid coding ability. Ideally some background in scientific computing or biology. Self-motivated and able to manage multiple priorities simultaneously.",
+      "current_openings": 3,
+      "funding_note": "NSF, DOE, and industry grants. Note: the DOE grant has a US citizenship or permanent residency requirement."
+    },
+    "student_survey_responses": [
+      {
+        "overall_experience": "High-octane research environment. You have access to massive compute resources and industry collaborators that most academics only dream of. The network is incredible.",
+        "mentorship": "Anima is brilliant but very busy—you will work closely with her senior grad students and postdocs more than directly with her. You must be self-directed.",
+        "work_life_balance": "This lab moves fast. It is a culture of shipping papers and pushing to the next problem. Not for everyone, but if that is your mode, it is exciting.",
+        "publication_rate": "Very high—top venue submissions every cycle. Conference attendance is well supported. NeurIPS, ICML, ICLR are the targets.",
+        "lab_culture": "Large, international, and diverse. You meet incredible people. Can feel anonymous in a 22-person lab, but the peer mentorship from senior students is excellent."
+      },
+      {
+        "overall_experience": "The NVIDIA collaboration gives you access to H100 clusters before most of academia, which is transformative for scaling experiments. The IP agreements are worth checking carefully.",
+        "mentorship": "Less direct one-on-one time than smaller labs, but the senior student mentorship network is excellent. You have to advocate for yourself.",
+        "work_life_balance": "Push culture, especially before NeurIPS deadlines in September. You learn to be efficient under pressure.",
+        "publication_rate": "Multiple papers per year is the expectation. Quality and quantity both matter here.",
+        "lab_culture": "Fast-moving and ambitious. Everyone is working on cutting-edge problems. Cross-lab collaborations happen constantly."
+      }
+    ]
+  },
+  {
+    "name": "Mikhail Shapiro",
+    "institution": "Caltech",
+    "department": "Chemical Engineering / Biology",
+    "email": null,
+    "lab_website": "https://shapirolab.caltech.edu",
+    "semantic_scholar_id": "2303138",
+    "research_areas": [
+      "acoustic reporter genes",
+      "synthetic biology",
+      "gas vesicle nanostructures",
+      "ultrasound molecular imaging",
+      "genetically encoded reporters"
+    ],
+    "recent_abstracts": [
+      "Ultrasound allows imaging at much greater depth than optical methods, but existing genetically encoded acoustic reporters for in vivo cellular imaging have been limited by poor sensitivity, specificity, and in vivo expression. Here we describe two acoustic reporter genes (ARGs)—one for use in bacteria and one for use in mammalian cells—identified through a phylogenetic screen of candidate gas vesicle gene clusters from diverse bacteria and archaea that provide stronger ultrasound contrast, produce non-linear signals distinguishable from background tissue, and have stable long-term expression. (Genomically mined acoustic reporter genes for real-time in vivo monitoring of tumors and tumor-homing bacteria, Nature Methods 2023)",
+      "Acoustic reporter genes (ARGs) have enabled the imaging of gene expression with ultrasound, which provides high-resolution access to deep, optically opaque living tissues. However, unlike their fluorescent counterparts, ARGs have so far been limited to a single channel, preventing multiplexed imaging of cellular states or populations. Here, we use rational protein design and directed evolution to develop two novel ARGs that can be distinguished from each other based on their acoustic pressure response profiles, enabling two-color ultrasound imaging of gene expression in vivo. (Multiplexed ultrasound imaging of gene expression, Nature Biomedical Engineering 2024)",
+      "A major challenge in biological imaging and synthetic biology is noninvasively visualizing the functions of natural and engineered cells inside opaque samples such as living animals. We developed a high-throughput acoustic screening platform to perform directed evolution of acoustic reporter genes based on gas vesicle nanostructures. Using this approach, we identified ARG variants with significantly enhanced ultrasound contrast and improved expression in mammalian cells, enabling whole-body imaging of gene expression in mice. (Directed Evolution of Acoustic Reporter Genes Using High-Throughput Acoustic Screening, 2024)",
+      "Gas vesicles (GVs) based on acoustic reporter genes have emerged as potent contrast agents for cellular and molecular ultrasound imaging. Distinguishing GV signal from tissue deep inside intact organisms requires imaging approaches such as amplitude modulation or collapse-based pulse sequences. We introduce harmonic imaging as an alternative, exploiting the nonlinear acoustic response of GVs at sub-collapse pressures to provide sensitive and non-destructive detection of acoustic biomolecules in living cells. (Harmonic imaging for nonlinear detection of acoustic biomolecules, 2024)"
+    ],
+    "co_author_ids": ["2323366111", "2385565114"],
+    "co_authors": ["Arash Farhadi", "Robert C. Hurt"],
+    "papers_last_12_months": 6,
+    "nsf_grants": [
+      {
+        "id": "2145175",
+        "title": "Acoustic Biomolecules for Imaging Gene Expression in Living Organisms",
+        "awardee": "California Institute of Technology",
+        "pi_first": "Mikhail",
+        "pi_last": "Shapiro",
+        "amount": 520000,
+        "expiry_date": "06/30/2026",
+        "citizen_only": false
+      }
+    ],
+    "has_active_nsf_grant": true,
+    "total_active_funding_usd": 520000,
+    "funding_citizen_restricted": false,
+    "tier": 1,
+    "location": "CA",
+    "lab_size": 22,
+    "is_recruiting": true,
+    "reply_likelihood": "high",
+    "pi_survey": {
+      "research_priorities": "We develop new tools for noninvasively imaging and controlling cell function in living organisms using ultrasound and other physical modalities. Current focus: next-generation acoustic reporter genes through directed evolution, gas vesicle nanotechnology for targeted drug delivery, and acoustic control of gene circuits in vivo.",
+      "mentorship_style": "I emphasize creative experimental thinking and rigorous technique. I meet weekly with every student and postdoc. After the first year, students are expected to develop increasingly independent research directions.",
+      "meeting_frequency": "Weekly individual meetings, weekly lab meeting, monthly full-group journal club and retreat.",
+      "lab_expectations": "Strong experimental technique, creative problem-solving, willingness to bridge wet-lab and computational approaches. We value reproducibility and share protocols openly.",
+      "student_qualities": "Curiosity-driven, willing to develop new experimental skills from scratch. Background in biology, chemistry, BME, or physics. Programming ability for data analysis.",
+      "current_openings": 2,
+      "funding_note": "NIH and NSF funded. No citizenship restrictions on current grants."
+    },
+    "student_survey_responses": [
+      {
+        "overall_experience": "Mikhail is one of the best mentors I have encountered. He genuinely cares about your development as a scientist and as a person. The research itself is genuinely novel and exciting.",
+        "mentorship": "Very supportive and constructive. He gives detailed written and verbal feedback and publicly celebrates student successes. Never dismissive of ideas.",
+        "work_life_balance": "Expectations are high but reasonable. Mikhail actively discourages unsustainable work habits and models good balance himself. Takes lab culture seriously.",
+        "publication_rate": "Solid publication record in top journals. Quality over quantity is the explicit ethos. We aim for Nature-family and Cell-family journals.",
+        "lab_culture": "Positive, collaborative, and fun. Lab outings and holiday parties happen. People genuinely enjoy coming to lab. Strong sense of shared mission."
+      },
+      {
+        "overall_experience": "The gas vesicle work is genuinely novel—there is no other lab doing exactly what we are doing. You feel like you are building a new field.",
+        "mentorship": "Mikhail is invested in his students in a way that is rare. He knows the details of what you are working on and asks smart questions. Great technical and career mentorship.",
+        "work_life_balance": "Busy during paper crunches but Mikhail is understanding about personal life. He checks in if he thinks you are burning out.",
+        "publication_rate": "We publish in top-tier journals (Nature Methods, Nature Biotech). Writing quality and scientific rigor matter a lot here.",
+        "lab_culture": "People from diverse backgrounds—BME, chemistry, CS, biology—all contributing. Very collaborative and cross-disciplinary environment."
+      }
+    ]
+  },
+  {
+    "name": "David Van Valen",
+    "institution": "Caltech",
+    "department": "Biology and Biological Engineering",
+    "email": null,
+    "lab_website": "https://vanvalenlab.caltech.edu",
+    "semantic_scholar_id": "6838746",
+    "research_areas": [
+      "machine learning for cell biology",
+      "cell segmentation",
+      "protein structure prediction",
+      "multiplexed imaging",
+      "deep mutational scanning"
+    ],
+    "recent_abstracts": [
+      "Protein structure tokenizers enable the creation of multimodal models of protein structure, sequence, and function. Current approaches to protein structure tokenization rely on bespoke components that are invariant to spatial symmetries, but that are challenging to optimize and scale. We present Kanzi, a flow-based tokenizer for tokenization and generation of protein structures. Kanzi consists of a diffusion autoencoder trained with a flow matching loss that simplifies several aspects of protein structure tokenization, replacing frame-based representations with a more flexible learned representation. (Flow Autoencoders are Effective Protein Tokenizers, 2025)",
+      "Cells are a fundamental unit of biological organization, and identifying them in imaging data—cell segmentation—is a critical task for various cellular imaging experiments. Although deep learning methods have led to substantial progress, most models are specialist models that work well for specific domains but cannot be applied across domains. Here we present CellSAM, a universal model for cell segmentation that generalizes across diverse cellular imaging data by building on top of the Segment Anything Model (SAM) with domain-specific adaptations and a large-scale training corpus. (CellSAM: a foundation model for cell segmentation, 2025)",
+      "Protein kinases relay information to various cellular processes, and their dysregulation underlies numerous human diseases. We develop the phosphorylation protein complementation assay (phospho-PCA), which enables quantitative measurements of kinase-substrate interactions by coupling them to the growth of budding yeast, thereby enabling deep mutational scanning of kinase domains. When combined with deep mutational scanning and machine learning, phospho-PCA reveals how kinase domain variants impact protein stability, catalytic activity, and substrate recognition at scale. (Uncovering the molecular basis of kinase activity and substrate recognition with phospho-PCA, 2025)",
+      "Multiplexed imaging offers a powerful approach to characterize the spatial topography of tissues in both health and disease. We constructed the Pan-Multiplex (Pan-M) dataset containing 197 million distinct annotations of marker expression across 15 different cell types and used it to create Nimbus, a deep learning model to predict marker positivity from multiplexed image data. Nimbus is a pre-trained transformer model that can be fine-tuned to new datasets with minimal labeled data, enabling robust cell phenotyping across tissue types and imaging platforms. (Automated classification of cellular expression in multiplexed imaging data with Nimbus, 2024)"
+    ],
+    "co_author_ids": ["7274165", "2122939600"],
+    "co_authors": ["Noah Greenwald", "Eliot Zhu"],
+    "papers_last_12_months": 4,
+    "nsf_grants": [
+      {
+        "id": "2144985",
+        "title": "NSF CAREER: Foundation Models for Cell Biology",
+        "awardee": "California Institute of Technology",
+        "pi_first": "David",
+        "pi_last": "Van Valen",
+        "amount": 600000,
+        "expiry_date": "05/31/2028",
+        "citizen_only": false
+      }
+    ],
+    "has_active_nsf_grant": true,
+    "total_active_funding_usd": 600000,
+    "funding_citizen_restricted": false,
+    "tier": 1,
+    "location": "CA",
+    "lab_size": 10,
+    "is_recruiting": true,
+    "reply_likelihood": "high",
+    "pi_survey": {
+      "research_priorities": "We develop machine learning methods to understand cell biology at scale. Current focus: protein structure tokenization for multimodal models, universal cell segmentation (CellSAM), and deep mutational scanning approaches for understanding kinase biology.",
+      "mentorship_style": "I work closely with each student to develop their research vision. As a smaller lab, I have time for regular detailed discussions and co-develop project directions with each student.",
+      "meeting_frequency": "Weekly individual meetings, weekly group meeting. Open door for informal discussions whenever needed.",
+      "lab_expectations": "Strong computational skills (Python, PyTorch) combined with genuine interest in biology. Students should move between biology questions and ML methods fluidly.",
+      "student_qualities": "Intellectual flexibility, ability to bridge CS and biology, self-motivation. Interest in practical biological questions beyond just benchmark performance.",
+      "current_openings": 2,
+      "funding_note": "NSF CAREER and Chan Zuckerberg Initiative funded. No citizenship restrictions."
+    },
+    "student_survey_responses": [
+      {
+        "overall_experience": "Small lab means you get a lot of direct attention and mentorship. David is brilliant and very approachable. CellSAM was a huge success and the lab's momentum is real.",
+        "mentorship": "Very involved. David will read every draft carefully and have multiple discussions per week during paper pushes. He is genuinely excited about your work.",
+        "work_life_balance": "Reasonable expectations. David is respectful of personal time and does not expect constant availability. The culture is healthy.",
+        "publication_rate": "Building the lab's reputation. We aim for impactful papers in Nature Methods, Cell Systems, and similar venues.",
+        "lab_culture": "Close-knit and collaborative. Everyone knows what everyone else is working on. Great intellectual environment with strong mutual support."
+      },
+      {
+        "overall_experience": "Joining an early-stage lab was great—I have shaped the direction of multiple projects and have true scientific ownership over my work.",
+        "mentorship": "David is technically strong in both biology and ML, so the guidance is excellent on both fronts. He connects you with collaborators across Caltech easily.",
+        "work_life_balance": "Healthy work culture. David models good habits and is understanding about life outside the lab.",
+        "publication_rate": "Growing year by year. The CellSAM and Kanzi papers showed the lab can hit top venues.",
+        "lab_culture": "Collaborative and intellectually stimulating. Strong lab meetings with real discussion rather than just status updates."
+      }
+    ]
+  },
+  {
+    "name": "Yisong Yue",
+    "institution": "Caltech",
+    "department": "Computing and Mathematical Sciences",
+    "email": null,
+    "lab_website": "http://www.yisongyue.com",
+    "semantic_scholar_id": "1740159",
+    "research_areas": [
+      "machine learning",
+      "Bayesian optimization",
+      "imitation learning",
+      "protein engineering",
+      "reinforcement learning"
+    ],
+    "recent_abstracts": [
+      "With advances in machine learning (ML)-assisted protein engineering, models based on data, biophysics, and natural evolution are being used to propose informed libraries of protein variants to explore. Synthesizing these libraries for experimental screens is a major bottleneck, as the cost of obtaining large numbers of exact gene sequences is often prohibitive. Degenerate codon (DC) libraries are a cost-effective alternative for generating combinatorial mutagenesis libraries. However, existing computational methods to optimize DC libraries are not well suited to design libraries for ML-assisted protein engineering. We introduce DeCOIL, a general optimization framework for constructing degenerate codon libraries tailored to ML-guided protein design campaigns. (DeCOIL: Optimization of Degenerate Codon Libraries for Machine Learning-Assisted Protein Engineering, 2023)",
+      "Linear temporal logic (LTL) offers a simplified way of specifying tasks for policy optimization that may otherwise be difficult to describe with scalar reward functions. However, the standard RL framework can be too myopic to find maximally LTL satisfying policies. We develop a new value-function based proxy using a technique we call eventual discounting, under which one can find policies that satisfy the LTL specification with highest achievable probability. We also develop a new experience replay method for generating off-policy data from on-policy rollouts via counterfactual reasoning on different ways of satisfying the LTL specification. (Eventual Discounting Temporal Logic Counterfactual Experience Replay, ICML 2023)",
+      "We study Bayesian optimization (BO) in high-dimensional and non-stationary scenarios. Existing algorithms for such scenarios typically require extensive hyperparameter tuning, which limits their practical effectiveness. We propose BALLET, which adaptively filters for a high-confidence region of interest (ROI) as a superlevel-set of a nonparametric probabilistic model such as a Gaussian process (GP). Our approach uses two probabilistic models: a coarse GP to identify the ROI, and a localized GP for optimization within the ROI. This enables BO to scale to high-dimensional experimental design problems in protein engineering and drug discovery. (Learning Regions of Interest for Bayesian Optimization with Adaptive Level-Set Estimation, NeurIPS 2023)",
+      "We propose a framework for quantifying motion in 3D that is important for studying the behavior of humans and other animals, but without manual pose annotations. Our method, BKinD-3D, performs self-supervised keypoint discovery in 3D from multi-view videos of behaving agents using an encoder-decoder architecture with a 3D volumetric heatmap, trained to reconstruct spatiotemporal differences across views without any keypoint or bounding box supervision. (BKinD-3D: Self-Supervised 3D Keypoint Discovery from Multi-View Videos, NeurIPS 2022)"
+    ],
+    "co_author_ids": ["2046181102", "2267486268", "2293319794"],
+    "co_authors": ["Soon-Jo Chung", "Natalia Neverova", "Jishen Zhao"],
+    "papers_last_12_months": 2,
+    "nsf_grants": [
+      {
+        "id": "1918655",
+        "title": "NSF CAREER: Structured Prediction with Human-in-the-Loop Feedback",
+        "awardee": "California Institute of Technology",
+        "pi_first": "Yisong",
+        "pi_last": "Yue",
+        "amount": 620000,
+        "expiry_date": "03/31/2025",
+        "citizen_only": false
+      },
+      {
+        "id": "2144261",
+        "title": "Collaborative Research: Machine Learning Methods for Protein Engineering",
+        "awardee": "California Institute of Technology",
+        "pi_first": "Yisong",
+        "pi_last": "Yue",
+        "amount": 380000,
+        "expiry_date": "08/31/2027",
+        "citizen_only": false
+      }
+    ],
+    "has_active_nsf_grant": true,
+    "total_active_funding_usd": 1000000,
+    "funding_citizen_restricted": false,
+    "tier": 1,
+    "location": "CA",
+    "lab_size": 12,
+    "is_recruiting": true,
+    "reply_likelihood": "medium",
+    "pi_survey": {
+      "research_priorities": "My group develops ML algorithms with applications in scientific discovery, particularly biology and robotics. Current focus: ML-assisted protein engineering (DeCOIL), Bayesian optimization for experimental design (BALLET), and temporal logic-guided reinforcement learning for lab automation.",
+      "mentorship_style": "I encourage students to build strong algorithmic foundations alongside domain expertise. Weekly individual meetings. Students frequently collaborate with domain experts across Caltech and at partner institutions.",
+      "meeting_frequency": "Weekly individual meetings, biweekly lab meeting, plus regular cross-lab collaboration sessions.",
+      "lab_expectations": "Strong ML background (statistics, optimization, algorithms). Willingness to engage with real scientific problems and iterate with domain collaborators. Rigorous evaluation standards for all work.",
+      "student_qualities": "Strong theoretical ML skills, curiosity about real applications, collaborative mindset. Experience with protein design or other scientific computing is a plus but not required.",
+      "current_openings": 1,
+      "funding_note": "NSF CAREER and NIH funded. No citizenship restrictions."
+    },
+    "student_survey_responses": [
+      {
+        "overall_experience": "Yisong's lab is a great place if you want to work on real problems with principled methods. He pushes you to have both theoretical rigor and practical impact.",
+        "mentorship": "Very analytical and clear. Meetings are focused and productive. He challenges you to think more carefully about assumptions and generalizations.",
+        "work_life_balance": "Balanced. Yisong does not expect constant availability. He values focused, high-quality work over long hours.",
+        "publication_rate": "Moderate—typically 1–2 strong papers per year for strong students. Quality is prioritized over volume.",
+        "lab_culture": "Collaborative, technically rigorous. Good mix of theorists and applied folks. Strong cross-disciplinary project culture."
+      },
+      {
+        "overall_experience": "Really enjoyed the problem diversity—protein engineering, behavior analysis, robotics, and sports analytics all coexist in this lab. Keeps it fresh.",
+        "mentorship": "Yisong gives you space to explore but checks in regularly. He is excellent at helping you identify what is truly novel about your work.",
+        "work_life_balance": "Very healthy. Yisong models good habits and is genuinely supportive during difficult personal times.",
+        "publication_rate": "Not the highest-volume lab, but the papers land in good venues (NeurIPS, ICML, Nature Methods).",
+        "lab_culture": "Approachable and flat. No hierarchy. Yisong is the same in lab meeting as in informal conversations."
+      }
+    ]
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "name": "Demo Student",
+  "gpa": 3.9,
+  "field_of_study": "Computational Biology",
+  "research_background": "I develop machine learning methods for problems in structural biology and genomics. My undergraduate research focused on applying transformer-based architectures to protein sequence classification, achieving state-of-the-art performance on fold recognition benchmarks. I also contributed to a project using contrastive self-supervised learning for multi-omics data integration across single-cell RNA-seq and ATAC-seq modalities. I have hands-on experience with PyTorch, Hugging Face Transformers, and standard bioinformatics tools (kallisto, STAR, Seurat). My senior thesis developed a graph neural network approach for predicting protein-protein interaction networks from sequence embeddings. I am most excited about problems where ML can directly accelerate biological discovery rather than treating biology as a pure benchmark domain.",
+  "technical_skills": [
+    "Python",
+    "PyTorch",
+    "transformer architectures",
+    "graph neural networks",
+    "single-cell RNA-seq analysis",
+    "bioinformatics pipelines",
+    "R",
+    "Bash/Linux",
+    "scikit-learn"
+  ],
+  "years_research_experience": 3,
+  "has_publications": false,
+  "cv_text": null,
+  "known_professors": [
+    "Páll Melsted"
+  ],
+  "preferred_research_topics": [
+    "protein structure prediction",
+    "single-cell genomics",
+    "machine learning for biology",
+    "multimodal biological data integration",
+    "foundation models for biological sequences"
+  ],
+  "location_preference": "west_coast",
+  "citizenship_status": "f1",
+  "min_stipend": 38000,
+  "preferred_lab_size": "medium",
+  "independence_preference": 4,
+  "intervention_tolerance": 4,
+  "meeting_frequency_preference": 3,
+  "work_life_balance_importance": 3,
+  "industry_connections_importance": 3,
+  "publication_rate_importance": 4
+}
