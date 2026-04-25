@@ -16,33 +16,57 @@ from backend.routers import pi, simulation, survey          # noqa: E402
 
 
 def _auto_seed_pis():
-    """Seed Caltech PIs on first startup if the table is empty."""
+    """Seed PIs from all *_pis.json files in data/seeds/.
+
+    Additive: skips any PI whose name is already in the table, so new seed
+    files can be added without requiring a DB reset.
+    """
     from sqlmodel import Session, select
     from backend.models import PIProfile
     from backend.schemas import PIProfileSeedItem
 
-    seed_path = os.path.normpath(
-        os.path.join(os.path.dirname(__file__), "..", "data", "seeds", "caltech_pis.json")
+    seeds_dir = os.path.normpath(
+        os.path.join(os.path.dirname(__file__), "..", "data", "seeds")
     )
-    if not os.path.exists(seed_path):
+
+    seed_files = sorted(
+        f for f in os.listdir(seeds_dir)
+        if f.endswith("_pis.json")
+    ) if os.path.isdir(seeds_dir) else []
+
+    if not seed_files:
         return
 
     with Session(engine) as session:
-        if session.exec(select(PIProfile)).first():
-            return  # already seeded
-        with open(seed_path, encoding="utf-8") as f:
-            entries = json.load(f)
-        for entry in entries:
-            item = PIProfileSeedItem(**entry)
-            session.add(PIProfile(**item.model_dump()))
-        session.commit()
-        print(f"[startup] Seeded {len(entries)} PIs from {seed_path}")
+        existing_names = {p.name for p in session.exec(select(PIProfile)).all()}
+
+        total = 0
+        for filename in seed_files:
+            path = os.path.join(seeds_dir, filename)
+            with open(path, encoding="utf-8") as f:
+                entries = json.load(f)
+            for entry in entries:
+                name = entry.get("name", "")
+                if name in existing_names:
+                    continue
+                try:
+                    item = PIProfileSeedItem(**entry)
+                    session.add(PIProfile(**item.model_dump()))
+                    existing_names.add(name)
+                    total += 1
+                except Exception as exc:
+                    print(f"[startup] Skipping {name} from {filename}: {exc}")
+        if total:
+            session.commit()
+            print(f"[startup] Seeded {total} new PI(s) from {seed_files}")
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     create_db_and_tables()
     _auto_seed_pis()
+    if not os.environ.get("ANTHROPIC_API_KEY", "").strip():
+        print("WARNING: ANTHROPIC_API_KEY is not set. All Claude calls will return mock responses.")
     yield
 
 
@@ -79,4 +103,7 @@ def root():
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    return {
+        "status": "ok",
+        "api_key_configured": bool(os.environ.get("ANTHROPIC_API_KEY", "").strip()),
+    }

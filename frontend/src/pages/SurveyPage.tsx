@@ -127,7 +127,7 @@ export default function SurveyPage() {
   const [cvFileName, setCvFileName] = useState('');
   const cvInputRef = useRef<HTMLInputElement>(null);
   const lastStudentId = localStorage.getItem('lastStudentId');
-  const [serverStatus, setServerStatus] = useState<'checking' | 'ready' | 'slow'>('checking');
+  const [serverStatus, setServerStatus] = useState<'checking' | 'ready' | 'no_key' | 'slow'>('checking');
 
   // Ping backend on mount: wakes Render from sleep + drives the status indicator
   useEffect(() => {
@@ -135,9 +135,10 @@ export default function SurveyPage() {
     const start = Date.now();
     const slowTimer = setTimeout(() => setServerStatus('slow'), 3000);
     fetch(`${base}/health`)
-      .then(() => {
+      .then(r => r.json())
+      .then((data: { status: string; api_key_configured?: boolean }) => {
         clearTimeout(slowTimer);
-        setServerStatus('ready');
+        setServerStatus(data.api_key_configured === false ? 'no_key' : 'ready');
         console.log(`Backend ready in ${Date.now() - start}ms`);
       })
       .catch(() => {
@@ -242,6 +243,15 @@ export default function SurveyPage() {
               <span className="flex items-center gap-1.5 text-xs text-emerald-600">
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
                 Server ready
+              </span>
+            )}
+            {serverStatus === 'no_key' && (
+              <span className="flex flex-col gap-0.5">
+                <span className="flex items-center gap-1.5 text-xs text-amber-600">
+                  <span className="w-2 h-2 rounded-full bg-amber-400" />
+                  Server ready
+                </span>
+                <span className="text-xs text-amber-500 pl-3.5">API key not set — chat responses will be mocked</span>
               </span>
             )}
             {serverStatus === 'slow' && (

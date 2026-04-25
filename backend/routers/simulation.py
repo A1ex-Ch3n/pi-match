@@ -209,7 +209,7 @@ def simulate_chat(
         try:
             client = anthropic.Anthropic(api_key=api_key)
             resp = client.messages.create(
-                model="claude-sonnet-4-5",
+                model="claude-sonnet-4-6",
                 max_tokens=512,
                 system=system_prompt,
                 messages=messages,

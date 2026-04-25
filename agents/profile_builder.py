@@ -92,25 +92,34 @@ class AvatarProfile:
 # Validation Functions
 # ============================================================================
 
-# Expected keys for PI survey (at least one required; others fill in detail)
+# Expected keys for PI survey.
+# Supports both the hand-crafted Caltech seed format and the real Google Form
+# export format produced by data/survey_loader.py.  Validation passes when at
+# least (total - 4) of these keys are present.
 PI_SURVEY_EXPECTED_KEYS = {
-    "research_priorities",
+    # Hand-crafted seed format (caltech_pis.json)
     "mentorship_style",
     "meeting_frequency",
-    "lab_expectations",
     "student_qualities",
-    "autonomy_style",
-    "intervention_level",
     "work_life_balance",
+    # Real survey format (keck_pis.json / survey_loader.py)
+    "working_style",
+    "lab_description_pitch",
+    "outcome_expectations",
+    "struggle_response",
+    "lab_tone",
+    "successful_student_description",
 }
 
-# Expected keys for each student survey response
+# Expected keys for each student survey response.
+# Supports both hand-crafted and real survey formats.
 STUDENT_SURVEY_EXPECTED_KEYS = {
+    # Hand-crafted seed format
     "overall_experience",
-    "mentorship",
-    "work_life_balance",
-    "publication_rate",
     "lab_culture",
+    # Real survey format
+    "mentorship_reality",
+    "work_life_balance_reality",
 }
 
 
@@ -185,22 +194,27 @@ def _validate_student_responses(
         errors.append("Student responses list is empty")
         return False, errors
 
-    # Each response should be a dict with expected keys
-    for i, resp in enumerate(responses):
-        if not isinstance(resp, dict):
-            errors.append(f"Student response {i} is not a dict: {type(resp)}")
-            continue
+    # Validate collectively: the union of keys across all responses must
+    # cover at least half of STUDENT_SURVEY_EXPECTED_KEYS.
+    # Individual respondents often skip optional fields, so per-response
+    # strict checking produces false negatives.
+    all_dicts = [r for r in responses if isinstance(r, dict)]
+    if not all_dicts:
+        errors.append("No valid dict responses found")
+        return False, errors
 
-        missing_keys = STUDENT_SURVEY_EXPECTED_KEYS - set(resp.keys())
-        if missing_keys:
-            errors.append(
-                f"Student response {i} missing fields: {missing_keys}"
-            )
+    union_keys: set = set()
+    for resp in all_dicts:
+        union_keys |= set(resp.keys())
 
-        # Check for empty values
-        for key, value in resp.items():
-            if isinstance(value, str) and len(value.strip()) == 0:
-                errors.append(f"Student response {i}, field '{key}' is empty string")
+    covered = STUDENT_SURVEY_EXPECTED_KEYS & union_keys
+    required = max(1, len(STUDENT_SURVEY_EXPECTED_KEYS) // 2)
+    if len(covered) < required:
+        errors.append(
+            f"Student responses collectively cover only {len(covered)} of "
+            f"{len(STUDENT_SURVEY_EXPECTED_KEYS)} expected keys. "
+            f"Need at least {required}. Covered: {covered}"
+        )
 
     return len(errors) == 0, errors
 
