@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { submitSurvey, runMatch, uploadCV } from '../api/client';
+import { submitSurvey, uploadCV } from '../api/client';
 import type { StudentProfile } from '../types';
 
 type FormData = Omit<StudentProfile, 'id'>;
