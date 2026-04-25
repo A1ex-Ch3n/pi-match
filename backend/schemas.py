@@ -102,6 +102,7 @@ class PIProfileSeedItem(BaseModel):
     pi_survey: Optional[Dict] = None
     student_survey_responses: Optional[List[Any]] = None
     reply_likelihood: Optional[str] = None
+    papers: Optional[List[Dict]] = None
 
 
 class SeedRequest(BaseModel):

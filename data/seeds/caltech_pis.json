@@ -19,8 +19,18 @@
       "Contrastive learning methods can be powerful tools for genomics, enabling the identification of signals in an experiment via dimension reduction while reducing noise using a control. One such popular approach is contrastive PCA, which, despite being used in a variety of settings, does not scale to large datasets. We show that the contrastive PCA objective is an approximation of a Rayleigh quotient, analogous in form to Fisher's linear discriminant analysis and the common spatial patterns method. The Rayleigh quotient satisfies numerous desirable properties and provides an interpretable form of dimension reduction via generalized eigenvectors. We demonstrate that it is more accurate than contrastive PCA and much more efficient, and show how it can be used for contrasting conditions via an analysis of single-nucleus transcriptomics data. (The Rayleigh Quotient and Contrastive Principal Component Analysis, 2025)",
       "SpatialFeatureExperiment is a Bioconductor package that leverages the versatility of Simple Features for spatial data analysis and SpatialExperiment for single-cell -omics to provide an expansive and convenient S4 class for working with spatial -omics data. SpatialFeatureExperiment can be used to store and analyze a variety of spatial -omics data types, including data from the Visium, Xenium, MERFISH, SeqFish, and Slide-seq platforms, bringing spatial operations to the SingleCellExperiment ecosystem. (Geospatially informed representation of spatial genomics data with SpatialFeatureExperiment, 2025)"
     ],
-    "co_author_ids": ["1765860", "91370838", "2034380209", "2090415440"],
-    "co_author_names": ["Páll Melsted", "A. S. Booeshaghi", "Laura Luebbert", "Maria Carilli"],
+    "co_author_ids": [
+      "1765860",
+      "91370838",
+      "2034380209",
+      "2090415440"
+    ],
+    "co_author_names": [
+      "Páll Melsted",
+      "A. S. Booeshaghi",
+      "Laura Luebbert",
+      "Maria Carilli"
+    ],
     "papers_last_12_months": 7,
     "nsf_grants": [
       {
@@ -70,6 +80,32 @@
         "publication_rate": "Papers are held to very high standards but they land in top venues consistently.",
         "lab_culture": "Tight-knit. People genuinely enjoy each other. Lab lunches have great intellectual breadth—biology, algorithms, statistics all collide."
       }
+    ],
+    "papers": [
+      {
+        "title": "Uniform pre-processing of bacterial single-cell RNA-seq",
+        "url": "https://doi.org/10.64898/2025.12.04.692398",
+        "venue": "bioRxiv",
+        "year": 2025
+      },
+      {
+        "title": "Computational array reconstruction with accumap for spatial transcriptomics",
+        "url": "https://doi.org/10.64898/2025.12.19.695576",
+        "venue": "bioRxiv",
+        "year": 2025
+      },
+      {
+        "title": "The Rayleigh Quotient and Contrastive Principal Component Analysis",
+        "url": "https://doi.org/10.64898/2026.04.08.717236",
+        "venue": "bioRxiv",
+        "year": 2026
+      },
+      {
+        "title": "Differential analysis of genomics count data with edge*",
+        "url": "https://doi.org/10.64898/2026.02.16.706223",
+        "venue": "bioRxiv",
+        "year": 2026
+      }
     ]
   },
   {
@@ -92,8 +128,16 @@
       "The SARS-CoV-2 replication transcription complex (RTC) is a multi-domain protein responsible for replicating and transcribing the viral mRNA inside a human cell. Conventional tools such as cryo-electron microscopy and all-atom molecular dynamics do not provide sufficiently high resolution or timescale to capture important dynamics of this molecular machine. We develop an innovative workflow bridging these resolutions using mesoscale fluctuating finite element analysis continuum simulations and a hierarchy of machine learning models, including neural operators, to accelerate and inform drug target discovery. (AI-enabled multiscale modeling of SARS-CoV-2 replication transcription complex, 2023)",
       "Modern climate projections lack adequate spatial and temporal resolution due to computational constraints. Hybrid methods combining physics with machine learning offer faster, higher-fidelity climate simulations by outsourcing compute-hungry high-resolution simulations to ML emulators. We present ClimSim-Online, a large multi-scale dataset and framework for hybrid ML-physics climate emulation that enables real-time evaluation of climate emulators against a high-resolution physics model. (ClimSim-Online: A Large Multi-scale Dataset for Hybrid ML-physics Climate Emulation, 2023)"
     ],
-    "co_author_ids": ["2257161858", "2367549145", "48362185"],
-    "co_author_names": ["Kamyar Azizzadenesheli", "Zongyi Li", "Jean Kossaifi"],
+    "co_author_ids": [
+      "2257161858",
+      "2367549145",
+      "48362185"
+    ],
+    "co_author_names": [
+      "Kamyar Azizzadenesheli",
+      "Zongyi Li",
+      "Jean Kossaifi"
+    ],
     "papers_last_12_months": 5,
     "nsf_grants": [
       {
@@ -153,6 +197,32 @@
         "publication_rate": "Multiple papers per year is the expectation. Quality and quantity both matter here.",
         "lab_culture": "Fast-moving and ambitious. Everyone is working on cutting-edge problems. Cross-lab collaborations happen constantly."
       }
+    ],
+    "papers": [
+      {
+        "title": "Symmetry-Informed Geometric Representation for Molecules, Proteins, and Crystals",
+        "url": "https://doi.org/10.48550/arXiv.2306.09375",
+        "venue": "NeurIPS 2023",
+        "year": 2023
+      },
+      {
+        "title": "I2SB: Image-to-Image Schrödinger Bridge",
+        "url": "https://doi.org/10.48550/arXiv.2302.05872",
+        "venue": "ICML 2023",
+        "year": 2023
+      },
+      {
+        "title": "AI-enabled multiscale modeling of SARS-CoV-2 replication transcription complex",
+        "url": "https://doi.org/10.1016/j.jbc.2023.103443",
+        "venue": "Journal of Biological Chemistry",
+        "year": 2023
+      },
+      {
+        "title": "Incremental Neural Networks: Efficient Inference for Dynamic Inputs",
+        "url": "https://doi.org/10.48550/arXiv.2307.14988",
+        "venue": "arXiv",
+        "year": 2023
+      }
     ]
   },
   {
@@ -175,8 +245,14 @@
       "A major challenge in biological imaging and synthetic biology is noninvasively visualizing the functions of natural and engineered cells inside opaque samples such as living animals. We developed a high-throughput acoustic screening platform to perform directed evolution of acoustic reporter genes based on gas vesicle nanostructures. Using this approach, we identified ARG variants with significantly enhanced ultrasound contrast and improved expression in mammalian cells, enabling whole-body imaging of gene expression in mice. (Directed Evolution of Acoustic Reporter Genes Using High-Throughput Acoustic Screening, 2024)",
       "Gas vesicles (GVs) based on acoustic reporter genes have emerged as potent contrast agents for cellular and molecular ultrasound imaging. Distinguishing GV signal from tissue deep inside intact organisms requires imaging approaches such as amplitude modulation or collapse-based pulse sequences. We introduce harmonic imaging as an alternative, exploiting the nonlinear acoustic response of GVs at sub-collapse pressures to provide sensitive and non-destructive detection of acoustic biomolecules in living cells. (Harmonic imaging for nonlinear detection of acoustic biomolecules, 2024)"
     ],
-    "co_author_ids": ["2323366111", "2385565114"],
-    "co_author_names": ["Arash Farhadi", "Robert C. Hurt"],
+    "co_author_ids": [
+      "2323366111",
+      "2385565114"
+    ],
+    "co_author_names": [
+      "Arash Farhadi",
+      "Robert C. Hurt"
+    ],
     "papers_last_12_months": 6,
     "nsf_grants": [
       {
@@ -226,6 +302,32 @@
         "publication_rate": "We publish in top-tier journals (Nature Methods, Nature Biotech). Writing quality and scientific rigor matter a lot here.",
         "lab_culture": "People from diverse backgrounds—BME, chemistry, CS, biology—all contributing. Very collaborative and cross-disciplinary environment."
       }
+    ],
+    "papers": [
+      {
+        "title": "Multiplexed ultrasound imaging of gene expression",
+        "url": "https://doi.org/10.1038/s41592-025-02825-w",
+        "venue": "Nature Methods",
+        "year": 2024
+      },
+      {
+        "title": "Directed Evolution of Acoustic Reporter Genes Using High-Throughput Acoustic Screening",
+        "url": "https://doi.org/10.1021/acssynbio.4c00283",
+        "venue": "ACS Synthetic Biology",
+        "year": 2024
+      },
+      {
+        "title": "Genomically mined acoustic reporter genes for real-time in vivo monitoring of tumors",
+        "url": "https://doi.org/10.1038/s41587-022-01581-y",
+        "venue": "Nature Biotechnology",
+        "year": 2023
+      },
+      {
+        "title": "Harmonic imaging for nonlinear detection of acoustic biomolecules",
+        "url": "https://doi.org/10.1063/5.0214306",
+        "venue": "APL Bioengineering",
+        "year": 2024
+      }
     ]
   },
   {
@@ -248,8 +350,14 @@
       "Protein kinases relay information to various cellular processes, and their dysregulation underlies numerous human diseases. We develop the phosphorylation protein complementation assay (phospho-PCA), which enables quantitative measurements of kinase-substrate interactions by coupling them to the growth of budding yeast, thereby enabling deep mutational scanning of kinase domains. When combined with deep mutational scanning and machine learning, phospho-PCA reveals how kinase domain variants impact protein stability, catalytic activity, and substrate recognition at scale. (Uncovering the molecular basis of kinase activity and substrate recognition with phospho-PCA, 2025)",
       "Multiplexed imaging offers a powerful approach to characterize the spatial topography of tissues in both health and disease. We constructed the Pan-Multiplex (Pan-M) dataset containing 197 million distinct annotations of marker expression across 15 different cell types and used it to create Nimbus, a deep learning model to predict marker positivity from multiplexed image data. Nimbus is a pre-trained transformer model that can be fine-tuned to new datasets with minimal labeled data, enabling robust cell phenotyping across tissue types and imaging platforms. (Automated classification of cellular expression in multiplexed imaging data with Nimbus, 2024)"
     ],
-    "co_author_ids": ["7274165", "2122939600"],
-    "co_author_names": ["Noah Greenwald", "Eliot Zhu"],
+    "co_author_ids": [
+      "7274165",
+      "2122939600"
+    ],
+    "co_author_names": [
+      "Noah Greenwald",
+      "Eliot Zhu"
+    ],
     "papers_last_12_months": 4,
     "nsf_grants": [
       {
@@ -299,6 +407,32 @@
         "publication_rate": "Growing year by year. The CellSAM and Kanzi papers showed the lab can hit top venues.",
         "lab_culture": "Collaborative and intellectually stimulating. Strong lab meetings with real discussion rather than just status updates."
       }
+    ],
+    "papers": [
+      {
+        "title": "CellSAM: a foundation model for cell segmentation",
+        "url": "https://doi.org/10.1038/s41592-025-02879-w",
+        "venue": "Nature Methods",
+        "year": 2025
+      },
+      {
+        "title": "Automated classification of cellular expression in multiplexed imaging data",
+        "url": "https://doi.org/10.1038/s41592-025-02826-9",
+        "venue": "Nature Methods",
+        "year": 2025
+      },
+      {
+        "title": "Flow Autoencoders are Effective Protein Tokenizers",
+        "url": "https://doi.org/10.1101/2025.10.01.679645",
+        "venue": "bioRxiv",
+        "year": 2025
+      },
+      {
+        "title": "CellTune: integrative software for accurate cell classification in spatial proteomics",
+        "url": "https://doi.org/10.1101/2025.05.05.652215",
+        "venue": "bioRxiv",
+        "year": 2025
+      }
     ]
   },
   {
@@ -321,8 +455,16 @@
       "We study Bayesian optimization (BO) in high-dimensional and non-stationary scenarios. Existing algorithms for such scenarios typically require extensive hyperparameter tuning, which limits their practical effectiveness. We propose BALLET, which adaptively filters for a high-confidence region of interest (ROI) as a superlevel-set of a nonparametric probabilistic model such as a Gaussian process (GP). Our approach uses two probabilistic models: a coarse GP to identify the ROI, and a localized GP for optimization within the ROI. This enables BO to scale to high-dimensional experimental design problems in protein engineering and drug discovery. (Learning Regions of Interest for Bayesian Optimization with Adaptive Level-Set Estimation, NeurIPS 2023)",
       "We propose a framework for quantifying motion in 3D that is important for studying the behavior of humans and other animals, but without manual pose annotations. Our method, BKinD-3D, performs self-supervised keypoint discovery in 3D from multi-view videos of behaving agents using an encoder-decoder architecture with a 3D volumetric heatmap, trained to reconstruct spatiotemporal differences across views without any keypoint or bounding box supervision. (BKinD-3D: Self-Supervised 3D Keypoint Discovery from Multi-View Videos, NeurIPS 2022)"
     ],
-    "co_author_ids": ["2046181102", "2267486268", "2293319794"],
-    "co_author_names": ["Soon-Jo Chung", "Natalia Neverova", "Jishen Zhao"],
+    "co_author_ids": [
+      "2046181102",
+      "2267486268",
+      "2293319794"
+    ],
+    "co_author_names": [
+      "Soon-Jo Chung",
+      "Natalia Neverova",
+      "Jishen Zhao"
+    ],
     "papers_last_12_months": 2,
     "nsf_grants": [
       {
@@ -381,6 +523,32 @@
         "work_life_balance": "Very healthy. Yisong models good habits and is genuinely supportive during difficult personal times.",
         "publication_rate": "Not the highest-volume lab, but the papers land in good venues (NeurIPS, ICML, Nature Methods).",
         "lab_culture": "Approachable and flat. No hierarchy. Yisong is the same in lab meeting as in informal conversations."
+      }
+    ],
+    "papers": [
+      {
+        "title": "DeCOIL: Optimization of Degenerate Codon Libraries for ML-Assisted Protein Engineering",
+        "url": "https://doi.org/10.1101/2023.05.11.540424",
+        "venue": "bioRxiv",
+        "year": 2023
+      },
+      {
+        "title": "Learning Regions of Interest for Bayesian Optimization with Adaptive Level-Set Estimation",
+        "url": "https://doi.org/10.48550/arXiv.2307.13371",
+        "venue": "ICML 2023",
+        "year": 2023
+      },
+      {
+        "title": "Eventual Discounting Temporal Logic Counterfactual Experience Replay",
+        "url": "https://doi.org/10.48550/arXiv.2303.02135",
+        "venue": "ICML 2023",
+        "year": 2023
+      },
+      {
+        "title": "The MABe22 Benchmarks for Representation Learning of Multi-Agent Behavior",
+        "url": "https://doi.org/10.48550/arXiv.2207.10553",
+        "venue": "arXiv",
+        "year": 2022
       }
     ]
   }

@@ -50,6 +50,16 @@ def build_pi_avatar(pi_profile: "PIProfile") -> str:
     s2_id = pi_profile.semantic_scholar_id or ""
     s2_url = f"https://www.semanticscholar.org/author/{s2_id}" if s2_id else ""
 
+    # Build numbered paper list with links
+    papers_list = pi_profile.papers or []
+    if papers_list:
+        papers_section = "\n".join(
+            f'{i+1}. [{p["title"]}]({p["url"]}) — {p.get("venue", "")} {p.get("year", "")}'
+            for i, p in enumerate(papers_list)
+        )
+    else:
+        papers_section = "No papers listed — direct applicants to your lab website."
+
     system_prompt = f"""IDENTITY (CRITICAL — NEVER CONTRADICT THESE FACTS):
 You are Professor {name}.
 Your institution: {institution}
@@ -73,18 +83,17 @@ Recent papers from your lab:{abstracts_section}
 Active NSF grants:{grants_section}
 {pi_survey_section}{student_responses_section}
 
-## Paper References
-When you mention a specific paper from your research above, include it as a markdown link so the applicant can read it.
-Use this format: [Short paper title](URL)
-{'- Your lab website (use for paper links): ' + lab_website if lab_website else ''}
-{'- Your Semantic Scholar profile (full paper list): ' + s2_url if s2_url else ''}
-If neither URL is available, mention the paper title and say the applicant can find it via Google Scholar.
+## Your Papers (use ONLY these — never invent paper titles or fabricate citations)
+{papers_section}
+{'Full list: ' + lab_website if lab_website else ''}
+{'All publications: ' + s2_url if s2_url else ''}
 
 ## How You Behave in This Conversation
 - Speak in first person as Professor {name} at {institution}. You ARE this professor.
 - CRITICAL: You are at {institution}, {department}. Never say you are at any other institution.
-- Be specific — reference your actual papers, grants, and research directions above.
-- When citing a paper, format it as a markdown link using the URLs above.
+- Be specific — reference your actual papers and research directions above.
+- When you mention a paper, ALWAYS format it as a markdown link from the list above: [Title](URL)
+- NEVER invent paper titles, journal names, or citations not in the list above. If unsure, say "our recent work on X" and link to the lab website.
 - Ask the applicant exactly ONE question per response about their fit for your lab.
 - Surface what you care about most based on your survey responses above.
 - If you are uncertain about something not covered in your profile, say so honestly — for example: "I'm not certain about that — you'd want to ask me directly."

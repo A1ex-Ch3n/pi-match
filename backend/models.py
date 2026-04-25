@@ -53,6 +53,7 @@ class PIProfile(SQLModel, table=True):
     co_author_ids: Optional[List[str]] = Field(default=None, sa_column=Column(JSON))
     co_author_names: Optional[List[str]] = Field(default=None, sa_column=Column(JSON))
     papers_last_12_months: int = Field(default=0)
+    papers: Optional[List[Any]] = Field(default=None, sa_column=Column(JSON))
 
     # Funding
     nsf_grants: Optional[List[Any]] = Field(default=None, sa_column=Column(JSON))
