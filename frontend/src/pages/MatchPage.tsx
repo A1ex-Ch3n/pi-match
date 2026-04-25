@@ -12,7 +12,7 @@ export default function MatchPage() {
   const { studentId } = useParams<{ studentId: string }>();
   const [matches, setMatches] = useState<MatchWithPI[]>([]);
   const [loading, setLoading] = useState(true);
-  const [matchingStatus, setMatchingStatus] = useState('Running AI matching…');
+  const [matchingStatus, setMatchingStatus] = useState('Connecting to server…');
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -23,31 +23,42 @@ export default function MatchPage() {
   async function loadOrRun() {
     setLoading(true);
     setError('');
+
+    // Wake Render if sleeping — wait up to 40s for it to respond
+    const base = (import.meta.env.VITE_API_URL ?? 'http://localhost:8000/api').replace('/api', '');
     try {
-      // Try fetching existing matches first
+      setMatchingStatus('Connecting to server…');
+      await Promise.race([
+        fetch(`${base}/health`),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 40000)),
+      ]);
+    } catch {
+      // If still unreachable after 40s, show error with retry
+      setLoading(false);
+      setError('Cannot reach the server. If running locally, start uvicorn first. On production, wait 30 s and click Retry.');
+      return;
+    }
+
+    try {
+      setMatchingStatus('Loading matches…');
       const existing = await getMatches(Number(studentId));
       if (existing.length > 0) {
         setMatches(existing as MatchWithPI[]);
         setLoading(false);
         return;
       }
-      // No matches yet — run matching now (handles the case where survey
-      // navigated here before runMatch completed, or Render restarted mid-flow)
       setMatchingStatus('Running AI matching — this takes 15–30 seconds…');
       const fresh = await runMatch(Number(studentId));
-      if (fresh.length === 0) {
-        localStorage.removeItem('lastStudentId');
-      }
+      if (fresh.length === 0) localStorage.removeItem('lastStudentId');
       setMatches(fresh as MatchWithPI[]);
     } catch (err: unknown) {
       const detail = (err as { response?: { data?: { detail?: string } } })?.response?.data?.detail;
       const status = (err as { response?: { status?: number } })?.response?.status;
       if (detail === 'Student not found') {
-        // Render restarted and wiped the DB — clear stale session
         localStorage.removeItem('lastStudentId');
-        setError('Session expired — the server restarted. Please go back and resubmit your form.');
+        setError('Session expired — the server restarted. Please resubmit your form.');
       } else {
-        setError(detail ?? (status ? `Error ${status}` : 'Could not load matches. Make sure the backend is running.'));
+        setError(detail ?? (status ? `Server error ${status} — click Retry.` : 'Could not load matches — click Retry.'));
       }
     } finally {
       setLoading(false);
@@ -86,10 +97,19 @@ export default function MatchPage() {
 
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg px-4 py-3 text-sm mb-6">
-            {error}
-            {error.includes('resubmit') && (
-              <Link to="/" className="block mt-2 font-medium underline">← Back to form</Link>
-            )}
+            <p>{error}</p>
+            <div className="flex gap-3 mt-3">
+              {error.includes('resubmit') || error.includes('expired') ? (
+                <Link to="/" className="font-medium underline">← Back to form</Link>
+              ) : (
+                <button
+                  onClick={loadOrRun}
+                  className="bg-red-100 hover:bg-red-200 text-red-800 font-medium px-4 py-1.5 rounded-lg text-sm transition-colors"
+                >
+                  Retry
+                </button>
+              )}
+            </div>
           </div>
         )}
 
