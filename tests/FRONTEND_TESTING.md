@@ -29,20 +29,20 @@
 1. Open `http://localhost:5173` — confirm the survey form loads with no console errors.
 2. Fill in the following fields:
 
-| Field | Value |
-|---|---|
-| Full Name | Demo Student |
-| GPA | 3.9 |
-| Years of Research Experience | 3 |
-| Field of Study | Computational Biology |
-| Research Background | I develop ML methods for protein structure prediction and single-cell genomics. I have experience with graph neural networks, transformer models, and bioinformatics pipelines. |
-| Technical Skills | Python, PyTorch, R, CRISPR, scRNA-seq |
-| Has Publications | checked |
-| Professors You Know | Páll Melsted |
-| Preferred Research Topics | computational biology, genomics, machine learning |
-| Location | West Coast |
-| Citizenship Status | F-1 Visa |
-| Preferred Lab Size | Medium (6–12) |
+| Field                        | Value                                                                                                                                                                           |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Full Name                    | Demo Student                                                                                                                                                                    |
+| GPA                          | 3.9                                                                                                                                                                             |
+| Years of Research Experience | 3                                                                                                                                                                               |
+| Field of Study               | Computational Biology                                                                                                                                                           |
+| Research Background          | I develop ML methods for protein structure prediction and single-cell genomics. I have experience with graph neural networks, transformer models, and bioinformatics pipelines. |
+| Technical Skills             | Python, PyTorch, R, CRISPR, scRNA-seq                                                                                                                                           |
+| Has Publications             | checked                                                                                                                                                                         |
+| Professors You Know          | Páll Melsted                                                                                                                                                                    |
+| Preferred Research Topics    | computational biology, genomics, machine learning                                                                                                                               |
+| Location                     | West Coast                                                                                                                                                                      |
+| Citizenship Status           | F-1 Visa                                                                                                                                                                        |
+| Preferred Lab Size           | Medium (6–12)                                                                                                                                                                   |
 
 3. Leave sliders at default (all 3), minimum stipend blank.
 4. Click **Find My PI Matches →**.
