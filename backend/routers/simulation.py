@@ -270,10 +270,10 @@ def get_report(match_id: int, session: Session = Depends(get_session)):
         )
 
     pi = session.get(PIProfile, match.pi_id)
+    match_data = match.model_dump()
+    if pi:
+        match_data["pi"] = PIProfileResponse.model_validate(pi).model_dump()
     return {
-        "match_id": match_id,
-        "pi_id": match.pi_id,
-        "pi_name": pi.name if pi else None,
-        "overall_score": match.overall_score,
-        "chemistry_report": match.chemistry_report,
+        "match": match_data,
+        "report": match.chemistry_report,
     }

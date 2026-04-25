@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getMatches, runMatch } from '../api/client';
+import { getMatches } from '../api/client';
 import type { MatchResult, PIProfile } from '../types';
 import PICard from '../components/PICard';
 
@@ -12,7 +12,6 @@ export default function MatchPage() {
   const { studentId } = useParams<{ studentId: string }>();
   const [matches, setMatches] = useState<MatchWithPI[]>([]);
   const [loading, setLoading] = useState(true);
-  const [rerunning, setRerunning] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -28,20 +27,6 @@ export default function MatchPage() {
       setError('Could not load matches. Make sure the backend is running.');
     } finally {
       setLoading(false);
-    }
-  }
-
-  async function handleRerun() {
-    if (!studentId) return;
-    setRerunning(true);
-    setError('');
-    try {
-      const data = await runMatch(Number(studentId));
-      setMatches(data as MatchWithPI[]);
-    } catch {
-      setError('Failed to run matching.');
-    } finally {
-      setRerunning(false);
     }
   }
 
@@ -64,13 +49,6 @@ export default function MatchPage() {
               <p className="text-sm text-gray-500 mt-1">{matches.length} professors ranked by fit</p>
             )}
           </div>
-          <button
-            onClick={handleRerun}
-            disabled={rerunning || loading}
-            className="bg-white border border-gray-300 hover:bg-gray-50 disabled:opacity-50 text-gray-700 text-sm font-medium px-4 py-2 rounded-lg transition-colors"
-          >
-            {rerunning ? 'Rerunning...' : 'Rerun Matching'}
-          </button>
         </div>
 
         {loading && (
@@ -91,12 +69,9 @@ export default function MatchPage() {
         {!loading && matches.length === 0 && !error && (
           <div className="text-center py-24 text-gray-400">
             <p className="text-lg mb-4">No matches yet.</p>
-            <button
-              onClick={handleRerun}
-              className="bg-violet-600 hover:bg-violet-700 text-white text-sm font-medium px-6 py-2.5 rounded-lg"
-            >
-              Run Matching Now
-            </button>
+            <Link to="/" className="bg-violet-600 hover:bg-violet-700 text-white text-sm font-medium px-6 py-2.5 rounded-lg">
+              Start a new search
+            </Link>
           </div>
         )}
 

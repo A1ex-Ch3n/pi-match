@@ -126,6 +126,7 @@ export default function SurveyPage() {
   const [cvUploading, setCvUploading] = useState(false);
   const [cvFileName, setCvFileName] = useState('');
   const cvInputRef = useRef<HTMLInputElement>(null);
+  const lastStudentId = localStorage.getItem('lastStudentId');
 
   async function handleCvUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -160,11 +161,9 @@ export default function SurveyPage() {
       };
       const student = await submitSurvey(payload);
       const matches = await runMatch(student.id!);
-      if (matches.length > 0) {
-        navigate(`/matches/${student.id}`);
-      } else {
-        navigate(`/matches/${student.id}`);
-      }
+      localStorage.setItem('lastStudentId', String(student.id));
+      void matches;
+      navigate(`/matches/${student.id}`);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Something went wrong';
       setError(msg);
@@ -176,6 +175,17 @@ export default function SurveyPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-2xl mx-auto px-4 py-10">
+        {lastStudentId && (
+          <div className="mb-4 flex items-center justify-between bg-violet-50 border border-violet-200 rounded-xl px-4 py-3">
+            <span className="text-sm text-violet-700">You have a previous session.</span>
+            <a
+              href={`/matches/${lastStudentId}`}
+              className="text-sm font-medium text-violet-700 hover:underline"
+            >
+              ← Back to your matches
+            </a>
+          </div>
+        )}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">PiMatch</h1>
           <p className="text-gray-500 mt-1">Find your ideal PhD advisor. Answer a few questions to get started.</p>
