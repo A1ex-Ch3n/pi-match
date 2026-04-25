@@ -34,8 +34,11 @@ async def upload_cv(file: UploadFile = File(...)):
     filename = file.filename or ""
     content = await file.read()
 
+    # Normalise content-type: strip charset suffixes like "text/plain; charset=utf-8"
+    ct = (file.content_type or "").split(";")[0].strip()
+
     # Plain text
-    if filename.endswith(".txt") or file.content_type in ("text/plain", "application/text"):
+    if filename.endswith(".txt") or ct in ("text/plain", "application/text"):
         try:
             cv_text = content.decode("utf-8", errors="replace")
             return {"cv_text": cv_text.strip()}
@@ -43,7 +46,7 @@ async def upload_cv(file: UploadFile = File(...)):
             raise HTTPException(status_code=400, detail="Could not read text file.")
 
     # PDF — try pdfplumber, fall back gracefully
-    if filename.endswith(".pdf") or file.content_type == "application/pdf":
+    if filename.endswith(".pdf") or ct == "application/pdf":
         try:
             import pdfplumber
             with pdfplumber.open(io.BytesIO(content)) as pdf:

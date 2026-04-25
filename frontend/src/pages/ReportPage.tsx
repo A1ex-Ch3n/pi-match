@@ -43,9 +43,18 @@ export default function ReportPage() {
   if (error || !report) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-red-600 mb-4">{error || 'Report not found.'}</p>
-          <Link to="/" className="text-violet-600 hover:underline text-sm">← Go home</Link>
+        <div className="text-center max-w-sm px-4">
+          <p className="text-gray-700 font-medium mb-2">No chemistry report yet.</p>
+          <p className="text-gray-500 text-sm mb-5">
+            Chat with the PI avatar for a few messages, then click
+            <strong> Get Chemistry Report</strong> inside the chat.
+          </p>
+          <Link
+            to={`/chat/${matchId}`}
+            className="bg-violet-600 hover:bg-violet-700 text-white text-sm font-medium px-5 py-2.5 rounded-lg inline-block"
+          >
+            ← Back to Chat
+          </Link>
         </div>
       </div>
     );
