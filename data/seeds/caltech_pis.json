@@ -20,7 +20,7 @@
       "SpatialFeatureExperiment is a Bioconductor package that leverages the versatility of Simple Features for spatial data analysis and SpatialExperiment for single-cell -omics to provide an expansive and convenient S4 class for working with spatial -omics data. SpatialFeatureExperiment can be used to store and analyze a variety of spatial -omics data types, including data from the Visium, Xenium, MERFISH, SeqFish, and Slide-seq platforms, bringing spatial operations to the SingleCellExperiment ecosystem. (Geospatially informed representation of spatial genomics data with SpatialFeatureExperiment, 2025)"
     ],
     "co_author_ids": ["1765860", "91370838", "2034380209", "2090415440"],
-    "co_authors": ["Páll Melsted", "A. S. Booeshaghi", "Laura Luebbert", "Maria Carilli"],
+    "co_author_names": ["Páll Melsted", "A. S. Booeshaghi", "Laura Luebbert", "Maria Carilli"],
     "papers_last_12_months": 7,
     "nsf_grants": [
       {
@@ -49,7 +49,11 @@
       "lab_expectations": "Students must have strong quantitative skills and be willing to deeply understand the algorithms they develop. All methods must have rigorous mathematical backing and fully reproducible code. We take correctness seriously.",
       "student_qualities": "Mathematical rigor, intellectual curiosity, willingness to be wrong and correct course. Strong experience with Python or R; background in algorithms, statistics, or genomics.",
       "current_openings": 2,
-      "funding_note": "NSF and NIH funded. Positions available regardless of citizenship status."
+      "funding_note": "NSF and NIH funded. Positions available regardless of citizenship status.",
+      "autonomy_style": 2,
+      "meeting_frequency_num": 2,
+      "intervention_level": 2,
+      "work_life_balance": 2
     },
     "student_survey_responses": [
       {
@@ -89,7 +93,7 @@
       "Modern climate projections lack adequate spatial and temporal resolution due to computational constraints. Hybrid methods combining physics with machine learning offer faster, higher-fidelity climate simulations by outsourcing compute-hungry high-resolution simulations to ML emulators. We present ClimSim-Online, a large multi-scale dataset and framework for hybrid ML-physics climate emulation that enables real-time evaluation of climate emulators against a high-resolution physics model. (ClimSim-Online: A Large Multi-scale Dataset for Hybrid ML-physics Climate Emulation, 2023)"
     ],
     "co_author_ids": ["2257161858", "2367549145", "48362185"],
-    "co_authors": ["Kamyar Azizzadenesheli", "Zongyi Li", "Jean Kossaifi"],
+    "co_author_names": ["Kamyar Azizzadenesheli", "Zongyi Li", "Jean Kossaifi"],
     "papers_last_12_months": 5,
     "nsf_grants": [
       {
@@ -128,7 +132,11 @@
       "lab_expectations": "High publication output targeting top venues (NeurIPS, ICML, ICLR, Nature). Students should be comfortable working on parallel projects and engaging with external collaborators. Strong ML engineering required.",
       "student_qualities": "Strong ML/DL background with solid coding ability. Ideally some background in scientific computing or biology. Self-motivated and able to manage multiple priorities simultaneously.",
       "current_openings": 3,
-      "funding_note": "NSF, DOE, and industry grants. Note: the DOE grant has a US citizenship or permanent residency requirement."
+      "funding_note": "NSF, DOE, and industry grants. Note: the DOE grant has a US citizenship or permanent residency requirement.",
+      "autonomy_style": 4,
+      "meeting_frequency_num": 3,
+      "intervention_level": 4,
+      "work_life_balance": 2
     },
     "student_survey_responses": [
       {
@@ -168,7 +176,7 @@
       "Gas vesicles (GVs) based on acoustic reporter genes have emerged as potent contrast agents for cellular and molecular ultrasound imaging. Distinguishing GV signal from tissue deep inside intact organisms requires imaging approaches such as amplitude modulation or collapse-based pulse sequences. We introduce harmonic imaging as an alternative, exploiting the nonlinear acoustic response of GVs at sub-collapse pressures to provide sensitive and non-destructive detection of acoustic biomolecules in living cells. (Harmonic imaging for nonlinear detection of acoustic biomolecules, 2024)"
     ],
     "co_author_ids": ["2323366111", "2385565114"],
-    "co_authors": ["Arash Farhadi", "Robert C. Hurt"],
+    "co_author_names": ["Arash Farhadi", "Robert C. Hurt"],
     "papers_last_12_months": 6,
     "nsf_grants": [
       {
@@ -197,7 +205,11 @@
       "lab_expectations": "Strong experimental technique, creative problem-solving, willingness to bridge wet-lab and computational approaches. We value reproducibility and share protocols openly.",
       "student_qualities": "Curiosity-driven, willing to develop new experimental skills from scratch. Background in biology, chemistry, BME, or physics. Programming ability for data analysis.",
       "current_openings": 2,
-      "funding_note": "NIH and NSF funded. No citizenship restrictions on current grants."
+      "funding_note": "NIH and NSF funded. No citizenship restrictions on current grants.",
+      "autonomy_style": 3,
+      "meeting_frequency_num": 2,
+      "intervention_level": 3,
+      "work_life_balance": 4
     },
     "student_survey_responses": [
       {
@@ -237,7 +249,7 @@
       "Multiplexed imaging offers a powerful approach to characterize the spatial topography of tissues in both health and disease. We constructed the Pan-Multiplex (Pan-M) dataset containing 197 million distinct annotations of marker expression across 15 different cell types and used it to create Nimbus, a deep learning model to predict marker positivity from multiplexed image data. Nimbus is a pre-trained transformer model that can be fine-tuned to new datasets with minimal labeled data, enabling robust cell phenotyping across tissue types and imaging platforms. (Automated classification of cellular expression in multiplexed imaging data with Nimbus, 2024)"
     ],
     "co_author_ids": ["7274165", "2122939600"],
-    "co_authors": ["Noah Greenwald", "Eliot Zhu"],
+    "co_author_names": ["Noah Greenwald", "Eliot Zhu"],
     "papers_last_12_months": 4,
     "nsf_grants": [
       {
@@ -266,7 +278,11 @@
       "lab_expectations": "Strong computational skills (Python, PyTorch) combined with genuine interest in biology. Students should move between biology questions and ML methods fluidly.",
       "student_qualities": "Intellectual flexibility, ability to bridge CS and biology, self-motivation. Interest in practical biological questions beyond just benchmark performance.",
       "current_openings": 2,
-      "funding_note": "NSF CAREER and Chan Zuckerberg Initiative funded. No citizenship restrictions."
+      "funding_note": "NSF CAREER and Chan Zuckerberg Initiative funded. No citizenship restrictions.",
+      "autonomy_style": 2,
+      "meeting_frequency_num": 2,
+      "intervention_level": 2,
+      "work_life_balance": 4
     },
     "student_survey_responses": [
       {
@@ -306,7 +322,7 @@
       "We propose a framework for quantifying motion in 3D that is important for studying the behavior of humans and other animals, but without manual pose annotations. Our method, BKinD-3D, performs self-supervised keypoint discovery in 3D from multi-view videos of behaving agents using an encoder-decoder architecture with a 3D volumetric heatmap, trained to reconstruct spatiotemporal differences across views without any keypoint or bounding box supervision. (BKinD-3D: Self-Supervised 3D Keypoint Discovery from Multi-View Videos, NeurIPS 2022)"
     ],
     "co_author_ids": ["2046181102", "2267486268", "2293319794"],
-    "co_authors": ["Soon-Jo Chung", "Natalia Neverova", "Jishen Zhao"],
+    "co_author_names": ["Soon-Jo Chung", "Natalia Neverova", "Jishen Zhao"],
     "papers_last_12_months": 2,
     "nsf_grants": [
       {
@@ -345,7 +361,11 @@
       "lab_expectations": "Strong ML background (statistics, optimization, algorithms). Willingness to engage with real scientific problems and iterate with domain collaborators. Rigorous evaluation standards for all work.",
       "student_qualities": "Strong theoretical ML skills, curiosity about real applications, collaborative mindset. Experience with protein design or other scientific computing is a plus but not required.",
       "current_openings": 1,
-      "funding_note": "NSF CAREER and NIH funded. No citizenship restrictions."
+      "funding_note": "NSF CAREER and NIH funded. No citizenship restrictions.",
+      "autonomy_style": 3,
+      "meeting_frequency_num": 2,
+      "intervention_level": 3,
+      "work_life_balance": 4
     },
     "student_survey_responses": [
       {

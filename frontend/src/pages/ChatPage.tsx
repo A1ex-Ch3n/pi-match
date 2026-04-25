@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { simulate, evaluate } from '../api/client';
+import { simulate, evaluate, getMatch, type SimulateResponse } from '../api/client';
 import type { MatchResult, TranscriptMessage } from '../types';
 import ChatBubble from '../components/ChatBubble';
 
@@ -29,14 +29,14 @@ export default function ChatPage() {
 
   async function loadMatch() {
     try {
-      // Fetch via simulate endpoint with no message to get current state,
-      // or load from matches list. We use a workaround: fetch matches for student
-      // by re-using getMatches with a dummy approach — instead we'll get it from state.
-      // Since we don't have a GET /match/:id endpoint, we pass the match via location state.
-      // Fallback: show empty chat ready to start.
-      setLoading(false);
+      const data = await getMatch(Number(matchId));
+      setMatch(data);
+      if (data.transcript && data.transcript.length > 0) {
+        setMessages(data.transcript);
+      }
     } catch {
-      setError('Could not load conversation.');
+      setError('Could not load conversation. Make sure the backend is running.');
+    } finally {
       setLoading(false);
     }
   }
@@ -50,8 +50,7 @@ export default function ChatPage() {
     setError('');
 
     try {
-      const updated = await simulate(Number(matchId), userMessage.content);
-      setMatch(updated);
+      const updated: SimulateResponse = await simulate(Number(matchId), userMessage.content);
       if (updated.transcript) {
         setMessages(updated.transcript);
       }

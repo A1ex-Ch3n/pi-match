@@ -13,7 +13,7 @@ class StudentProfileCreate(BaseModel):
     cv_text: Optional[str] = None
     known_professors: List[str] = []
     preferred_research_topics: List[str] = []
-    location_preference: str = "any"
+    location_preference: List[str] = ["any"]
     citizenship_status: str
     min_stipend: Optional[int] = None
     preferred_lab_size: str = "any"
@@ -39,7 +39,7 @@ class StudentProfileResponse(BaseModel):
     cv_text: Optional[str]
     known_professors: Optional[List[str]]
     preferred_research_topics: Optional[List[str]]
-    location_preference: str
+    location_preference: Optional[List[str]]
     citizenship_status: str
     min_stipend: Optional[int]
     preferred_lab_size: str

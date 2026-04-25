@@ -22,7 +22,7 @@ class StudentProfile(SQLModel, table=True):
 
     # Preferences
     preferred_research_topics: Optional[List[str]] = Field(default=None, sa_column=Column(JSON))
-    location_preference: str = Field(default="any")
+    location_preference: Optional[List[str]] = Field(default=None, sa_column=Column(JSON))
     citizenship_status: str = Field(default="other")
     min_stipend: Optional[int] = Field(default=None)
     preferred_lab_size: str = Field(default="any")

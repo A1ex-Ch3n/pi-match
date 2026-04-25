@@ -10,7 +10,7 @@ export interface StudentProfile {
   cv_text?: string;
   known_professors: string[];
   preferred_research_topics: string[];
-  location_preference: 'west_coast' | 'east_coast' | 'midwest' | 'any';
+  location_preference: string[];
   citizenship_status: 'us_citizen' | 'pr' | 'f1' | 'j1' | 'other';
   min_stipend?: number;
   preferred_lab_size: 'small' | 'medium' | 'large';

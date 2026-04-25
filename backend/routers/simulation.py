@@ -155,6 +155,22 @@ def get_matches(student_id: int, session: Session = Depends(get_session)):
 
 
 # ---------------------------------------------------------------------------
+# GET /api/match/{match_id}  — fetch single match with PI data
+# ---------------------------------------------------------------------------
+
+@router.get("/match/{match_id}", response_model=MatchResultResponse)
+def get_match(match_id: int, session: Session = Depends(get_session)):
+    match = session.get(MatchResult, match_id)
+    if not match:
+        raise HTTPException(status_code=404, detail="Match not found")
+    pi = session.get(PIProfile, match.pi_id)
+    d = match.model_dump()
+    if pi:
+        d["pi"] = PIProfileResponse.model_validate(pi).model_dump()
+    return d
+
+
+# ---------------------------------------------------------------------------
 # POST /api/simulate/{match_id}  — v2.0 PI avatar chat
 # ---------------------------------------------------------------------------
 

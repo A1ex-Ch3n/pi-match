@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { submitSurvey, runMatch } from '../api/client';
+import { submitSurvey, runMatch, uploadCV } from '../api/client';
 import type { StudentProfile } from '../types';
 
 type FormData = Omit<StudentProfile, 'id'>;
@@ -60,7 +60,7 @@ const DEFAULT: FormData = {
   cv_text: '',
   known_professors: [],
   preferred_research_topics: [],
-  location_preference: 'any',
+  location_preference: ['any'],
   citizenship_status: 'f1',
   min_stipend: undefined,
   preferred_lab_size: 'medium',
@@ -123,6 +123,25 @@ export default function SurveyPage() {
   const [topicsInput, setTopicsInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [cvUploading, setCvUploading] = useState(false);
+  const [cvFileName, setCvFileName] = useState('');
+  const cvInputRef = useRef<HTMLInputElement>(null);
+
+  async function handleCvUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setCvUploading(true);
+    setCvFileName(file.name);
+    try {
+      const result = await uploadCV(file);
+      set('cv_text', result.cv_text);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Upload failed';
+      setError(`CV upload: ${msg}. You can paste your CV text manually instead.`);
+    } finally {
+      setCvUploading(false);
+    }
+  }
 
   function set<K extends keyof FormData>(key: K, value: FormData[K]) {
     setForm(prev => ({ ...prev, [key]: value }));
@@ -254,13 +273,33 @@ export default function SurveyPage() {
               </div>
 
               <div className="col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">CV / Research Statement <span className="text-gray-400 font-normal">(optional — paste text)</span></label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">CV / Resume <span className="text-gray-400 font-normal">(optional — upload file or paste text)</span></label>
+                <div className="flex items-center gap-2 mb-2">
+                  <button
+                    type="button"
+                    onClick={() => cvInputRef.current?.click()}
+                    disabled={cvUploading}
+                    className="flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 disabled:opacity-50 text-gray-700 text-sm font-medium px-3 py-1.5 rounded-lg transition-colors border border-gray-300"
+                  >
+                    {cvUploading ? '⏳ Uploading...' : '📎 Upload CV'}
+                  </button>
+                  {cvFileName && !cvUploading && (
+                    <span className="text-xs text-gray-500">✓ {cvFileName}</span>
+                  )}
+                  <input
+                    ref={cvInputRef}
+                    type="file"
+                    accept=".txt,.pdf,.docx"
+                    className="hidden"
+                    onChange={handleCvUpload}
+                  />
+                </div>
                 <textarea
                   rows={3}
                   value={form.cv_text ?? ''}
                   onChange={e => set('cv_text', e.target.value)}
                   className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
-                  placeholder="Paste your CV or personal statement here for richer matching..."
+                  placeholder="Or paste your CV / personal statement here for richer matching..."
                 />
               </div>
             </div>
@@ -303,18 +342,37 @@ export default function SurveyPage() {
             <h2 className="text-lg font-semibold text-gray-900">Preferences</h2>
 
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Location Preference</label>
-                <select
-                  value={form.location_preference}
-                  onChange={e => set('location_preference', e.target.value as FormData['location_preference'])}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
-                >
-                  <option value="any">No preference</option>
-                  <option value="west_coast">West Coast</option>
-                  <option value="east_coast">East Coast</option>
-                  <option value="midwest">Midwest</option>
-                </select>
+              <div className="col-span-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Location Preference <span className="text-gray-400 font-normal">(select all that apply)</span></label>
+                <div className="flex flex-wrap gap-2">
+                  {(['any', 'west_coast', 'east_coast', 'midwest'] as const).map(loc => {
+                    const labels: Record<string, string> = { any: 'No preference', west_coast: 'West Coast', east_coast: 'East Coast', midwest: 'Midwest' };
+                    const prefs = form.location_preference as string[];
+                    const checked = prefs.includes(loc);
+                    return (
+                      <label key={loc} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border cursor-pointer text-sm transition-colors ${checked ? 'border-violet-500 bg-violet-50 text-violet-700 font-medium' : 'border-gray-300 text-gray-600 hover:border-gray-400'}`}>
+                        <input
+                          type="checkbox"
+                          className="hidden"
+                          checked={checked}
+                          onChange={e => {
+                            const current = prefs.filter(p => p !== 'any');
+                            if (loc === 'any') {
+                              set('location_preference', ['any']);
+                            } else if (e.target.checked) {
+                              const next = current.filter(p => p !== loc).concat(loc);
+                              set('location_preference', next.length ? next : ['any']);
+                            } else {
+                              const next = current.filter(p => p !== loc);
+                              set('location_preference', next.length ? next : ['any']);
+                            }
+                          }}
+                        />
+                        {labels[loc]}
+                      </label>
+                    );
+                  })}
+                </div>
               </div>
 
               <div>

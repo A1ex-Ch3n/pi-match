@@ -27,9 +27,16 @@ _LOCATION_MAP = {
 
 def location_passes_filter(student, pi) -> bool:
     pref = student.location_preference
-    if not pref or pref == "any":
+    # Handle both old str format and new List[str] format
+    if not pref:
         return True
-    return pi.location in _LOCATION_MAP.get(pref, set())
+    if isinstance(pref, str):
+        prefs = [pref]
+    else:
+        prefs = list(pref)
+    if not prefs or "any" in prefs:
+        return True
+    return any(pi.location in _LOCATION_MAP.get(p, set()) for p in prefs)
 
 
 def citizenship_mismatch(student, pi) -> bool:
@@ -57,6 +64,13 @@ def indirect_connection(student, pi) -> Tuple[bool, Optional[str]]:
     return False, None
 
 
+def _safe_int(val, default: int = 3) -> int:
+    try:
+        return int(val)
+    except (TypeError, ValueError):
+        return default
+
+
 def mentorship_style_score(student, pi) -> float:
     survey = pi.pi_survey or {}
     if not survey:
@@ -64,16 +78,16 @@ def mentorship_style_score(student, pi) -> float:
 
     score = 50.0
 
-    pi_autonomy = int(survey.get("autonomy_style", survey.get("mentorship_style", 3)))
-    diff = abs(pi_autonomy - int(student.independence_preference))
+    pi_autonomy = _safe_int(survey.get("autonomy_style", survey.get("mentorship_style", 3)))
+    diff = abs(pi_autonomy - _safe_int(student.independence_preference))
     score += (2 - diff) * 10          # ±20 pts
 
-    pi_meeting = int(survey.get("meeting_frequency", 3))
-    diff = abs(pi_meeting - int(student.meeting_frequency_preference))
+    pi_meeting = _safe_int(survey.get("meeting_frequency_num", survey.get("meeting_frequency", 3)))
+    diff = abs(pi_meeting - _safe_int(student.meeting_frequency_preference))
     score += (2 - diff) * 8           # ±16 pts
 
-    pi_involvement = int(survey.get("intervention_level", survey.get("involvement", 3)))
-    diff = abs(pi_involvement - int(student.intervention_tolerance))
+    pi_involvement = _safe_int(survey.get("intervention_level", survey.get("involvement", 3)))
+    diff = abs(pi_involvement - _safe_int(student.intervention_tolerance))
     score += (2 - diff) * 7           # ±14 pts
 
     return max(0.0, min(100.0, score))
@@ -121,8 +135,8 @@ def culture_fit_score(student, pi) -> float:
 
     survey = pi.pi_survey or {}
     if survey:
-        pi_wlb = int(survey.get("work_life_balance", 3))
-        diff = abs(pi_wlb - int(student.work_life_balance_importance))
+        pi_wlb = _safe_int(survey.get("work_life_balance", 3))
+        diff = abs(pi_wlb - _safe_int(student.work_life_balance_importance))
         score += max(0, (2 - diff) * 10)
 
     return min(100.0, score)
