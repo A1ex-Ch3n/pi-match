@@ -198,16 +198,17 @@ export default function SurveyPage() {
         known_professors: parseList(professorsInput),
         preferred_research_topics: parseList(topicsInput),
       };
+      // Step 1: create the student profile
       const student = await submitSurvey(payload);
-      const matches = await runMatch(student.id!);
       localStorage.setItem('lastStudentId', String(student.id));
-      void matches;
+
+      // Step 2: navigate immediately — match page runs matching on its own
       navigate(`/matches/${student.id}`);
     } catch (err: unknown) {
+      const detail = (err as { response?: { data?: { detail?: string } } })?.response?.data?.detail;
       const status = (err as { response?: { status?: number } })?.response?.status;
-      const msg = status === 404 || status === 503
-        ? 'The server is waking up — please wait a few seconds and try again.'
-        : (err instanceof Error ? err.message : 'Something went wrong');
+      const msg = detail
+        ?? (status ? `Error ${status} — please try again.` : 'Could not reach the server. Please try again.');
       setError(msg);
     } finally {
       setLoading(false);

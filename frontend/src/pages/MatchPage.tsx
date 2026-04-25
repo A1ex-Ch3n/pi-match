@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getMatches } from '../api/client';
+import { getMatches, runMatch } from '../api/client';
 import type { MatchResult, PIProfile } from '../types';
 import PICard from '../components/PICard';
 
@@ -12,23 +12,43 @@ export default function MatchPage() {
   const { studentId } = useParams<{ studentId: string }>();
   const [matches, setMatches] = useState<MatchWithPI[]>([]);
   const [loading, setLoading] = useState(true);
+  const [matchingStatus, setMatchingStatus] = useState('Running AI matching…');
   const [error, setError] = useState('');
 
   useEffect(() => {
     if (!studentId) return;
-    loadMatches();
+    loadOrRun();
   }, [studentId]);
 
-  async function loadMatches() {
+  async function loadOrRun() {
+    setLoading(true);
+    setError('');
     try {
-      const data = await getMatches(Number(studentId));
-      if (data.length === 0) {
+      // Try fetching existing matches first
+      const existing = await getMatches(Number(studentId));
+      if (existing.length > 0) {
+        setMatches(existing as MatchWithPI[]);
+        setLoading(false);
+        return;
+      }
+      // No matches yet — run matching now (handles the case where survey
+      // navigated here before runMatch completed, or Render restarted mid-flow)
+      setMatchingStatus('Running AI matching — this takes 15–30 seconds…');
+      const fresh = await runMatch(Number(studentId));
+      if (fresh.length === 0) {
         localStorage.removeItem('lastStudentId');
       }
-      setMatches(data as MatchWithPI[]);
-    } catch {
-      localStorage.removeItem('lastStudentId');
-      setError('Could not load matches. Make sure the backend is running.');
+      setMatches(fresh as MatchWithPI[]);
+    } catch (err: unknown) {
+      const detail = (err as { response?: { data?: { detail?: string } } })?.response?.data?.detail;
+      const status = (err as { response?: { status?: number } })?.response?.status;
+      if (detail === 'Student not found') {
+        // Render restarted and wiped the DB — clear stale session
+        localStorage.removeItem('lastStudentId');
+        setError('Session expired — the server restarted. Please go back and resubmit your form.');
+      } else {
+        setError(detail ?? (status ? `Error ${status}` : 'Could not load matches. Make sure the backend is running.'));
+      }
     } finally {
       setLoading(false);
     }
@@ -59,7 +79,7 @@ export default function MatchPage() {
           <div className="flex items-center justify-center py-24">
             <div className="text-center">
               <div className="w-10 h-10 border-4 border-violet-600 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-              <p className="text-gray-500 text-sm">Running AI matching...</p>
+              <p className="text-gray-500 text-sm">{matchingStatus}</p>
             </div>
           </div>
         )}
@@ -67,6 +87,9 @@ export default function MatchPage() {
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg px-4 py-3 text-sm mb-6">
             {error}
+            {error.includes('resubmit') && (
+              <Link to="/" className="block mt-2 font-medium underline">← Back to form</Link>
+            )}
           </div>
         )}
 
