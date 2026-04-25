@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { submitSurvey, runMatch, uploadCV } from '../api/client';
 import type { StudentProfile } from '../types';
@@ -128,13 +128,19 @@ export default function SurveyPage() {
   const cvInputRef = useRef<HTMLInputElement>(null);
   const lastStudentId = localStorage.getItem('lastStudentId');
 
+  // Silently wake the Render backend on page load so it's ready before the user submits
+  useEffect(() => {
+    fetch((import.meta.env.VITE_API_URL ?? 'http://localhost:8000/api').replace('/api', '') + '/health')
+      .catch(() => {}); // fire and forget — just warming the server
+  }, []);
+
   async function handleCvUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
     setCvUploading(true);
     setCvFileName(file.name);
     setError('');
-    // Retry once — Render free tier returns 404 during cold-start wake-up
+    // Retry once — Render free tier takes 30-60s to wake from sleep
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
         const result = await uploadCV(file);
@@ -143,7 +149,9 @@ export default function SurveyPage() {
         return;
       } catch (err: unknown) {
         if (attempt === 0) {
-          await new Promise(r => setTimeout(r, 3000)); // wait for server to wake
+          setError('Server is warming up — retrying in 15 seconds…');
+          await new Promise(r => setTimeout(r, 15000));
+          setError('');
           continue;
         }
         const status = (err as { response?: { status?: number } })?.response?.status;
@@ -151,7 +159,7 @@ export default function SurveyPage() {
           ? 'Unsupported file type. Please upload a .txt or .pdf file.'
           : status === 501
           ? 'PDF parsing unavailable on the server. Please paste your CV text below.'
-          : 'Upload failed — please paste your CV text below.';
+          : 'Server still warming up — please wait 30 seconds and try the upload again.';
         setError(msg);
       }
     }
