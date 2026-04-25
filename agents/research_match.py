@@ -2,8 +2,6 @@ import json
 import os
 import anthropic
 
-client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY", ""))
-
 
 def score_research_fit(
     student_background: str,
@@ -35,7 +33,11 @@ Write a rationale of 2–3 sentences that MUST cite specific paper topics or met
 
 Respond ONLY with valid JSON: {{"score": float, "rationale": str}}"""
 
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not api_key:
+        return 50.0, "Unable to compute research fit score; defaulting to neutral."
     try:
+        client = anthropic.Anthropic(api_key=api_key)
         response = client.messages.create(
             model="claude-sonnet-4-5",
             max_tokens=512,
@@ -52,6 +54,8 @@ Respond ONLY with valid JSON: {{"score": float, "rationale": str}}"""
         rationale = str(data["rationale"])
         return score, rationale
     except (json.JSONDecodeError, KeyError, ValueError):
+        return 50.0, "Unable to compute research fit score; defaulting to neutral."
+    except Exception:
         return 50.0, "Unable to compute research fit score; defaulting to neutral."
 
 

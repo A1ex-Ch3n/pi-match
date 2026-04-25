@@ -8,7 +8,6 @@ import anthropic
 if TYPE_CHECKING:
     from backend.models import StudentProfile, PIProfile, MatchResult
 
-client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY", ""))
 
 
 class ChemistryReport(BaseModel):
@@ -117,7 +116,19 @@ Respond ONLY with valid JSON matching this exact schema:
   "pi_introduction_draft": "string"
 }}"""
 
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not api_key:
+        return ChemistryReport(
+            overall_score=50.0,
+            dimension_scores={k: 50.0 for k in ("research_alignment", "mentorship_compatibility", "culture_fit", "communication_fit", "red_flags")},
+            dimension_rationale={k: "Unable to evaluate — API key not set." for k in ("research_alignment", "mentorship_compatibility", "culture_fit", "communication_fit", "red_flags")},
+            key_positives=["Evaluation unavailable."],
+            key_concerns=["Evaluation unavailable."],
+            recommended_questions=["Please review the transcript manually."],
+            pi_introduction_draft="Unable to generate introduction draft.",
+        )
     try:
+        client = anthropic.Anthropic(api_key=api_key)
         response = client.messages.create(
             model="claude-sonnet-4-5",
             max_tokens=2048,
@@ -130,7 +141,7 @@ Respond ONLY with valid JSON matching this exact schema:
                 text = text[4:]
         data = json.loads(text)
         return ChemistryReport(**data)
-    except (json.JSONDecodeError, KeyError, ValueError):
+    except Exception:
         return ChemistryReport(
             overall_score=50.0,
             dimension_scores={
