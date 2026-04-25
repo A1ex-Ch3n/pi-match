@@ -127,11 +127,24 @@ export default function SurveyPage() {
   const [cvFileName, setCvFileName] = useState('');
   const cvInputRef = useRef<HTMLInputElement>(null);
   const lastStudentId = localStorage.getItem('lastStudentId');
+  const [serverStatus, setServerStatus] = useState<'checking' | 'ready' | 'slow'>('checking');
 
-  // Silently wake the Render backend on page load so it's ready before the user submits
+  // Ping backend on mount: wakes Render from sleep + drives the status indicator
   useEffect(() => {
-    fetch((import.meta.env.VITE_API_URL ?? 'http://localhost:8000/api').replace('/api', '') + '/health')
-      .catch(() => {}); // fire and forget — just warming the server
+    const base = (import.meta.env.VITE_API_URL ?? 'http://localhost:8000/api').replace('/api', '');
+    const start = Date.now();
+    const slowTimer = setTimeout(() => setServerStatus('slow'), 3000);
+    fetch(`${base}/health`)
+      .then(() => {
+        clearTimeout(slowTimer);
+        setServerStatus('ready');
+        console.log(`Backend ready in ${Date.now() - start}ms`);
+      })
+      .catch(() => {
+        clearTimeout(slowTimer);
+        setServerStatus('slow');
+      });
+    return () => clearTimeout(slowTimer);
   }, []);
 
   async function handleCvUpload(e: React.ChangeEvent<HTMLInputElement>) {
@@ -140,7 +153,6 @@ export default function SurveyPage() {
     setCvUploading(true);
     setCvFileName(file.name);
     setError('');
-    // Retry once — Render free tier takes 30-60s to wake from sleep
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
         const result = await uploadCV(file);
@@ -148,19 +160,24 @@ export default function SurveyPage() {
         setCvUploading(false);
         return;
       } catch (err: unknown) {
-        if (attempt === 0) {
+        const status = (err as { response?: { status?: number } })?.response?.status;
+        // Only retry on infrastructure errors (cold-start 404/503/502), not content errors
+        const isInfraError = !status || status === 404 || status === 502 || status === 503;
+        if (attempt === 0 && isInfraError) {
           setError('Server is warming up — retrying in 15 seconds…');
           await new Promise(r => setTimeout(r, 15000));
           setError('');
           continue;
         }
-        const status = (err as { response?: { status?: number } })?.response?.status;
         const msg = status === 415
           ? 'Unsupported file type. Please upload a .txt or .pdf file.'
           : status === 501
           ? 'PDF parsing unavailable on the server. Please paste your CV text below.'
-          : 'Server still warming up — please wait 30 seconds and try the upload again.';
+          : isInfraError
+          ? 'Server is still starting — please wait 30 seconds and try again.'
+          : (err as Error).message ?? 'Upload failed. Please paste your CV text below.';
         setError(msg);
+        break;
       }
     }
     setCvUploading(false);
@@ -212,7 +229,27 @@ export default function SurveyPage() {
           </div>
         )}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">PiMatch</h1>
+          <div className="flex items-center gap-3 mb-1">
+            <h1 className="text-3xl font-bold text-gray-900">PiMatch</h1>
+            {serverStatus === 'checking' && (
+              <span className="flex items-center gap-1.5 text-xs text-gray-400">
+                <span className="w-2 h-2 rounded-full bg-gray-300 animate-pulse" />
+                Connecting…
+              </span>
+            )}
+            {serverStatus === 'ready' && (
+              <span className="flex items-center gap-1.5 text-xs text-emerald-600">
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                Server ready
+              </span>
+            )}
+            {serverStatus === 'slow' && (
+              <span className="flex items-center gap-1.5 text-xs text-amber-600">
+                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                Server warming up — first request may take ~30s
+              </span>
+            )}
+          </div>
           <p className="text-gray-500 mt-1">Find your ideal PhD advisor. Answer a few questions to get started.</p>
         </div>
 

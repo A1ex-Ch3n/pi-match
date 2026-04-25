@@ -39,13 +39,19 @@ export const evaluate = (matchId: number): Promise<ChemistryReport> =>
 export const getReport = (matchId: number): Promise<{ match: MatchResult; report: ChemistryReport }> =>
   api.get<{ match: MatchResult; report: ChemistryReport }>(`/report/${matchId}`).then(r => r.data);
 
-export const uploadCV = (file: File): Promise<{ cv_text: string }> => {
+export const uploadCV = async (file: File): Promise<{ cv_text: string }> => {
+  // Use native fetch instead of Axios — Axios's default Content-Type: application/json
+  // header conflicts with FormData and prevents the browser from setting the correct
+  // multipart/form-data; boundary=... header automatically.
   const formData = new FormData();
   formData.append('file', file);
-  // Do NOT set Content-Type — let the browser set it automatically with the
-  // correct multipart boundary. Manual override strips the boundary and
-  // causes "Missing boundary in multipart" on the server.
-  return api.post<{ cv_text: string }>('/upload-cv', formData, {
-    headers: { 'Content-Type': undefined },
-  }).then(r => r.data);
+  const baseUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:8000/api';
+  const res = await fetch(`${baseUrl}/upload-cv`, { method: 'POST', body: formData });
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({ detail: res.statusText }));
+    const err = new Error(body.detail ?? `HTTP ${res.status}`);
+    (err as { response?: { status: number } }).response = { status: res.status };
+    throw err;
+  }
+  return res.json();
 };
