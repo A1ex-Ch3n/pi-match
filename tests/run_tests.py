@@ -754,12 +754,12 @@ def run_tests():
                 timeout=5,
             )
             data = parse_json(resp)
-            if resp.status_code == 200 and data.get("chemistry_report"):
+            if resp.status_code == 200 and data.get("report"):
                 r.passed()
             else:
                 r.failed(
-                    f"Got {resp.status_code}: chemistry_report present={bool(data.get('chemistry_report'))}",
-                    expected="200 with non-null chemistry_report dict",
+                    f"Got {resp.status_code}: report present={bool(data.get('report'))}",
+                    expected="200 with non-null report dict",
                     got=str(data)[:200],
                 )
         except Exception as e:
