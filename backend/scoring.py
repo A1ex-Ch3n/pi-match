@@ -126,12 +126,16 @@ def culture_fit_score(student, pi) -> float:
     lab_size = pi.lab_size or 5
     pref = student.preferred_lab_size
 
-    if pref == "small"  and lab_size <= 4:   score += 25.0
-    elif pref == "small"  and lab_size <= 8:  score += 10.0
+    if pref == "small"  and lab_size <= 4:        score += 25.0
+    elif pref == "small"  and lab_size <= 8:       score += 10.0
+    elif pref == "small":                           score -= 15.0  # large lab, small pref
     elif pref == "medium" and 5 <= lab_size <= 12: score += 25.0
-    elif pref == "medium" and lab_size <= 15: score += 10.0
-    elif pref == "large"  and lab_size > 10:  score += 25.0
-    elif pref == "any":                        score += 15.0
+    elif pref == "medium" and lab_size <= 15:      score += 10.0
+    elif pref == "medium":                          score -= 15.0  # large lab, medium pref
+    elif pref == "large"  and lab_size > 12:       score += 25.0
+    elif pref == "large"  and lab_size > 8:        score += 10.0
+    elif pref == "large":                           score -= 10.0  # tiny lab, large pref
+    elif pref == "any":                             score += 15.0
 
     survey = pi.pi_survey or {}
     if survey:

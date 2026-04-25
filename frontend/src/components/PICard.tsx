@@ -43,9 +43,9 @@ function fundingRationale(score: number, pi: PIProfile): string {
 function cultureRationale(score: number, pi: PIProfile): string {
   const size = pi.lab_size ?? 5;
   const sizeLabel = size <= 4 ? 'small' : size <= 12 ? 'medium' : 'large';
-  if (score >= 70) return `Lab size (${size} members, ${sizeLabel}) fits your preference and culture alignment looks strong.`;
-  if (score >= 50) return `Lab size is ${size} members (${sizeLabel}). Some mismatch with your stated lab size or work-life balance preferences.`;
-  return `Lab size of ${size} members and/or work-life balance expectations may not match your preferences well.`;
+  if (score >= 70) return `Lab is ${sizeLabel} (${size} members). Culture and work-life balance alignment is strong.`;
+  if (score >= 50) return `Lab is ${sizeLabel} (${size} members). Some mismatch with your size or work-life balance preference.`;
+  return `Lab is ${sizeLabel} (${size} members). Size or work-life balance expectations likely don't match your preference.`;
 }
 
 function skillsRationale(score: number): string {
