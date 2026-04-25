@@ -133,15 +133,29 @@ export default function SurveyPage() {
     if (!file) return;
     setCvUploading(true);
     setCvFileName(file.name);
-    try {
-      const result = await uploadCV(file);
-      set('cv_text', result.cv_text);
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Upload failed';
-      setError(`CV upload: ${msg}. You can paste your CV text manually instead.`);
-    } finally {
-      setCvUploading(false);
+    setError('');
+    // Retry once — Render free tier returns 404 during cold-start wake-up
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const result = await uploadCV(file);
+        set('cv_text', result.cv_text);
+        setCvUploading(false);
+        return;
+      } catch (err: unknown) {
+        if (attempt === 0) {
+          await new Promise(r => setTimeout(r, 3000)); // wait for server to wake
+          continue;
+        }
+        const status = (err as { response?: { status?: number } })?.response?.status;
+        const msg = status === 415
+          ? 'Unsupported file type. Please upload a .txt or .pdf file.'
+          : status === 501
+          ? 'PDF parsing unavailable on the server. Please paste your CV text below.'
+          : 'Upload failed — please paste your CV text below.';
+        setError(msg);
+      }
     }
+    setCvUploading(false);
   }
 
   function set<K extends keyof FormData>(key: K, value: FormData[K]) {
@@ -165,7 +179,10 @@ export default function SurveyPage() {
       void matches;
       navigate(`/matches/${student.id}`);
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Something went wrong';
+      const status = (err as { response?: { status?: number } })?.response?.status;
+      const msg = status === 404 || status === 503
+        ? 'The server is waking up — please wait a few seconds and try again.'
+        : (err instanceof Error ? err.message : 'Something went wrong');
       setError(msg);
     } finally {
       setLoading(false);

@@ -42,7 +42,10 @@ export const getReport = (matchId: number): Promise<{ match: MatchResult; report
 export const uploadCV = (file: File): Promise<{ cv_text: string }> => {
   const formData = new FormData();
   formData.append('file', file);
+  // Do NOT set Content-Type — let the browser set it automatically with the
+  // correct multipart boundary. Manual override strips the boundary and
+  // causes "Missing boundary in multipart" on the server.
   return api.post<{ cv_text: string }>('/upload-cv', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
+    headers: { 'Content-Type': undefined },
   }).then(r => r.data);
 };
