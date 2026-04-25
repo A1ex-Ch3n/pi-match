@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { getReport } from '../api/client';
 import type { ChemistryReport, MatchResult } from '../types';
 import ScoreRadar, { chemistryRadarDimensions } from '../components/ScoreRadar';
@@ -91,9 +93,20 @@ export default function ReportPage() {
                     style={{ width: `${score}%` }}
                   />
                 </div>
-                <p className="text-xs text-gray-400 mt-0.5">
-                  {report.dimension_rationale[key as keyof typeof report.dimension_rationale]}
-                </p>
+                <div className="text-xs text-gray-400 mt-0.5">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                      p: ({ children }) => <p className="mb-0">{children}</p>,
+                      strong: ({ children }) => <strong className="font-semibold text-gray-600">{children}</strong>,
+                      a: ({ href, children }) => (
+                        <a href={href} target="_blank" rel="noopener noreferrer" className="text-violet-600 underline">{children}</a>
+                      ),
+                    }}
+                  >
+                    {report.dimension_rationale[key as keyof typeof report.dimension_rationale]}
+                  </ReactMarkdown>
+                </div>
               </div>
             ))}
           </div>
@@ -106,8 +119,8 @@ export default function ReportPage() {
             <ul className="space-y-2">
               {report.key_positives.map((item, i) => (
                 <li key={i} className="text-sm text-emerald-700 flex gap-2">
-                  <span className="text-emerald-400 mt-0.5">✓</span>
-                  <span>{item}</span>
+                  <span className="text-emerald-400 mt-0.5 shrink-0">✓</span>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ p: ({ children }) => <span>{children}</span>, a: ({ href, children }) => <a href={href} target="_blank" rel="noopener noreferrer" className="underline">{children}</a> }}>{item}</ReactMarkdown>
                 </li>
               ))}
             </ul>
@@ -117,8 +130,8 @@ export default function ReportPage() {
             <ul className="space-y-2">
               {report.key_concerns.map((item, i) => (
                 <li key={i} className="text-sm text-amber-700 flex gap-2">
-                  <span className="text-amber-400 mt-0.5">!</span>
-                  <span>{item}</span>
+                  <span className="text-amber-400 mt-0.5 shrink-0">!</span>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ p: ({ children }) => <span>{children}</span>, a: ({ href, children }) => <a href={href} target="_blank" rel="noopener noreferrer" className="underline">{children}</a> }}>{item}</ReactMarkdown>
                 </li>
               ))}
             </ul>
@@ -133,7 +146,7 @@ export default function ReportPage() {
               {report.recommended_questions.map((q, i) => (
                 <li key={i} className="text-sm text-gray-600 flex gap-2">
                   <span className="text-violet-400 font-bold shrink-0">{i + 1}.</span>
-                  <span>{q}</span>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ p: ({ children }) => <span>{children}</span>, strong: ({ children }) => <strong className="font-semibold">{children}</strong> }}>{q}</ReactMarkdown>
                 </li>
               ))}
             </ul>

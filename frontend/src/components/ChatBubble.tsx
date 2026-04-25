@@ -1,3 +1,5 @@
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import type { TranscriptMessage } from '../types';
 
 interface ChatBubbleProps {
@@ -21,7 +23,36 @@ export default function ChatBubble({ message, piName }: ChatBubbleProps) {
               : 'bg-violet-600 text-white rounded-tr-sm'
           }`}
         >
-          {message.content}
+          {isPI ? (
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+                strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+                em: ({ children }) => <em className="italic">{children}</em>,
+                a: ({ href, children }) => (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-violet-700 hover:text-violet-900"
+                  >
+                    {children}
+                  </a>
+                ),
+                ul: ({ children }) => <ul className="list-disc list-inside mb-2 space-y-0.5">{children}</ul>,
+                ol: ({ children }) => <ol className="list-decimal list-inside mb-2 space-y-0.5">{children}</ol>,
+                li: ({ children }) => <li className="ml-2">{children}</li>,
+                code: ({ children }) => (
+                  <code className="bg-gray-200 text-gray-800 px-1 py-0.5 rounded text-xs font-mono">{children}</code>
+                ),
+              }}
+            >
+              {message.content}
+            </ReactMarkdown>
+          ) : (
+            message.content
+          )}
         </div>
       </div>
     </div>

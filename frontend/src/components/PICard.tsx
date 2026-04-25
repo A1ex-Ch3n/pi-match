@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import type { MatchResult, PIProfile } from '../types';
 import FlagBadge from './FlagBadge';
 
@@ -79,7 +81,22 @@ function ScoreBar({
       {isExpanded && (
         <div className="px-2 pb-2 pt-0.5">
           <div className="text-xs text-violet-700 font-medium mb-0.5">{scoreTier(score)} match</div>
-          <p className="text-xs text-gray-500 leading-relaxed">{rationale}</p>
+          <div className="text-xs text-gray-500 leading-relaxed prose prose-xs max-w-none">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                p: ({ children }) => <p className="mb-1 last:mb-0">{children}</p>,
+                strong: ({ children }) => <strong className="font-semibold text-gray-700">{children}</strong>,
+                a: ({ href, children }) => (
+                  <a href={href} target="_blank" rel="noopener noreferrer" className="text-violet-600 underline hover:text-violet-800">
+                    {children}
+                  </a>
+                ),
+              }}
+            >
+              {rationale}
+            </ReactMarkdown>
+          </div>
         </div>
       )}
     </div>
