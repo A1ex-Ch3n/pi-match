@@ -5,9 +5,9 @@ from typing import List, Optional
 from fastapi import APIRouter, Body, Depends, HTTPException
 from sqlmodel import Session, select
 
-from database import get_session
-from models import PIProfile
-from schemas import PIProfileResponse, PIProfileSeedItem, SeedRequest
+from backend.database import get_session
+from backend.models import PIProfile
+from backend.schemas import PIProfileResponse, PIProfileSeedItem, SeedRequest
 
 router = APIRouter()
 

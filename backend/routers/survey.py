@@ -1,9 +1,9 @@
 import io
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File
 from sqlmodel import Session
-from database import get_session
-from models import StudentProfile
-from schemas import StudentProfileCreate, StudentProfileResponse
+from backend.database import get_session
+from backend.models import StudentProfile
+from backend.schemas import StudentProfileCreate, StudentProfileResponse
 
 router = APIRouter()
 

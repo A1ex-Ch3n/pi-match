@@ -1,5 +1,5 @@
-from typing import Optional, List, Any, Dict
-from pydantic import BaseModel, ConfigDict
+from typing import Optional, List, Any, Dict, Union
+from pydantic import BaseModel, ConfigDict, field_validator
 
 
 class StudentProfileCreate(BaseModel):
@@ -14,6 +14,15 @@ class StudentProfileCreate(BaseModel):
     known_professors: List[str] = []
     preferred_research_topics: List[str] = []
     location_preference: List[str] = ["any"]
+
+    @field_validator("location_preference", mode="before")
+    @classmethod
+    def coerce_location_to_list(cls, v: Union[str, List[str], None]) -> List[str]:
+        if v is None:
+            return ["any"]
+        if isinstance(v, str):
+            return [v]
+        return v
     citizenship_status: str
     min_stipend: Optional[int] = None
     preferred_lab_size: str = "any"

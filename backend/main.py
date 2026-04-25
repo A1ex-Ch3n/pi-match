@@ -11,15 +11,15 @@ _PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__
 if _PROJECT_ROOT not in sys.path:
     sys.path.insert(0, _PROJECT_ROOT)
 
-from database import create_db_and_tables, engine  # noqa: E402
-from routers import pi, simulation, survey          # noqa: E402
+from backend.database import create_db_and_tables, engine  # noqa: E402
+from backend.routers import pi, simulation, survey          # noqa: E402
 
 
 def _auto_seed_pis():
     """Seed Caltech PIs on first startup if the table is empty."""
     from sqlmodel import Session, select
-    from models import PIProfile
-    from schemas import PIProfileSeedItem
+    from backend.models import PIProfile
+    from backend.schemas import PIProfileSeedItem
 
     seed_path = os.path.normpath(
         os.path.join(os.path.dirname(__file__), "..", "data", "seeds", "caltech_pis.json")

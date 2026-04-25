@@ -5,16 +5,16 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 
-from database import get_session
-from models import MatchResult, PIProfile, StudentProfile
-from schemas import (
+from backend.database import get_session
+from backend.models import MatchResult, PIProfile, StudentProfile
+from backend.schemas import (
     ChatRequest,
     ChatResponse,
     ChemistryReportSchema,
     MatchResultResponse,
     PIProfileResponse,
 )
-from scoring import (
+from backend.scoring import (
     REPLY_LIKELIHOOD_SCORE,
     citizenship_mismatch,
     culture_fit_score,
@@ -34,6 +34,7 @@ if _PROJECT_ROOT not in sys.path:
     sys.path.insert(0, _PROJECT_ROOT)
 
 from agents.research_match import score_research_fit  # noqa: E402
+from agents.profile_builder import build_avatar_profile  # noqa: E402
 from agents.pi_avatar import build_pi_avatar          # noqa: E402
 from agents.evaluator import evaluate_chemistry       # noqa: E402
 
@@ -188,7 +189,11 @@ def simulate_chat(
     if not pi:
         raise HTTPException(status_code=404, detail="PI not found")
 
-    system_prompt = build_pi_avatar(pi)
+    # Build validated AvatarProfile (validates surveys, assigns pipeline_type)
+    avatar_profile = build_avatar_profile(pi)
+
+    # Generate system prompt based on pipeline type
+    system_prompt = build_pi_avatar(avatar_profile)
 
     transcript: list = list(match.transcript or [])
     transcript.append({"role": "student", "content": request.message})
@@ -199,8 +204,7 @@ def simulate_chat(
         for t in transcript
     ]
 
-    pi_response = "I'm experiencing technical difficulties. Please try again shortly."
-    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
     if api_key:
         try:
             client = anthropic.Anthropic(api_key=api_key)
@@ -211,8 +215,22 @@ def simulate_chat(
                 messages=messages,
             )
             pi_response = resp.content[0].text
-        except Exception:
-            pass  # keep fallback message
+        except Exception as exc:
+            error_text = str(exc) or repr(exc)
+            print(f"[simulate_chat] Anthropic call failed: {error_text}")
+            pi_response = (
+                f"[LLM error] {error_text}\n\n"
+                "[Mock response] No valid LLM output available. "
+                "Using the system prompt as a local fallback:\n\n"
+                f"{system_prompt[:800]}"
+            )
+    else:
+        print("[simulate_chat] ANTHROPIC_API_KEY is not set. Using local mock response.")
+        pi_response = (
+            "[Mock response] No Anthropic API key configured. "
+            "This is a local fallback for development.\n\n"
+            f"{system_prompt[:800]}"
+        )
 
     transcript.append({"role": "pi", "content": pi_response})
 

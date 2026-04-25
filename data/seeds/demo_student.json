@@ -27,7 +27,7 @@
     "multimodal biological data integration",
     "foundation models for biological sequences"
   ],
-  "location_preference": "west_coast",
+  "location_preference": ["west_coast"],
   "citizenship_status": "f1",
   "min_stipend": 38000,
   "preferred_lab_size": "medium",
