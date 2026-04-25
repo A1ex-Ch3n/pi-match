@@ -75,25 +75,19 @@
 
 ## FT03 — Survey Form: CV Upload
 
-**Goal:** Upload a plain-text CV and confirm the text is extracted.
+**Goal:** Upload a CV and confirm the text is extracted.
 
-1. Create a small text file on your desktop: `test_cv.txt` containing:
-   ```
-   Jane Doe — Computational Biology PhD Candidate
-   Skills: Python, PyTorch, scRNA-seq
-   Papers: 2 published in Nature Methods
-   ```
-2. On the survey form, click **📎 Upload CV** (or the file input).
-3. Select `test_cv.txt`.
+**If you have a PDF CV:**
+1. On the survey form, click **📎 Upload CV**.
+2. Select your `.pdf` CV file.
+3. **Expected:** CV text textarea auto-fills with the extracted text. No error.
 
-**Expected:**
-- Filename appears next to the upload button.
-- The CV text textarea auto-fills with the file's content.
-- No error message shown.
+**If you only have a text file**, create `test_cv.txt` with any content and upload that instead. `.txt` files also work.
 
 **Also test:** Try uploading a `.jpg` or other unsupported type.
+**Expected:** Error message shown inline ("Unsupported file type"). Textarea stays empty.
 
-**Expected:** Error message shown inline (e.g. "Unsupported file type"). Textarea stays empty.
+> **501 error?** Run `pip install pdfplumber --break-system-packages` in the backend's terminal, then retry — uvicorn reloads automatically.
 
 ---
 
