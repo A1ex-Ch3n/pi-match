@@ -1,8 +1,17 @@
 import json
+import logging
 import os
 import re
 import sys
 from contextlib import asynccontextmanager
+
+# Configure pimatch logger to appear alongside uvicorn output
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s  %(name)s  %(message)s",
+    datefmt="%H:%M:%S",
+)
+logging.getLogger("pimatch.matching").setLevel(logging.INFO)
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware

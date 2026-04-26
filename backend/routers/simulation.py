@@ -1,7 +1,11 @@
+import logging
 import os
 import sys
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Optional
+
+log = logging.getLogger("pimatch.matching")
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
@@ -63,6 +67,7 @@ _shortlist_sizes: dict[int, int] = {}
 
 @router.post("/match/{student_id}", response_model=List[MatchResultResponse])
 def run_matching(student_id: int, session: Session = Depends(get_session)):
+    t_start = time.time()
     student = session.get(StudentProfile, student_id)
     if not student:
         raise HTTPException(status_code=404, detail="Student not found")
@@ -81,16 +86,29 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
     if student.cv_text:
         background += f"\n\nCV:\n{student.cv_text}"
 
+    # ── Logging header ────────────────────────────────────────────────────────
+    pfx = f"[MATCH #{student_id}]"
+    log.info("%s === %s | loc=%s | field=%s ===",
+             pfx, student.name,
+             ",".join(student.location_preference or ["any"]),
+             student.field_category or "any")
+    log.info("%s   Topics : %s", pfx, ", ".join(student.preferred_research_topics or []) or "(none)")
+    log.info("%s   Skills : %s", pfx, ", ".join(student.technical_skills or []) or "(none)")
+    log.info("%s   Background: %.120s%s", pfx,
+             student.research_background or "",
+             "…" if len(student.research_background or "") > 120 else "")
+
+    # ── Location + department filter ──────────────────────────────────────────
     eligible = [
         pi for pi in pis
         if location_passes_filter(student, pi) and department_passes_filter(student, pi)
     ]
+    log.info("%s Filter: %d total PIs → %d eligible (location+dept)", pfx, len(pis), len(eligible))
     if not eligible:
+        log.info("%s No eligible PIs — returning empty results", pfx)
         return []
 
     # ── Stage 1: deterministic pre-score (no Claude, ~50 ms) ─────────────────
-    # Rank every eligible PI by the four cheap dimensions. This gives a good
-    # proxy for overall fit without any API calls.
     def _det_score(pi: PIProfile) -> float:
         mentorship  = mentorship_style_score(student, pi)
         funding     = funding_stability_score(pi)
@@ -105,13 +123,15 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
             reply_score * SCORE_WEIGHTS["reply_likelihood"]
         )
 
-    # Always include direct/indirect connections regardless of deterministic rank
     forced_ids: set[int] = set()
+    forced_labels: dict[int, str] = {}
     for pi in eligible:
         if direct_connection(student, pi):
             forced_ids.add(pi.id)
-        if indirect_connection(student, pi)[0]:
+            forced_labels[pi.id] = "direct"
+        elif indirect_connection(student, pi)[0]:
             forced_ids.add(pi.id)
+            forced_labels[pi.id] = "indirect"
 
     det_sorted = sorted(
         (pi for pi in eligible if pi.id not in forced_ids),
@@ -122,10 +142,27 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
     shortlist_ids = forced_ids | {pi.id for pi in det_sorted[:remaining_slots]}
     shortlist = [pi for pi in eligible if pi.id in shortlist_ids]
 
-    # Register shortlist size so match_progress can track real progress
+    log.info("%s Stage 1: %d connections forced | shortlist=%d / %d eligible",
+             pfx, len(forced_ids), len(shortlist), len(eligible))
+
+    if forced_ids:
+        for pi in eligible:
+            if pi.id in forced_ids:
+                log.info("%s   FORCED (%s): %s [%s]",
+                         pfx, forced_labels[pi.id], pi.name, pi.institution)
+
+    log.info("%s Stage 1 top 10 by deterministic score:", pfx)
+    for pi in det_sorted[:10]:
+        ds = _det_score(pi)
+        kw = "kw✓" if has_keyword_overlap(student, pi) else "kw✗"
+        log.info("%s   %5.1f  %-35s [%-22s] %s",
+                 pfx, ds, pi.name, pi.institution, kw)
+
     _shortlist_sizes[student_id] = len(shortlist)
 
     # ── Stage 2: keyword pre-filter + Claude research-fit on shortlist ────────
+    log.info("%s Stage 2: scoring %d shortlisted PIs (8 workers) …", pfx, len(shortlist))
+
     def _score_pi(pi: PIProfile):
         if not has_keyword_overlap(student, pi):
             return pi.id, 30.0, "No keyword overlap with student's research background."
@@ -139,15 +176,33 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
         return pi.id, score, rationale
 
     results = []
+    dropped_gate = 0
+    dropped_kw   = 0
+
     with ThreadPoolExecutor(max_workers=8) as executor:
         futures = {executor.submit(_score_pi, pi): pi for pi in shortlist}
         for future in as_completed(futures):
             pi = futures[future]
             pi_id, research_score, rationale = future.result()
 
-            # Minimum research gate — skip PIs below threshold entirely
+            # Classify the research score source for logging
+            if rationale.startswith("No keyword overlap"):
+                src = "KW-SKIP "
+            elif "defaulting to neutral" in rationale or "Unable to compute" in rationale:
+                src = "FALLBACK"
+            else:
+                src = "CLAUDE  "
+
+            # Minimum research gate
             if research_score < RESEARCH_MIN_SCORE:
                 _shortlist_sizes[student_id] = max(0, _shortlist_sizes.get(student_id, 1) - 1)
+                tag = "dropped_kw" if src == "KW-SKIP " else "dropped_gate"
+                log.info("%s   [%s] %-35s R=%4.0f → DROPPED (< %.0f)",
+                         pfx, src, pi.name, research_score, RESEARCH_MIN_SCORE)
+                if src == "KW-SKIP ":
+                    dropped_kw += 1
+                else:
+                    dropped_gate += 1
                 continue
 
             mentorship = mentorship_style_score(student, pi)
@@ -160,10 +215,23 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
 
             is_direct = direct_connection(student, pi)
             is_indirect, via = indirect_connection(student, pi)
-            if is_indirect:
+            conn_tag = ""
+            if is_direct:
+                conn_tag = " 🤝direct"
+            elif is_indirect:
+                conn_tag = f" 🔗via {via}"
                 total = min(100.0, total + 10.0)
 
             c_mismatch = citizenship_mismatch(student, pi)
+            citizen_tag = " 🇺🇸" if c_mismatch else ""
+
+            log.info(
+                "%s   [%s] %-35s R=%4.0f M=%3.0f F=%3.0f S=%3.0f C=%3.0f"
+                " reply=%-3s → %5.1f%s%s",
+                pfx, src, pi.name,
+                research_score, mentorship, funding, skills, culture,
+                reply_lik, total, conn_tag, citizen_tag,
+            )
 
             match = MatchResult(
                 student_id=student_id,
@@ -183,12 +251,35 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
                 overall_score=total,
             )
             session.add(match)
-            session.commit()       # commit each result so match_progress ticks up
+            session.commit()
             session.refresh(match)
             results.append((match, pi))
 
     # Sort: direct connections first, then descending overall score
     results.sort(key=lambda x: (not x[0].is_direct_connection, -x[0].overall_score))
+
+    # ── Results summary ───────────────────────────────────────────────────────
+    log.info("%s Results: %d matches | %d kw-dropped | %d gate-dropped | %.1fs elapsed",
+             pfx, len(results), dropped_kw, dropped_gate, time.time() - t_start)
+    log.info("%s Top 15 matches:", pfx)
+    for rank, (match, pi) in enumerate(results[:15], 1):
+        conn = ""
+        if match.is_direct_connection:
+            conn = " [DIRECT]"
+        elif match.is_indirect_connection:
+            conn = f" [via {match.indirect_connection_via}]"
+        citizen = " [🇺🇸]" if match.citizenship_mismatch else ""
+        log.info(
+            "%s   #%-2d %5.1f  %-35s R=%4.0f M=%3.0f F=%3.0f S=%3.0f C=%3.0f%s%s",
+            pfx, rank, match.overall_score, pi.name,
+            match.research_direction_score,
+            match.mentorship_style_score,
+            match.funding_stability_score,
+            match.technical_skills_score,
+            match.culture_fit_score,
+            conn, citizen,
+        )
+    log.info("%s === done ===", pfx)
 
     output = []
     for match, pi in results:
