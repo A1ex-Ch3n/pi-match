@@ -68,6 +68,13 @@ _shortlist_sizes: dict[int, int] = {}
 @router.post("/match/{student_id}", response_model=List[MatchResultResponse])
 def run_matching(student_id: int, session: Session = Depends(get_session)):
     t_start = time.time()
+
+    if not os.environ.get("ANTHROPIC_API_KEY", "").strip():
+        raise HTTPException(
+            status_code=503,
+            detail="ANTHROPIC_API_KEY is not configured. Set it in your .env file and restart the server before running matching.",
+        )
+
     student = session.get(StudentProfile, student_id)
     if not student:
         raise HTTPException(status_code=404, detail="Student not found")
@@ -109,23 +116,16 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
         return []
 
     # ── Stage 1: deterministic pre-score (no Claude, ~50 ms) ─────────────────
-    # Intentionally different weights from production scoring: technical skills
-    # is the best proxy for research fit available without a Claude call, so it
-    # dominates here. Keyword overlap adds a +15 bonus so PIs with explicit topic
-    # matches rank above equally-skilled PIs that share no terminology.
+    # Only research-relevant signals: technical skills (best proxy for research
+    # fit) and funding (student needs a funded lab). Culture/reply excluded —
+    # they have nothing to do with whether the PI's research aligns.
+    # Keyword overlap adds +15 so topic-matched PIs rank above equally-skilled
+    # ones with no shared terminology.
     def _det_score(pi: PIProfile) -> float:
-        skills      = technical_skills_score(student, pi)
-        funding     = funding_stability_score(pi)
-        culture     = culture_fit_score(student, pi)
-        reply_score = REPLY_LIKELIHOOD_SCORE.get(predict_reply_likelihood(pi), 60.0)
-        kw_bonus    = 15.0 if has_keyword_overlap(student, pi) else 0.0
-        return (
-            skills      * 0.60 +
-            funding     * 0.20 +
-            culture     * 0.10 +
-            reply_score * 0.10 +
-            kw_bonus
-        )
+        skills   = technical_skills_score(student, pi)
+        funding  = funding_stability_score(pi)
+        kw_bonus = 15.0 if has_keyword_overlap(student, pi) else 0.0
+        return skills * 0.75 + funding * 0.25 + kw_bonus
 
     forced_ids: set[int] = set()
     forced_labels: dict[int, str] = {}
@@ -179,85 +179,112 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
         )
         return pi.id, score, rationale
 
-    results = []
-    dropped_gate = 0
-    dropped_kw   = 0
-
+    # ── Phase 1: fire all Claude calls, collect raw results in memory ────────
+    # No DB writes yet — we need all scores before we can compute the run mean.
+    raw: dict[int, tuple[float, str]] = {}   # pi_id → (score, rationale)
     with ThreadPoolExecutor(max_workers=3) as executor:
         futures = {executor.submit(_score_pi, pi): pi for pi in shortlist}
         for future in as_completed(futures):
             pi = futures[future]
-            pi_id, research_score, rationale = future.result()
+            pi_id, score, rationale = future.result()
+            raw[pi_id] = (score, rationale)
 
-            # Classify the research score source for logging
-            if rationale.startswith("No keyword overlap"):
-                src = "KW-SKIP "
-            elif "defaulting to neutral" in rationale or "Unable to compute" in rationale:
-                src = "FALLBACK"
+    # ── Mean fallback: replace neutral 50s with the run's real-score average ─
+    def _is_fallback(rationale: str) -> bool:
+        return "defaulting to neutral" in rationale or "Unable to compute" in rationale
+
+    real_scores = [s for s, r in raw.values()
+                   if not r.startswith("No keyword overlap") and not _is_fallback(r)]
+    run_mean = sum(real_scores) / len(real_scores) if real_scores else 50.0
+    mean_rationale = (
+        f"Research fit estimated at run average ({run_mean:.0f}) — "
+        f"no abstract or paper data available for precise scoring."
+    )
+    log.info("%s Run mean research score: %.1f  (from %d real Claude scores)",
+             pfx, run_mean, len(real_scores))
+
+    adjusted: dict[int, tuple[float, str]] = {}
+    for pi_id, (score, rationale) in raw.items():
+        if _is_fallback(rationale):
+            adjusted[pi_id] = (run_mean, mean_rationale)
+        else:
+            adjusted[pi_id] = (score, rationale)
+
+    # ── Phase 2: apply gate, score deterministically, commit to DB ────────────
+    results      = []
+    dropped_gate = 0
+    dropped_kw   = 0
+    pi_by_id     = {pi.id: pi for pi in shortlist}
+
+    for pi_id, (research_score, rationale) in adjusted.items():
+        pi = pi_by_id[pi_id]
+
+        if rationale.startswith("No keyword overlap"):
+            src = "KW-SKIP "
+        elif rationale.startswith("Research fit estimated at run average"):
+            src = "MEAN-FB "
+        else:
+            src = "CLAUDE  "
+
+        if research_score < RESEARCH_MIN_SCORE:
+            _shortlist_sizes[student_id] = max(0, _shortlist_sizes.get(student_id, 1) - 1)
+            log.info("%s   [%s] %-35s R=%4.0f → DROPPED (< %.0f)",
+                     pfx, src, pi.name, research_score, RESEARCH_MIN_SCORE)
+            if src == "KW-SKIP ":
+                dropped_kw += 1
             else:
-                src = "CLAUDE  "
+                dropped_gate += 1
+            continue
 
-            # Minimum research gate
-            if research_score < RESEARCH_MIN_SCORE:
-                _shortlist_sizes[student_id] = max(0, _shortlist_sizes.get(student_id, 1) - 1)
-                tag = "dropped_kw" if src == "KW-SKIP " else "dropped_gate"
-                log.info("%s   [%s] %-35s R=%4.0f → DROPPED (< %.0f)",
-                         pfx, src, pi.name, research_score, RESEARCH_MIN_SCORE)
-                if src == "KW-SKIP ":
-                    dropped_kw += 1
-                else:
-                    dropped_gate += 1
-                continue
+        mentorship = mentorship_style_score(student, pi)
+        funding    = funding_stability_score(pi)
+        skills     = technical_skills_score(student, pi)
+        culture    = culture_fit_score(student, pi)
+        reply_lik  = predict_reply_likelihood(pi)
 
-            mentorship = mentorship_style_score(student, pi)
-            funding    = funding_stability_score(pi)
-            skills     = technical_skills_score(student, pi)
-            culture    = culture_fit_score(student, pi)
-            reply_lik  = predict_reply_likelihood(pi)
+        total = overall_score(research_score, mentorship, funding, skills, culture, reply_lik)
 
-            total = overall_score(research_score, mentorship, funding, skills, culture, reply_lik)
+        is_direct = direct_connection(student, pi)
+        is_indirect, via = indirect_connection(student, pi)
+        conn_tag = ""
+        if is_direct:
+            conn_tag = " 🤝direct"
+        elif is_indirect:
+            conn_tag = f" 🔗via {via}"
+            total = min(100.0, total + 10.0)
 
-            is_direct = direct_connection(student, pi)
-            is_indirect, via = indirect_connection(student, pi)
-            conn_tag = ""
-            if is_direct:
-                conn_tag = " 🤝direct"
-            elif is_indirect:
-                conn_tag = f" 🔗via {via}"
-                total = min(100.0, total + 10.0)
+        c_mismatch = citizenship_mismatch(student, pi)
+        citizen_tag = " 🇺🇸" if c_mismatch else ""
 
-            c_mismatch = citizenship_mismatch(student, pi)
-            citizen_tag = " 🇺🇸" if c_mismatch else ""
+        log.info(
+            "%s   [%s] %-35s R=%4.0f M=%3.0f F=%3.0f S=%3.0f C=%3.0f"
+            " reply=%-3s → %5.1f%s%s",
+            pfx, src, pi.name,
+            research_score, mentorship, funding, skills, culture,
+            reply_lik, total, conn_tag, citizen_tag,
+        )
 
-            log.info(
-                "%s   [%s] %-35s R=%4.0f M=%3.0f F=%3.0f S=%3.0f C=%3.0f"
-                " reply=%-3s → %5.1f%s%s",
-                pfx, src, pi.name,
-                research_score, mentorship, funding, skills, culture,
-                reply_lik, total, conn_tag, citizen_tag,
-            )
-
-            match = MatchResult(
-                student_id=student_id,
-                pi_id=pi_id,
-                research_direction_score=research_score,
-                mentorship_style_score=mentorship,
-                funding_stability_score=funding,
-                culture_fit_score=culture,
-                technical_skills_score=skills,
-                location_score=100.0,
-                is_direct_connection=is_direct,
-                is_indirect_connection=is_indirect,
-                indirect_connection_via=via,
-                citizenship_mismatch=c_mismatch,
-                research_match_rationale=rationale,
-                reply_likelihood=reply_lik,
-                overall_score=total,
-            )
-            session.add(match)
-            session.commit()
-            session.refresh(match)
-            results.append((match, pi))
+        match = MatchResult(
+            student_id=student_id,
+            pi_id=pi_id,
+            research_direction_score=research_score,
+            mentorship_style_score=mentorship,
+            funding_stability_score=funding,
+            culture_fit_score=culture,
+            technical_skills_score=skills,
+            location_score=100.0,
+            is_direct_connection=is_direct,
+            is_indirect_connection=is_indirect,
+            indirect_connection_via=via,
+            citizenship_mismatch=c_mismatch,
+            research_match_rationale=rationale,
+            reply_likelihood=reply_lik,
+            overall_score=total,
+        )
+        session.add(match)
+        session.commit()
+        session.refresh(match)
+        results.append((match, pi))
 
     # Sort: direct connections first, then descending overall score
     results.sort(key=lambda x: (not x[0].is_direct_connection, -x[0].overall_score))
