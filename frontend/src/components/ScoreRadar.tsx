@@ -4,7 +4,6 @@ import {
   PolarAngleAxis,
   Radar,
   ResponsiveContainer,
-  Tooltip,
 } from 'recharts';
 
 interface RadarDimension {
@@ -15,29 +14,35 @@ interface RadarDimension {
 
 interface ScoreRadarProps {
   dimensions: RadarDimension[];
-  color?: string;
+  height?: number;
 }
 
-export default function ScoreRadar({ dimensions, color = '#7c3aed' }: ScoreRadarProps) {
+export default function ScoreRadar({ dimensions, height = 320 }: ScoreRadarProps) {
   return (
-    <ResponsiveContainer width="100%" height={280}>
-      <RadarChart data={dimensions} margin={{ top: 16, right: 32, bottom: 16, left: 32 }}>
-        <PolarGrid stroke="#e5e7eb" />
+    <ResponsiveContainer width="100%" height={height}>
+      <RadarChart
+        data={dimensions}
+        margin={{ top: 24, right: 48, bottom: 24, left: 48 }}
+        outerRadius="78%"
+      >
+        <PolarGrid stroke="var(--color-line)" strokeWidth={1} />
         <PolarAngleAxis
           dataKey="subject"
-          tick={{ fontSize: 12, fill: '#6b7280' }}
+          tick={{
+            fontSize: 11,
+            fill: 'var(--color-soft)',
+            fontFamily: 'Inter, sans-serif',
+            letterSpacing: '0.04em',
+          }}
         />
         <Radar
           name="Score"
           dataKey="score"
-          stroke={color}
-          fill={color}
-          fillOpacity={0.25}
-          strokeWidth={2}
-        />
-        <Tooltip
-          formatter={(value) => [`${Number(value).toFixed(0)}/100`, 'Score']}
-          contentStyle={{ fontSize: 12, borderRadius: 8 }}
+          stroke="var(--color-forest)"
+          fill="var(--color-forest)"
+          fillOpacity={0.2}
+          strokeWidth={1.5}
+          strokeLinejoin="round"
         />
       </RadarChart>
     </ResponsiveContainer>
@@ -72,6 +77,6 @@ export function chemistryRadarDimensions(scores: {
     { subject: 'Mentorship', score: scores.mentorship_compatibility, fullMark: 100 },
     { subject: 'Culture', score: scores.culture_fit, fullMark: 100 },
     { subject: 'Communication', score: scores.communication_fit, fullMark: 100 },
-    { subject: 'No Red Flags', score: scores.red_flags, fullMark: 100 },
+    { subject: 'No red flags', score: scores.red_flags, fullMark: 100 },
   ];
 }
