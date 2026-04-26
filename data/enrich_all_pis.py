@@ -198,7 +198,12 @@ def enrich(dry_run: bool = False, limit: int | None = None, force: bool = False)
 
         author_id    = author["authorId"]
         author_name  = author.get("name", "")
-        affiliations = author.get("affiliations", [])
+        # SS returns affiliations as list[dict] or occasionally list[str]
+        raw_affils   = author.get("affiliations", [])
+        affiliations = [
+            a if isinstance(a, dict) else {"name": str(a)}
+            for a in (raw_affils or [])
+        ]
 
         # Verification: affiliation check first; if SS has no affiliation data,
         # fall back to name-similarity (last name + first initial must agree).
