@@ -465,7 +465,10 @@ def simulate_chat(
                 system=system_prompt,
                 messages=messages,
             )
-            pi_response = resp.content[0].text
+            if resp.content and hasattr(resp.content[0], 'text'):
+                pi_response = resp.content[0].text
+            else:
+                pi_response = "I'm having trouble responding right now — please try again."
         except Exception as exc:
             error_text = str(exc) or repr(exc)
             print(f"[simulate_chat] Anthropic call failed: {error_text}")

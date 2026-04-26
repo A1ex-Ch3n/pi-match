@@ -48,6 +48,13 @@ def _auto_seed_pis():
 
     from data.dedup_seeds import dedup_entries
 
+    # Fast path: if DB already has PIs, skip all file I/O entirely
+    with Session(engine) as session:
+        existing_count = len(session.exec(select(PIProfile)).all())
+    if existing_count > 0:
+        print(f"[startup] DB already has {existing_count} PI(s) — skipping seed.")
+        return
+
     # Collect entries: root-level east/west files first, then existing seeds
     raw: list = []
 
@@ -69,6 +76,7 @@ def _auto_seed_pis():
     clean = dedup_entries(raw)
 
     with Session(engine) as session:
+
         total = 0
         skipped = 0
         for entry in clean:
