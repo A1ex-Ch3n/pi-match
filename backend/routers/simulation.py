@@ -109,18 +109,22 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
         return []
 
     # ── Stage 1: deterministic pre-score (no Claude, ~50 ms) ─────────────────
+    # Intentionally different weights from production scoring: technical skills
+    # is the best proxy for research fit available without a Claude call, so it
+    # dominates here. Keyword overlap adds a +15 bonus so PIs with explicit topic
+    # matches rank above equally-skilled PIs that share no terminology.
     def _det_score(pi: PIProfile) -> float:
-        mentorship  = mentorship_style_score(student, pi)
-        funding     = funding_stability_score(pi)
         skills      = technical_skills_score(student, pi)
+        funding     = funding_stability_score(pi)
         culture     = culture_fit_score(student, pi)
         reply_score = REPLY_LIKELIHOOD_SCORE.get(predict_reply_likelihood(pi), 60.0)
+        kw_bonus    = 15.0 if has_keyword_overlap(student, pi) else 0.0
         return (
-            mentorship  * SCORE_WEIGHTS["mentorship_style"]  +
-            funding     * SCORE_WEIGHTS["funding_stability"] +
-            skills      * SCORE_WEIGHTS["technical_skills"]  +
-            culture     * SCORE_WEIGHTS["culture_fit"]       +
-            reply_score * SCORE_WEIGHTS["reply_likelihood"]
+            skills      * 0.60 +
+            funding     * 0.20 +
+            culture     * 0.10 +
+            reply_score * 0.10 +
+            kw_bonus
         )
 
     forced_ids: set[int] = set()
