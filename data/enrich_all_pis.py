@@ -43,7 +43,7 @@ CURRENT_YEAR = 2026
 # ── HTTP helper ───────────────────────────────────────────────────────────────
 
 def _get(url: str, params: dict | None = None) -> dict | None:
-    time.sleep(1.5)
+    time.sleep(10.0)  # SS free tier: ~100 req/5min; 10s = 6 req/min to avoid bursting
     for attempt in range(3):
         try:
             r = requests.get(url, params=params, timeout=20)
@@ -55,7 +55,7 @@ def _get(url: str, params: dict | None = None) -> dict | None:
         if r.status_code == 404:
             return None
         if r.status_code == 429:
-            wait = 12 * (attempt + 1)
+            wait = 30 * (attempt + 1)
             print(f"  Rate limited — waiting {wait}s …")
             time.sleep(wait)
             continue
@@ -87,6 +87,34 @@ def _affiliation_matches(affiliations: list[dict], institution: str) -> bool:
         (a.get("name") or "") for a in affiliations
     ).lower()
     return any(t in aff_text for t in tokens)
+
+
+def _name_matches(query: str, returned: str) -> bool:
+    """Fallback when SS has no affiliation data: accept if last name matches
+    AND first names share the same initial. Rejects pure-initial last names for
+    common short surnames (Wu, Li, Wang…) to avoid false positives."""
+    def _parts(name: str) -> list[str]:
+        return re.sub(r"[^a-z\s]", "", name.lower()).split()
+
+    q = _parts(query)
+    r = _parts(returned)
+    if not q or not r:
+        return False
+
+    q_last, r_last = q[-1], r[-1]
+    if q_last != r_last:
+        return False
+
+    # Short common surnames (≤3 chars) are too ambiguous without affiliation
+    if len(q_last) <= 3:
+        return False
+
+    q_first, r_first = q[0], r[0]
+    # If returned first is only an initial, it must match query's first letter
+    if len(r_first) == 1:
+        return r_first == q_first[0]
+    # Both full first names — first initials must agree
+    return q_first[0] == r_first[0]
 
 
 # ── Search + fetch ────────────────────────────────────────────────────────────
@@ -172,9 +200,15 @@ def enrich(dry_run: bool = False, limit: int | None = None, force: bool = False)
         author_name  = author.get("name", "")
         affiliations = author.get("affiliations", [])
 
-        # Affiliation check
-        verified = force or _affiliation_matches(affiliations, pi.institution)
+        # Verification: affiliation check first; if SS has no affiliation data,
+        # fall back to name-similarity (last name + first initial must agree).
         aff_text = ", ".join(a.get("name", "") for a in affiliations[:2]) or "no affiliation listed"
+        if force:
+            verified = True
+        elif affiliations:
+            verified = _affiliation_matches(affiliations, pi.institution)
+        else:
+            verified = _name_matches(pi.name, author_name)
 
         if not verified:
             print(f"MISMATCH → SS returned '{author_name}' [{aff_text}]")
