@@ -1,0 +1,3843 @@
+[
+  {
+    "school_slug": "brown_csb",
+    "name": "Eli Upfal",
+    "school": "Brown University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://cs.brown.edu/people/eupfal/",
+    "research_areas": [
+      "algorithms",
+      "randomized algorithms",
+      "machine learning theory",
+      "bioinformatics",
+      "online algorithms"
+    ],
+    "semantic_scholar_id": "1735099",
+    "h_index": 62,
+    "citation_count": 16223,
+    "recent_top_papers": [
+      {
+        "title": "RePBubLik: Reducing Polarized Bubble Radius with Link Insertions",
+        "year": 2021,
+        "citations": 43
+      },
+      {
+        "title": "Adversarial Multi Class Learning under Weak Supervision with Performance Guarantees",
+        "year": 2021,
+        "citations": 39
+      },
+      {
+        "title": "Semi-Supervised Aggregation of Dependent Weak Supervision Sources With Performance Guarantees",
+        "year": 2021,
+        "citations": 36
+      },
+      {
+        "title": "An Adaptive Algorithm for Learning with Unknown Distribution Drift",
+        "year": 2023,
+        "citations": 13
+      },
+      {
+        "title": "Fast Doubly-Adaptive MCMC to Estimate the Gibbs Partition Function with Weak Mixing Time Bounds",
+        "year": 2021,
+        "citations": 8
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 1823195,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "brown_csb",
+    "name": "Sohini Ramachandran",
+    "school": "Brown University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.brown.edu/Research/Ramachandran_Lab/",
+    "research_areas": [
+      "computational population genetics",
+      "human genomics",
+      "demographic inference",
+      "natural selection",
+      "ancestry"
+    ],
+    "semantic_scholar_id": "6704459",
+    "h_index": 25,
+    "citation_count": 7193,
+    "recent_top_papers": [
+      {
+        "title": "Counter the weaponization of genetics research by extremists",
+        "year": 2022,
+        "citations": 53
+      },
+      {
+        "title": "Human genetic admixture through the lens of population genomics",
+        "year": 2021,
+        "citations": 28
+      },
+      {
+        "title": "Genetic structure correlates with ethnolinguistic diversity in eastern and southern Africa",
+        "year": 2021,
+        "citations": 20
+      },
+      {
+        "title": "Integrating sex-bias into studies of archaic introgression on chromosome X",
+        "year": 2023,
+        "citations": 12
+      },
+      {
+        "title": "Enrichment analyses identify shared associations for 25 quantitative traits in over 600,000 individuals from seven diverse ancestries",
+        "year": 2021,
+        "citations": 12
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 6746152,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "brown_csb",
+    "name": "Michael Littman",
+    "school": "Brown University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.littmania.com/",
+    "research_areas": [
+      "reinforcement learning",
+      "AI",
+      "reward learning",
+      "human-AI interaction",
+      "multi-agent RL"
+    ],
+    "semantic_scholar_id": "144885169",
+    "h_index": 89,
+    "citation_count": 48475,
+    "recent_top_papers": [
+      {
+        "title": "People construct simplified mental representations to plan",
+        "year": 2021,
+        "citations": 130
+      },
+      {
+        "title": "Gathering Strength, Gathering Storms: The One Hundred Year Study on Artificial Intelligence (AI100) 2021 Study Panel Report",
+        "year": 2022,
+        "citations": 124
+      },
+      {
+        "title": "On the Expressivity of Markov Reward",
+        "year": 2021,
+        "citations": 98
+      },
+      {
+        "title": "Collusion rings threaten the integrity of computer science research",
+        "year": 2021,
+        "citations": 48
+      },
+      {
+        "title": "Communication in action: Planning and interpreting communicative demonstrations.",
+        "year": 2021,
+        "citations": 34
+      }
+    ],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "brown_csb",
+    "name": "Stefanie Tellex",
+    "school": "Brown University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://cs.brown.edu/people/stellex/",
+    "research_areas": [
+      "robotics",
+      "natural language for robots",
+      "human-robot interaction",
+      "manipulation",
+      "grounding language"
+    ],
+    "semantic_scholar_id": "2913681",
+    "h_index": 46,
+    "citation_count": 7138,
+    "recent_top_papers": [
+      {
+        "title": "Plug in the Safety Chip: Enforcing Constraints for LLM-driven Robot Agents",
+        "year": 2023,
+        "citations": 93
+      },
+      {
+        "title": "Grounding Complex Natural Language Commands for Temporal Tasks in Unseen Environments",
+        "year": 2023,
+        "citations": 64
+      },
+      {
+        "title": "CAPE: Corrective Actions from Precondition Errors using Large Language Models",
+        "year": 2022,
+        "citations": 54
+      },
+      {
+        "title": "Lang2LTL: Translating Natural Language Commands to Temporal Specification with Large Language Models",
+        "year": 2022,
+        "citations": 43
+      },
+      {
+        "title": "Learning Collaborative Pushing and Grasping Policies in Dense Clutter",
+        "year": 2021,
+        "citations": 34
+      }
+    ],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "brown_csb",
+    "name": "Stephen Bach",
+    "school": "Brown University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://cs.brown.edu/people/sbach/",
+    "research_areas": [
+      "machine learning",
+      "weak supervision",
+      "probabilistic graphical models",
+      "knowledge graphs",
+      "data programming"
+    ],
+    "semantic_scholar_id": "2870504",
+    "h_index": 26,
+    "citation_count": 9631,
+    "recent_top_papers": [
+      {
+        "title": "BLOOM: A 176B-Parameter Open-Access Multilingual Language Model",
+        "year": 2022,
+        "citations": 2889
+      },
+      {
+        "title": "Multitask Prompted Training Enables Zero-Shot Task Generalization",
+        "year": 2021,
+        "citations": 1971
+      },
+      {
+        "title": "PromptSource: An Integrated Development Environment and Repository for Natural Language Prompts",
+        "year": 2022,
+        "citations": 413
+      },
+      {
+        "title": "Learning to Compose Soft Prompts for Compositional Zero-Shot Learning",
+        "year": 2022,
+        "citations": 98
+      },
+      {
+        "title": "Fairness via Explanation Quality: Evaluating Disparities in the Quality of Post hoc Explanations",
+        "year": 2022,
+        "citations": 72
+      }
+    ],
+    "funding_agencies": [
+      "HRSA",
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 767077,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "brown_csb",
+    "name": "Chen Sun",
+    "school": "Brown University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://chensun.me/",
+    "research_areas": [
+      "computer vision",
+      "multimodal learning",
+      "video understanding",
+      "vision-language models",
+      "representation learning"
+    ],
+    "semantic_scholar_id": "92886316",
+    "h_index": 24,
+    "citation_count": 3318,
+    "recent_top_papers": [
+      {
+        "title": "Mechanical properties and in vitro cytocompatibility of dense and porous Ti-6Al-4V ELI manufactured by selective laser melting technology for biomedical applications.",
+        "year": 2021,
+        "citations": 66
+      },
+      {
+        "title": "3D Printing and Chemical Dealloying of a Hierarchically Micro- and Nanoporous Catalyst for Wastewater Purification.",
+        "year": 2021,
+        "citations": 62
+      },
+      {
+        "title": "Superior energy absorption of continuously graded microlattices by electron beam additive manufacturing",
+        "year": 2021,
+        "citations": 36
+      },
+      {
+        "title": "Concurrent Modeling of Porosity and Microstructure in Multilayer Three-Dimensional Simulations of Powder-Bed Fusion Additive Manufacturing of Inconel 718",
+        "year": 2022,
+        "citations": 28
+      },
+      {
+        "title": "Porosity distribution of 316 L stainless steel in laser powder bed fusion additive manufacturing due to spatial variation",
+        "year": 2025,
+        "citations": 3
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 21899906,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "brown_csb",
+    "name": "Pedro Felzenszwalb",
+    "school": "Brown University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://cs.brown.edu/people/pfelzens/",
+    "research_areas": [
+      "computer vision",
+      "object detection",
+      "image segmentation",
+      "algorithms",
+      "scene understanding"
+    ],
+    "semantic_scholar_id": "1685089",
+    "h_index": 29,
+    "citation_count": 30402,
+    "recent_top_papers": [
+      {
+        "title": "Direct Estimation of Appearance Models for Segmentation",
+        "year": 2021,
+        "citations": 3
+      },
+      {
+        "title": "Convex Combination Belief Propagation Algorithms",
+        "year": 2021,
+        "citations": 1
+      }
+    ],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "brown_csb",
+    "name": "Lorin Crawford",
+    "school": "Brown University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.lorincrawford.com/",
+    "research_areas": [
+      "statistical genomics",
+      "machine learning",
+      "cancer genetics",
+      "phenotypic association",
+      "Bayesian methods"
+    ],
+    "semantic_scholar_id": "50661012",
+    "h_index": 21,
+    "citation_count": 1890,
+    "recent_top_papers": [
+      {
+        "title": "Microenvironment drives cell state, plasticity, and drug response in pancreatic cancer",
+        "year": 2021,
+        "citations": 428
+      },
+      {
+        "title": "Zero-shot evaluation reveals limitations of single-cell foundation models",
+        "year": 2025,
+        "citations": 64
+      },
+      {
+        "title": "Assessing the limits of zero-shot foundation models in single-cell biology",
+        "year": 2023,
+        "citations": 56
+      },
+      {
+        "title": "Deep self-supervised learning for biosynthetic gene cluster detection and product classification",
+        "year": 2022,
+        "citations": 35
+      },
+      {
+        "title": "A topological data analytic approach for discovering biophysical signatures in protein dynamics",
+        "year": 2021,
+        "citations": 28
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 12040976,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "columbia_csb",
+    "name": "Itsik Pe'er",
+    "school": "Columbia University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.cs.columbia.edu/~itsik/",
+    "research_areas": [
+      "computational biology",
+      "statistical genetics",
+      "population genetics",
+      "cancer genomics",
+      "microbiome"
+    ],
+    "semantic_scholar_id": "101161161",
+    "h_index": 54,
+    "citation_count": 21014,
+    "recent_top_papers": [
+      {
+        "title": "SEACells infers transcriptional and epigenomic cellular states from single-cell genomics data",
+        "year": 2023,
+        "citations": 133
+      },
+      {
+        "title": "Polygenic prediction of preeclampsia and gestational hypertension",
+        "year": 2023,
+        "citations": 100
+      },
+      {
+        "title": "Contamination source modeling with SCRuB improves cancer phenotype prediction from microbiome data",
+        "year": 2023,
+        "citations": 58
+      },
+      {
+        "title": "Accurate and robust inference of microbial growth dynamics from metagenomic sequencing reveals personalized growth rates",
+        "year": 2022,
+        "citations": 45
+      },
+      {
+        "title": "An Introduction to Whole-Metagenome Shotgun Sequencing Studies.",
+        "year": 2021,
+        "citations": 27
+      }
+    ],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "columbia_csb",
+    "name": "David Blei",
+    "school": "Columbia University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.cs.columbia.edu/~blei/",
+    "research_areas": [
+      "machine learning",
+      "Bayesian statistics",
+      "probabilistic models",
+      "topic models",
+      "causal inference"
+    ],
+    "semantic_scholar_id": "1796335",
+    "h_index": 102,
+    "citation_count": 104634,
+    "recent_top_papers": [
+      {
+        "title": "Evaluating the Moral Beliefs Encoded in LLMs",
+        "year": 2023,
+        "citations": 242
+      },
+      {
+        "title": "Practical and Asymptotically Exact Conditional Sampling in Diffusion Models",
+        "year": 2023,
+        "citations": 187
+      },
+      {
+        "title": "Posterior Collapse and Latent Variable Non-identifiability",
+        "year": 2023,
+        "citations": 97
+      },
+      {
+        "title": "Nonparametric Identifiability of Causal Representations from Unknown Interventions",
+        "year": 2023,
+        "citations": 95
+      },
+      {
+        "title": "Identifiable Deep Generative Models via Sparse Decoding",
+        "year": 2021,
+        "citations": 62
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 17621209,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "columbia_csb",
+    "name": "Nicholas Tatonetti",
+    "school": "Columbia University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://tatonettilab.org/",
+    "research_areas": [
+      "biomedical informatics",
+      "pharmacovigilance",
+      "drug interactions",
+      "EHR data science",
+      "machine learning for medicine"
+    ],
+    "semantic_scholar_id": "3284757",
+    "h_index": 44,
+    "citation_count": 9383,
+    "recent_top_papers": [
+      {
+        "title": "Shotgun transcriptome, spatial omics, and isothermal profiling of SARS-CoV-2 infection reveals unique host responses, viral diversification, and drug interactions",
+        "year": 2021,
+        "citations": 127
+      },
+      {
+        "title": "Medical records-based chronic kidney disease phenotype for clinical care and “big data” observational and genetic studies",
+        "year": 2021,
+        "citations": 61
+      },
+      {
+        "title": "System-wide transcriptome damage and tissue identity loss in COVID-19 patients",
+        "year": 2022,
+        "citations": 38
+      },
+      {
+        "title": "Deep learning on time series laboratory test results from electronic health records for early detection of pancreatic cancer",
+        "year": 2022,
+        "citations": 35
+      },
+      {
+        "title": "Characterizing shared and distinct symptom clusters in common chronic conditions through natural language processing of nursing notes.",
+        "year": 2021,
+        "citations": 26
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 12496837,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "columbia_csb",
+    "name": "Yufeng Shen",
+    "school": "Columbia University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://systemsbiology.columbia.edu/faculty/yufeng-shen",
+    "research_areas": [
+      "computational genomics",
+      "variant interpretation",
+      "autism genetics",
+      "rare disease genomics",
+      "structural variation"
+    ],
+    "semantic_scholar_id": "2117688798",
+    "h_index": 1,
+    "citation_count": 1,
+    "recent_top_papers": [
+      {
+        "title": "Multiagent Q-Learning for Multicrew Dynamic Scheduling and Routing in Road Network Restoration",
+        "year": 2022,
+        "citations": 1
+      },
+      {
+        "title": "Multicrew Scheduling and Routing in Road Network Restoration Based on Deep Q-learning",
+        "year": 2021,
+        "citations": 0
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 30011735,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "columbia_csb",
+    "name": "Raul Rabadan",
+    "school": "Columbia University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://rabadan.c2b2.columbia.edu/",
+    "research_areas": [
+      "computational biology",
+      "cancer genomics",
+      "topology applied to biology",
+      "viral evolution",
+      "single-cell analysis"
+    ],
+    "semantic_scholar_id": "2250630275",
+    "h_index": 5,
+    "citation_count": 114,
+    "recent_top_papers": [
+      {
+        "title": "Correction for Scuoppo et al., Repurposing dasatinib for diffuse large B cell lymphoma",
+        "year": 2024,
+        "citations": 0
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 13533859,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "columbia_csb",
+    "name": "Chunhua Weng",
+    "school": "Columbia University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.dbmi.columbia.edu/profile/chunhua-weng/",
+    "research_areas": [
+      "biomedical informatics",
+      "clinical trial informatics",
+      "EHR phenotyping",
+      "NLP for clinical text"
+    ],
+    "semantic_scholar_id": "46531377",
+    "h_index": 15,
+    "citation_count": 808,
+    "recent_top_papers": [
+      {
+        "title": "Caspase 3/GSDME-dependent pyroptosis contributes to chemotherapy drug-induced nephrotoxicity",
+        "year": 2021,
+        "citations": 186
+      },
+      {
+        "title": "Impaired Amino Acid Metabolism and Its Correlation with Diabetic Kidney Disease Progression in Type 2 Diabetes Mellitus",
+        "year": 2022,
+        "citations": 37
+      },
+      {
+        "title": "Circular RNA circDVL1 inhibits clear cell renal cell carcinoma progression through the miR-412-3p/PCDH7 axis",
+        "year": 2022,
+        "citations": 17
+      },
+      {
+        "title": "Angiogenin promotes angiogenesis via the endonucleolytic decay of miR-141 in colorectal cancer",
+        "year": 2022,
+        "citations": 15
+      },
+      {
+        "title": "Renal tubule-targeted dexrazoxane suppresses ferroptosis in acute kidney injury by inhibiting ACMSD",
+        "year": 2023,
+        "citations": 8
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 21998724,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "columbia_csb",
+    "name": "Julia Hirschberg",
+    "school": "Columbia University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.cs.columbia.edu/~julia/",
+    "research_areas": [
+      "natural language processing",
+      "speech processing",
+      "prosody",
+      "dialogue systems",
+      "deception detection"
+    ],
+    "semantic_scholar_id": "144049352",
+    "h_index": 71,
+    "citation_count": 22390,
+    "recent_top_papers": [
+      {
+        "title": "Artificial Intelligence and Life in 2030: The One Hundred Year Study on Artificial Intelligence",
+        "year": 2022,
+        "citations": 199
+      },
+      {
+        "title": "CHoRaL: Collecting Humor Reaction Labels from Millions of Social Media Users",
+        "year": 2021,
+        "citations": 14
+      },
+      {
+        "title": "Noise robust speech emotion recognition with signal-to-noise ratio adapting speech enhancement",
+        "year": 2023,
+        "citations": 11
+      },
+      {
+        "title": "Capturing Formality in Speech Across Domains and Languages",
+        "year": 2023,
+        "citations": 5
+      },
+      {
+        "title": "MultiPA: a multi-task speech pronunciation assessment system for a closed and open response scenario",
+        "year": 2023,
+        "citations": 5
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 2618570,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "columbia_csb",
+    "name": "Shuran Song",
+    "school": "Columbia University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://shurans.github.io/",
+    "research_areas": [
+      "robotics",
+      "computer vision",
+      "3D scene understanding",
+      "robot manipulation",
+      "embodied AI"
+    ],
+    "semantic_scholar_id": "3340170",
+    "h_index": 58,
+    "citation_count": 36725,
+    "recent_top_papers": [
+      {
+        "title": "Diffusion policy: Visuomotor policy learning via action diffusion",
+        "year": 2023,
+        "citations": 2878
+      },
+      {
+        "title": "DataComp: In search of the next generation of multimodal datasets",
+        "year": 2023,
+        "citations": 663
+      },
+      {
+        "title": "TidyBot: Personalized Robot Assistance with Large Language Models",
+        "year": 2023,
+        "citations": 423
+      },
+      {
+        "title": "CoWs on Pasture: Baselines and Benchmarks for Language-Driven Zero-Shot Object Navigation",
+        "year": 2022,
+        "citations": 280
+      },
+      {
+        "title": "RoCo: Dialectic Multi-Robot Collaboration with Large Language Models",
+        "year": 2023,
+        "citations": 246
+      }
+    ],
+    "funding_agencies": [
+      "NSF"
+    ],
+    "total_active_funding_usd": 13189836,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "columbia_csb",
+    "name": "Chris Wiggins",
+    "school": "Columbia University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.columbia.edu/~chw2/",
+    "research_areas": [
+      "machine learning",
+      "data science",
+      "biophysics",
+      "stochastic processes",
+      "responsible data science"
+    ],
+    "semantic_scholar_id": "50107501",
+    "h_index": 30,
+    "citation_count": 7168,
+    "recent_top_papers": [
+      {
+        "title": "A predictive model for next cycle start date that accounts for adherence in menstrual self-tracking",
+        "year": 2021,
+        "citations": 25
+      },
+      {
+        "title": "A Generative Modeling Approach to Calibrated Predictions: A Use Case on Menstrual Cycle Length Prediction",
+        "year": 2021,
+        "citations": 11
+      },
+      {
+        "title": "A generative, predictive model for menstrual cycle lengths that accounts for potential self-tracking artifacts in mobile health data",
+        "year": 2021,
+        "citations": 9
+      }
+    ],
+    "funding_agencies": [
+      "NSF"
+    ],
+    "total_active_funding_usd": 958705,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "cornell_csb",
+    "name": "Jon Kleinberg",
+    "school": "Cornell University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.cs.cornell.edu/home/kleinber/",
+    "research_areas": [
+      "algorithms",
+      "networks",
+      "machine learning",
+      "social computing",
+      "fairness in AI"
+    ],
+    "semantic_scholar_id": "3371403",
+    "h_index": 113,
+    "citation_count": 83825,
+    "recent_top_papers": [
+      {
+        "title": "Integrating explanation and prediction in computational social science",
+        "year": 2021,
+        "citations": 286
+      },
+      {
+        "title": "Algorithmic monoculture and social welfare",
+        "year": 2021,
+        "citations": 132
+      },
+      {
+        "title": "The Challenge of Understanding What Users Want: Inconsistent Preferences and Engagement Optimization",
+        "year": 2022,
+        "citations": 71
+      },
+      {
+        "title": "Optimality and Stability in Federated Learning: A Game-theoretic Approach",
+        "year": 2021,
+        "citations": 67
+      },
+      {
+        "title": "Four Years of FAccT: A Reflexive, Mixed-Methods Analysis of Research Contributions, Shortcomings, and Future Prospects",
+        "year": 2022,
+        "citations": 50
+      }
+    ],
+    "funding_agencies": [
+      "NSF"
+    ],
+    "total_active_funding_usd": 206682,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "cornell_csb",
+    "name": "Kilian Weinberger",
+    "school": "Cornell University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.cs.cornell.edu/~kilian/",
+    "research_areas": [
+      "machine learning",
+      "deep learning",
+      "computer vision",
+      "efficient ML",
+      "medical image analysis"
+    ],
+    "semantic_scholar_id": "7446832",
+    "h_index": 80,
+    "citation_count": 100498,
+    "recent_top_papers": [
+      {
+        "title": "Language-driven Semantic Segmentation",
+        "year": 2022,
+        "citations": 876
+      },
+      {
+        "title": "Latent Diffusion for Language Generation",
+        "year": 2022,
+        "citations": 138
+      },
+      {
+        "title": "Performance-Efficiency Trade-Offs in Unsupervised Pre-Training for Speech Recognition",
+        "year": 2021,
+        "citations": 87
+      },
+      {
+        "title": "Don't Trust: Verify - Grounding LLM Quantitative Reasoning with Autoformalization",
+        "year": 2024,
+        "citations": 72
+      },
+      {
+        "title": "Online Adaptation to Label Distribution Shift",
+        "year": 2021,
+        "citations": 72
+      }
+    ],
+    "funding_agencies": [
+      "NSF"
+    ],
+    "total_active_funding_usd": 1838608,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "cornell_csb",
+    "name": "Thorsten Joachims",
+    "school": "Cornell University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.cs.cornell.edu/people/tj/",
+    "research_areas": [
+      "machine learning",
+      "learning to rank",
+      "counterfactual learning",
+      "structured prediction",
+      "recommendation systems"
+    ],
+    "semantic_scholar_id": "1680188",
+    "h_index": 74,
+    "citation_count": 60459,
+    "recent_top_papers": [
+      {
+        "title": "Counterfactual Learning and Evaluation for Recommender Systems: Foundations, Implementations, and Recent Advances",
+        "year": 2021,
+        "citations": 71
+      },
+      {
+        "title": "Off-Policy Evaluation for Large Action Spaces via Embeddings",
+        "year": 2022,
+        "citations": 61
+      },
+      {
+        "title": "Fairness of Exposure in Stochastic Bandits",
+        "year": 2021,
+        "citations": 59
+      },
+      {
+        "title": "Fairness in Ranking under Uncertainty",
+        "year": 2021,
+        "citations": 57
+      },
+      {
+        "title": "Fair Ranking as Fair Division: Impact-Based Individual Fairness in Ranking",
+        "year": 2022,
+        "citations": 35
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 952594,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "cornell_csb",
+    "name": "Alexander Rush",
+    "school": "Cornell University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://rush-nlp.com/",
+    "research_areas": [
+      "natural language processing",
+      "large language models",
+      "text generation",
+      "structured prediction",
+      "efficient NLP"
+    ],
+    "semantic_scholar_id": "2531268",
+    "h_index": 60,
+    "citation_count": 27969,
+    "recent_top_papers": [
+      {
+        "title": "BLOOM: A 176B-Parameter Open-Access Multilingual Language Model",
+        "year": 2022,
+        "citations": 2889
+      },
+      {
+        "title": "Multitask Prompted Training Enables Zero-Shot Task Generalization",
+        "year": 2021,
+        "citations": 1971
+      },
+      {
+        "title": "Datasets: A Community Library for Natural Language Processing",
+        "year": 2021,
+        "citations": 740
+      },
+      {
+        "title": "PromptSource: An Integrated Development Environment and Repository for Natural Language Prompts",
+        "year": 2022,
+        "citations": 413
+      },
+      {
+        "title": "Scaling Data-Constrained Language Models",
+        "year": 2023,
+        "citations": 369
+      }
+    ],
+    "funding_agencies": [
+      "NSF"
+    ],
+    "total_active_funding_usd": 713536,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "cornell_csb",
+    "name": "Yoav Artzi",
+    "school": "Cornell University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://yoavartzi.com/",
+    "research_areas": [
+      "NLP",
+      "grounded language learning",
+      "embodied AI",
+      "semantic parsing",
+      "instruction following"
+    ],
+    "semantic_scholar_id": "3167681",
+    "h_index": 36,
+    "citation_count": 15631,
+    "recent_top_papers": [
+      {
+        "title": "A Persistent Spatial Semantic Representation for High-level Natural Language Instruction Execution",
+        "year": 2021,
+        "citations": 164
+      },
+      {
+        "title": "SLUE: New Benchmark Tasks For Spoken Language Understanding Evaluation on Natural Speech",
+        "year": 2021,
+        "citations": 95
+      },
+      {
+        "title": "Performance-Efficiency Trade-Offs in Unsupervised Pre-Training for Speech Recognition",
+        "year": 2021,
+        "citations": 87
+      },
+      {
+        "title": "Abstract Visual Reasoning with Tangram Shapes",
+        "year": 2022,
+        "citations": 56
+      },
+      {
+        "title": "Wav2Seq: Pre-Training Speech-to-Text Encoder-Decoder Models Using Pseudo Languages",
+        "year": 2022,
+        "citations": 46
+      }
+    ],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "cornell_csb",
+    "name": "Jason Mezey",
+    "school": "Cornell University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://mezeylab.cb.bscb.cornell.edu/",
+    "research_areas": [
+      "statistical genomics",
+      "population genetics",
+      "GWAS",
+      "systems genetics",
+      "machine learning for genomics"
+    ],
+    "semantic_scholar_id": "2271276057",
+    "h_index": 1,
+    "citation_count": 5,
+    "recent_top_papers": [
+      {
+        "title": "SynRL: Aligning Synthetic Clinical Trial Data with Human-preferred Clinical Endpoints Using Reinforcement Learning",
+        "year": 2024,
+        "citations": 1
+      },
+      {
+        "title": "SeqTrial: Utility Preserving Sequential Clinical Trial Data Generator.",
+        "year": 2024,
+        "citations": 1
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 6749157,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "cornell_csb",
+    "name": "Alon Keinan",
+    "school": "Cornell University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://keinanlab.cb.bscb.cornell.edu/",
+    "research_areas": [
+      "population genetics",
+      "human genomics",
+      "demographic inference",
+      "natural selection",
+      "admixed populations"
+    ],
+    "semantic_scholar_id": "2188015",
+    "h_index": 32,
+    "citation_count": 31838,
+    "recent_top_papers": [
+      {
+        "title": "GENETICS 2023 Reviewer Index",
+        "year": 2023,
+        "citations": 0
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 3657760,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "cornell_csb",
+    "name": "Ilana Brito",
+    "school": "Cornell University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://brito.bme.cornell.edu/",
+    "research_areas": [
+      "microbiome",
+      "metagenomics",
+      "horizontal gene transfer",
+      "antibiotic resistance",
+      "host-microbiome interactions"
+    ],
+    "semantic_scholar_id": "3983355",
+    "h_index": 25,
+    "citation_count": 2788,
+    "recent_top_papers": [
+      {
+        "title": "Examining horizontal gene transfer in microbial communities",
+        "year": 2021,
+        "citations": 325
+      },
+      {
+        "title": "Functions predict horizontal gene transfer and the emergence of antibiotic resistance",
+        "year": 2021,
+        "citations": 83
+      },
+      {
+        "title": "Geographic differences in gut microbiota composition impact susceptibility to enteric infection",
+        "year": 2021,
+        "citations": 58
+      },
+      {
+        "title": "Clinically relevant antibiotic resistance genes are linked to a limited set of taxa within gut microbiome worldwide",
+        "year": 2023,
+        "citations": 46
+      },
+      {
+        "title": "Spatial mapping of mobile genetic elements and their bacterial hosts in complex microbiomes",
+        "year": 2024,
+        "citations": 34
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 6940427,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "cornell_csb",
+    "name": "Olgica Milenkovic",
+    "school": "Cornell University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://ece.cornell.edu/faculty-directory/olgica-milenkovic",
+    "research_areas": [
+      "information theory",
+      "DNA data storage",
+      "coding theory",
+      "genomics",
+      "machine learning"
+    ],
+    "semantic_scholar_id": "1743831",
+    "h_index": 48,
+    "citation_count": 10883,
+    "recent_top_papers": [
+      {
+        "title": "You are AllSet: A Multiset Function Framework for Hypergraph Neural Networks",
+        "year": 2021,
+        "citations": 205
+      },
+      {
+        "title": "Node Feature Extraction by Self-Supervised Multi-scale Neighborhood Prediction",
+        "year": 2021,
+        "citations": 184
+      },
+      {
+        "title": "Rewritable two-dimensional DNA-based data storage with machine learning reconstruction",
+        "year": 2021,
+        "citations": 74
+      },
+      {
+        "title": "Certified Graph Unlearning",
+        "year": 2022,
+        "citations": 57
+      },
+      {
+        "title": "Efficient Model Updates for Approximate Unlearning of Graph-Structured Data",
+        "year": 2023,
+        "citations": 55
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 2008173,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "cornell_csb",
+    "name": "Bart Selman",
+    "school": "Cornell University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.cs.cornell.edu/selman/",
+    "research_areas": [
+      "AI",
+      "reasoning",
+      "knowledge representation",
+      "probabilistic inference",
+      "computational sustainability"
+    ],
+    "semantic_scholar_id": "1744679",
+    "h_index": 69,
+    "citation_count": 24447,
+    "recent_top_papers": [
+      {
+        "title": "Automating crystal-structure phase mapping by combining deep learning with constraint reasoning",
+        "year": 2021,
+        "citations": 62
+      },
+      {
+        "title": "Haptic perception using optoelectronic robotic flesh for embodied artificially intelligent agents",
+        "year": 2022,
+        "citations": 56
+      },
+      {
+        "title": "Incomplete Algorithms",
+        "year": 2021,
+        "citations": 49
+      },
+      {
+        "title": "A Novel Automated Curriculum Strategy to Solve Hard Sokoban Planning Instances",
+        "year": 2021,
+        "citations": 21
+      },
+      {
+        "title": "Cooperative Multi-Agent Fairness and Equivariant Policies",
+        "year": 2021,
+        "citations": 15
+      }
+    ],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "dartmouth_csb",
+    "name": "Saeed Hassanpour",
+    "school": "Dartmouth College",
+    "department": "Computer Science / Quantitative Biomedical Sciences",
+    "email": null,
+    "url": "https://www.hassanpourlab.com/",
+    "research_areas": [
+      "machine learning",
+      "medical imaging",
+      "pathology AI",
+      "cancer detection",
+      "deep learning for healthcare"
+    ],
+    "semantic_scholar_id": "2066033308",
+    "h_index": 10,
+    "citation_count": 383,
+    "recent_top_papers": [
+      {
+        "title": "Deep Learning for Grading Endometrial Cancer.",
+        "year": 2024,
+        "citations": 17
+      },
+      {
+        "title": "Preparing healthcare leaders of the digital age with an integrative artificial intelligence curriculum: a pilot study",
+        "year": 2024,
+        "citations": 16
+      },
+      {
+        "title": "Patient Engagement in a Multimodal Digital Phenotyping Study of Opioid Use Disorder",
+        "year": 2023,
+        "citations": 14
+      },
+      {
+        "title": "Deep Learning for Identification of Alcohol-Related Content on Social Media (Reddit and Twitter): Exploratory Analysis of Alcohol-Related Outcomes",
+        "year": 2021,
+        "citations": 14
+      },
+      {
+        "title": "Improving Representation Learning for Histopathologic Images with Cluster Constraints",
+        "year": 2023,
+        "citations": 12
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 8204403,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "dartmouth_csb",
+    "name": "Lorenzo Torresani",
+    "school": "Dartmouth College",
+    "department": "Computer Science / Quantitative Biomedical Sciences",
+    "email": null,
+    "url": "https://ltorresa.github.io/home.html",
+    "research_areas": [
+      "computer vision",
+      "video understanding",
+      "deep learning",
+      "action recognition",
+      "self-supervised learning"
+    ],
+    "semantic_scholar_id": "1732879",
+    "h_index": 57,
+    "citation_count": 29343,
+    "recent_top_papers": [
+      {
+        "title": "Is Space-Time Attention All You Need for Video Understanding?",
+        "year": 2021,
+        "citations": 2899
+      },
+      {
+        "title": "Ego4D: Around the World in 3,000 Hours of Egocentric Video",
+        "year": 2021,
+        "citations": 1686
+      },
+      {
+        "title": "Ego-Exo4D: Understanding Skilled Human Activity from First- and Third-Person Perspectives",
+        "year": 2023,
+        "citations": 412
+      },
+      {
+        "title": "A Petri Dish for Histopathology Image Analysis",
+        "year": 2021,
+        "citations": 108
+      },
+      {
+        "title": "Learning To Recognize Procedural Activities with Distant Supervision",
+        "year": 2022,
+        "citations": 102
+      }
+    ],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "dartmouth_csb",
+    "name": "Soroush Vosoughi",
+    "school": "Dartmouth College",
+    "department": "Computer Science / Quantitative Biomedical Sciences",
+    "email": null,
+    "url": "https://www.cs.dartmouth.edu/~soroush/",
+    "research_areas": [
+      "NLP",
+      "misinformation detection",
+      "social media analysis",
+      "computational social science",
+      "AI for health"
+    ],
+    "semantic_scholar_id": "1918441",
+    "h_index": 31,
+    "citation_count": 11779,
+    "recent_top_papers": [
+      {
+        "title": "Language Models are Multilingual Chain-of-Thought Reasoners",
+        "year": 2022,
+        "citations": 569
+      },
+      {
+        "title": "Training Socially Aligned Language Models in Simulated Human Society",
+        "year": 2023,
+        "citations": 131
+      },
+      {
+        "title": "Judging the Judges: A Systematic Study of Position Bias in LLM-as-a-Judge",
+        "year": 2024,
+        "citations": 122
+      },
+      {
+        "title": "Mind's Eye: Grounded Language Model Reasoning through Simulation",
+        "year": 2022,
+        "citations": 98
+      },
+      {
+        "title": "Training Socially Aligned Language Models on Simulated Social Interactions",
+        "year": 2023,
+        "citations": 96
+      }
+    ],
+    "funding_agencies": [
+      "NSF"
+    ],
+    "total_active_funding_usd": 213000,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "dartmouth_csb",
+    "name": "Eugene Santos Jr",
+    "school": "Dartmouth College",
+    "department": "Computer Science / Quantitative Biomedical Sciences",
+    "email": null,
+    "url": "https://engineering.dartmouth.edu/community/faculty/eugene-santos",
+    "research_areas": [
+      "AI",
+      "Bayesian networks",
+      "decision making",
+      "human-AI interaction",
+      "cognitive modeling"
+    ],
+    "semantic_scholar_id": "2332698756",
+    "h_index": 1,
+    "citation_count": 1,
+    "recent_top_papers": [
+      {
+        "title": "Declarative Logic-Based Pareto-Optimal Agent Decision Making",
+        "year": 2024,
+        "citations": 1
+      }
+    ],
+    "funding_agencies": [
+      "NSF"
+    ],
+    "total_active_funding_usd": 60439,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "dartmouth_csb",
+    "name": "Gevorg Grigoryan",
+    "school": "Dartmouth College",
+    "department": "Computer Science / Quantitative Biomedical Sciences",
+    "email": null,
+    "url": "http://grigoryanlab.org/",
+    "research_areas": [
+      "computational protein design",
+      "structural bioinformatics",
+      "machine learning for proteins",
+      "membrane proteins"
+    ],
+    "semantic_scholar_id": "2276647011",
+    "h_index": 1,
+    "citation_count": 19,
+    "recent_top_papers": [
+      {
+        "title": "AI Chatbots: Developing English Language Proficiency in EFL Classroom",
+        "year": 2024,
+        "citations": 19
+      },
+      {
+        "title": "The Philosophy of the Concept “Privacy” in English and Chinese Linguoculture",
+        "year": 2023,
+        "citations": 1
+      },
+      {
+        "title": "HISTORICAL HOMELAND IN THE PERCEPTION OF THE ARMENIAN YOUTH IN THE ROSTOV REGION",
+        "year": 2026,
+        "citations": 0
+      },
+      {
+        "title": "THE INTEGRATION OF MONDLY VR IN CHINESE EFL CLASSROOMS: A CASE STUDY",
+        "year": 2026,
+        "citations": 0
+      },
+      {
+        "title": "Abstract 4370840: Heparin-Resistant Massive Pulmonary Embolism in a Young Female: A Multi-Hit Thrombotic Storm",
+        "year": 2025,
+        "citations": 0
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 2710313,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "dartmouth_csb",
+    "name": "Scott Palisano",
+    "school": "Dartmouth College",
+    "department": "Computer Science / Quantitative Biomedical Sciences",
+    "email": null,
+    "url": "https://web.cs.dartmouth.edu/people/scott-d-pakin",
+    "research_areas": [
+      "high-performance computing",
+      "parallel computing",
+      "scientific computing",
+      "bioinformatics pipelines"
+    ],
+    "semantic_scholar_id": null,
+    "h_index": null,
+    "citation_count": null,
+    "recent_top_papers": [],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "harvard_csb",
+    "name": "Finale Doshi-Velez",
+    "school": "Harvard University",
+    "department": "Computer Science / Computational Biology",
+    "email": "finale@seas.harvard.edu",
+    "url": "https://finale.seas.harvard.edu/",
+    "research_areas": [
+      "machine learning",
+      "healthcare AI",
+      "interpretability",
+      "Bayesian methods",
+      "clinical decision support"
+    ],
+    "semantic_scholar_id": "1388372395",
+    "h_index": 57,
+    "citation_count": 17607,
+    "recent_top_papers": [
+      {
+        "title": "Ethical and regulatory challenges of large language models in medicine.",
+        "year": 2024,
+        "citations": 191
+      },
+      {
+        "title": "Promises and Pitfalls of Black-Box Concept Learning Models",
+        "year": 2021,
+        "citations": 131
+      },
+      {
+        "title": "Addressing Leakage in Concept Bottleneck Models",
+        "year": 2022,
+        "citations": 127
+      },
+      {
+        "title": "Gathering Strength, Gathering Storms: The One Hundred Year Study on Artificial Intelligence (AI100) 2021 Study Panel Report",
+        "year": 2022,
+        "citations": 124
+      },
+      {
+        "title": "Connecting Algorithmic Research and Usage Contexts: A Perspective of Contextualized Evaluation for Explainable AI",
+        "year": 2022,
+        "citations": 95
+      }
+    ],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "harvard_csb",
+    "name": "Hanspeter Pfister",
+    "school": "Harvard University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://vcg.seas.harvard.edu/people/hanspeter-pfister",
+    "research_areas": [
+      "data visualization",
+      "biomedical image analysis",
+      "visual analytics",
+      "connectomics"
+    ],
+    "semantic_scholar_id": "2062947008",
+    "h_index": 17,
+    "citation_count": 3236,
+    "recent_top_papers": [
+      {
+        "title": "MITI minimum information guidelines for highly multiplexed tissue images",
+        "year": 2021,
+        "citations": 64
+      },
+      {
+        "title": "Lymphocyte networks are dynamic cellular communities in the immunoregulatory landscape of lung adenocarcinoma",
+        "year": 2022,
+        "citations": 53
+      },
+      {
+        "title": "iBall: Augmenting Basketball Videos with Gaze-moderated Embedded Visualizations",
+        "year": 2023,
+        "citations": 43
+      },
+      {
+        "title": "Beyond Generating Code: Evaluating GPT on a Data Visualization Course",
+        "year": 2023,
+        "citations": 37
+      },
+      {
+        "title": "The Quest for : Embedded Visualization for Augmenting Basketball Game Viewing Experiences",
+        "year": 2022,
+        "citations": 36
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 14641791,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "harvard_csb",
+    "name": "Michael Mitzenmacher",
+    "school": "Harvard University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.eecs.harvard.edu/~michaelm/",
+    "research_areas": [
+      "algorithms",
+      "randomized algorithms",
+      "network coding",
+      "machine learning theory"
+    ],
+    "semantic_scholar_id": "1745699",
+    "h_index": 78,
+    "citation_count": 38209,
+    "recent_top_papers": [
+      {
+        "title": "Designing sensitive viral diagnostics with machine learning",
+        "year": 2022,
+        "citations": 86
+      },
+      {
+        "title": "Gradient Disaggregation: Breaking Privacy in Federated Learning by Reconstructing the User Participant Matrix",
+        "year": 2021,
+        "citations": 78
+      },
+      {
+        "title": "EDEN: Communication-Efficient and Robust Distributed Mean Estimation for Federated Learning",
+        "year": 2021,
+        "citations": 63
+      },
+      {
+        "title": "DRIVE: One-bit Distributed Mean Estimation",
+        "year": 2021,
+        "citations": 63
+      },
+      {
+        "title": "SALSA: Self-Adjusting Lean Streaming Analytics",
+        "year": 2021,
+        "citations": 47
+      }
+    ],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "harvard_csb",
+    "name": "Flavio Calmon",
+    "school": "Harvard University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://people.seas.harvard.edu/~flavio/",
+    "research_areas": [
+      "information theory",
+      "machine learning",
+      "fairness",
+      "privacy"
+    ],
+    "semantic_scholar_id": "1808610",
+    "h_index": 11,
+    "citation_count": 467,
+    "recent_top_papers": [
+      {
+        "title": "Dark Count Rate in Single-Photon Avalanche Diodes: Characterization and Modeling study",
+        "year": 2021,
+        "citations": 14
+      },
+      {
+        "title": "Architecture optimization of SPAD integrated in 28nm FD-SOI CMOS technology to reduce the DCR",
+        "year": 2022,
+        "citations": 11
+      },
+      {
+        "title": "An Ultrafast Active Quenching Active Reset Circuit with 50% SPAD Afterpulsing Reduction in a 28 nm FD-SOI CMOS Technology Using Body Biasing Technique",
+        "year": 2021,
+        "citations": 10
+      },
+      {
+        "title": "Characterization and modeling of DCR and DCR drift variability in SPADs",
+        "year": 2023,
+        "citations": 6
+      },
+      {
+        "title": "Statistical measurements and Monte-Carlo simulations of DCR in SPADs",
+        "year": 2022,
+        "citations": 6
+      }
+    ],
+    "funding_agencies": [
+      "NSF"
+    ],
+    "total_active_funding_usd": 250000,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "harvard_csb",
+    "name": "Debora Marks",
+    "school": "Harvard University",
+    "department": "Computer Science / Computational Biology",
+    "email": "debbie@hms.harvard.edu",
+    "url": "https://marks.hms.harvard.edu/",
+    "research_areas": [
+      "computational biology",
+      "protein structure prediction",
+      "evolutionary couplings",
+      "generative models for proteins",
+      "RNA structure"
+    ],
+    "semantic_scholar_id": "2625166",
+    "h_index": 60,
+    "citation_count": 28781,
+    "recent_top_papers": [
+      {
+        "title": "Disease variant prediction with deep generative models of evolutionary data",
+        "year": 2021,
+        "citations": 695
+      },
+      {
+        "title": "Protein design and variant prediction using autoregressive generative models",
+        "year": 2021,
+        "citations": 353
+      },
+      {
+        "title": "A deep learning algorithm to predict risk of pancreatic cancer from disease trajectories",
+        "year": 2023,
+        "citations": 265
+      },
+      {
+        "title": "Tranception: protein fitness prediction with autoregressive transformers and inference-time retrieval",
+        "year": 2022,
+        "citations": 236
+      },
+      {
+        "title": "scPerturb: Harmonized Single-Cell Perturbation Data",
+        "year": 2023,
+        "citations": 143
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 9095957,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "harvard_csb",
+    "name": "Peter Park",
+    "school": "Harvard University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://compbio.hms.harvard.edu/",
+    "research_areas": [
+      "computational biology",
+      "epigenomics",
+      "chromatin",
+      "cancer genomics",
+      "single-cell genomics"
+    ],
+    "semantic_scholar_id": "144636458",
+    "h_index": 111,
+    "citation_count": 98255,
+    "recent_top_papers": [
+      {
+        "title": "The origins and genetic interactions of KRAS mutations are allele- and tissue-specific",
+        "year": 2021,
+        "citations": 162
+      },
+      {
+        "title": "A framework for individualized splice-switching oligonucleotide therapy",
+        "year": 2023,
+        "citations": 107
+      },
+      {
+        "title": "Landmarks of human embryonic development inscribed in somatic mutations",
+        "year": 2021,
+        "citations": 99
+      },
+      {
+        "title": "Comprehensive identification of transposable element insertions using multiple sequencing technologies",
+        "year": 2021,
+        "citations": 82
+      },
+      {
+        "title": "The 4D Nucleome Data Portal as a resource for searching and visualizing curated nucleomics data",
+        "year": 2022,
+        "citations": 78
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 32463940,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "harvard_csb",
+    "name": "Shamil Sunyaev",
+    "school": "Harvard University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://genetics.bwh.harvard.edu/sunyaevlab/",
+    "research_areas": [
+      "computational genetics",
+      "population genetics",
+      "variant interpretation",
+      "protein evolution"
+    ],
+    "semantic_scholar_id": "2611133",
+    "h_index": 87,
+    "citation_count": 71098,
+    "recent_top_papers": [
+      {
+        "title": "A cross-disorder dosage sensitivity map of the human genome",
+        "year": 2021,
+        "citations": 297
+      },
+      {
+        "title": "The landscape of tolerated genetic variation in humans and primates",
+        "year": 2023,
+        "citations": 134
+      },
+      {
+        "title": "The Parkinson's disease protein alpha-synuclein is a modulator of processing bodies and mRNA stability.",
+        "year": 2022,
+        "citations": 129
+      },
+      {
+        "title": "FAVOR: functional annotation of variants online resource and annotator for variation across the human genome",
+        "year": 2022,
+        "citations": 126
+      },
+      {
+        "title": "The missing link between genetic association and regulatory function",
+        "year": 2021,
+        "citations": 110
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 16709677,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "harvard_csb",
+    "name": "Pardis Sabeti",
+    "school": "Harvard University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.sabetilab.org/",
+    "research_areas": [
+      "computational genomics",
+      "infectious disease genomics",
+      "evolution",
+      "outbreak surveillance",
+      "machine learning for genomics"
+    ],
+    "semantic_scholar_id": "2138522",
+    "h_index": 87,
+    "citation_count": 48903,
+    "recent_top_papers": [
+      {
+        "title": "COVID-19 tissue atlases reveal SARS-CoV-2 pathology and cellular targets",
+        "year": 2021,
+        "citations": 683
+      },
+      {
+        "title": "Multiplexed CRISPR-based microfluidic platform for clinical testing of respiratory viruses and identification of SARS-CoV-2 variants",
+        "year": 2022,
+        "citations": 227
+      },
+      {
+        "title": "Analysis of 6.4 million SARS-CoV-2 genomes identifies mutations associated with fitness",
+        "year": 2022,
+        "citations": 197
+      },
+      {
+        "title": "Evolutionary constraint and innovation across hundreds of placental mammals",
+        "year": 2023,
+        "citations": 180
+      },
+      {
+        "title": "Simplified Cas13-based assays for the fast identification of SARS-CoV-2 and its variants",
+        "year": 2022,
+        "citations": 165
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 33070697,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "harvard_csb",
+    "name": "John Quackenbush",
+    "school": "Harvard University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://compbio.hms.harvard.edu/john-quackenbush",
+    "research_areas": [
+      "bioinformatics",
+      "cancer genomics",
+      "gene regulatory networks",
+      "network biology"
+    ],
+    "semantic_scholar_id": "144101458",
+    "h_index": 102,
+    "citation_count": 63702,
+    "recent_top_papers": [
+      {
+        "title": "Using graph convolutional neural networks to learn a representation for glycans",
+        "year": 2021,
+        "citations": 45
+      },
+      {
+        "title": "BRCA1 and RNAi factors promote repair mediated by small RNAs and PALB2–RAD52",
+        "year": 2021,
+        "citations": 42
+      },
+      {
+        "title": "Gene Targeting in Disease Networks",
+        "year": 2021,
+        "citations": 23
+      },
+      {
+        "title": "Predicting genotype-specific gene regulatory networks",
+        "year": 2021,
+        "citations": 16
+      },
+      {
+        "title": "Transcriptomics data availability and reusability in the transition from microarray to next-generation sequencing",
+        "year": 2021,
+        "citations": 11
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 12604783,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "harvard_csb",
+    "name": "Martin Nowak",
+    "school": "Harvard University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://nowak.iq.harvard.edu/",
+    "research_areas": [
+      "evolutionary dynamics",
+      "mathematical biology",
+      "cancer evolution",
+      "game theory",
+      "cooperation"
+    ],
+    "semantic_scholar_id": "2776502",
+    "h_index": 146,
+    "citation_count": 103676,
+    "recent_top_papers": [
+      {
+        "title": "A unified framework of direct and indirect reciprocity",
+        "year": 2021,
+        "citations": 127
+      },
+      {
+        "title": "Evolution of delayed resistance to immunotherapy in a melanoma responder",
+        "year": 2021,
+        "citations": 100
+      },
+      {
+        "title": "The Great Oxygenation Event as a consequence of ecological dynamics modulated by planetary change",
+        "year": 2021,
+        "citations": 58
+      },
+      {
+        "title": "Cooperation in alternating interactions with memory constraints",
+        "year": 2022,
+        "citations": 50
+      },
+      {
+        "title": "Fast and strong amplifiers of natural selection",
+        "year": 2021,
+        "citations": 46
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 1801822,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "harvard_csb",
+    "name": "David Parkes",
+    "school": "Harvard University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://parkes.seas.harvard.edu/",
+    "research_areas": [
+      "AI",
+      "multi-agent systems",
+      "mechanism design",
+      "machine learning",
+      "computational economics"
+    ],
+    "semantic_scholar_id": "30907562",
+    "h_index": 65,
+    "citation_count": 16617,
+    "recent_top_papers": [
+      {
+        "title": "Artificial Intelligence and Life in 2030: The One Hundred Year Study on Artificial Intelligence",
+        "year": 2022,
+        "citations": 199
+      },
+      {
+        "title": "Dynamic posted-price mechanisms for the blockchain transaction-fee market",
+        "year": 2021,
+        "citations": 112
+      },
+      {
+        "title": "Predictive Multiplicity in Probabilistic Classification",
+        "year": 2022,
+        "citations": 58
+      },
+      {
+        "title": "Strategic Liquidity Provision in Uniswap v3",
+        "year": 2021,
+        "citations": 57
+      },
+      {
+        "title": "Credible Decentralized Exchange Design via Verifiable Sequencing Rules",
+        "year": 2022,
+        "citations": 51
+      }
+    ],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "harvard_csb",
+    "name": "Yiling Chen",
+    "school": "Harvard University",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://yiling.seas.harvard.edu/",
+    "research_areas": [
+      "AI",
+      "economics",
+      "prediction markets",
+      "machine learning",
+      "social computing"
+    ],
+    "semantic_scholar_id": "117745152",
+    "h_index": 44,
+    "citation_count": 6716,
+    "recent_top_papers": [
+      {
+        "title": "Learning When to Advise Human Decision Makers",
+        "year": 2022,
+        "citations": 24
+      },
+      {
+        "title": "Effectiveness of industrial policy in supporting innovation: the role of internal and external corporate governance mechanism",
+        "year": 2021,
+        "citations": 18
+      },
+      {
+        "title": "The Limits of Multi-task Peer Prediction",
+        "year": 2021,
+        "citations": 11
+      },
+      {
+        "title": "Peer Prediction for Learning Agents",
+        "year": 2022,
+        "citations": 9
+      },
+      {
+        "title": "Persuading a Behavioral Agent: Approximately Best Responding and Learning",
+        "year": 2023,
+        "citations": 8
+      }
+    ],
+    "funding_agencies": [
+      "NSF"
+    ],
+    "total_active_funding_usd": 8760497,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "mit_csb",
+    "name": "Manolis Kellis",
+    "school": "MIT",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://compbio.mit.edu/",
+    "research_areas": [
+      "computational biology",
+      "genomics",
+      "epigenomics",
+      "gene regulation",
+      "disease genetics",
+      "single-cell analysis"
+    ],
+    "semantic_scholar_id": "2809250",
+    "h_index": 126,
+    "citation_count": 113764,
+    "recent_top_papers": [
+      {
+        "title": "Regulatory genomic circuitry of human disease loci by integrative epigenomics",
+        "year": 2021,
+        "citations": 334
+      },
+      {
+        "title": "Evolution of enhanced innate immune evasion by SARS-CoV-2",
+        "year": 2021,
+        "citations": 323
+      },
+      {
+        "title": "APOE4 disrupts intracellular lipid homeostasis in human iPSC-derived glia",
+        "year": 2021,
+        "citations": 271
+      },
+      {
+        "title": "Distinct metabolic programs established in the thymus control effector functions of γδ T cell subsets in tumor microenvironments",
+        "year": 2021,
+        "citations": 154
+      },
+      {
+        "title": "Population-scale tissue transcriptomics maps long non-coding RNAs to complex disease.",
+        "year": 2021,
+        "citations": 147
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 28232490,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "mit_csb",
+    "name": "David Gifford",
+    "school": "MIT",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "http://cgs.csail.mit.edu/",
+    "research_areas": [
+      "machine learning",
+      "computational biology",
+      "gene expression",
+      "epigenomics",
+      "protein design"
+    ],
+    "semantic_scholar_id": "145253803",
+    "h_index": 71,
+    "citation_count": 35696,
+    "recent_top_papers": [
+      {
+        "title": "Generative modeling of single-cell time series with PRESCIENT enables prediction of cell trajectories with interventions",
+        "year": 2021,
+        "citations": 110
+      },
+      {
+        "title": "Transcriptional dynamics of murine motor neuron maturation in vivo and in vitro",
+        "year": 2022,
+        "citations": 31
+      },
+      {
+        "title": "Training Data Attribution for Diffusion Models",
+        "year": 2023,
+        "citations": 25
+      },
+      {
+        "title": "An expansion of the non-coding genome and its regulatory potential underlies vertebrate neuronal diversity.",
+        "year": 2021,
+        "citations": 25
+      },
+      {
+        "title": "A high-throughput yeast display approach to profile pathogen proteomes for MHC-II binding",
+        "year": 2022,
+        "citations": 19
+      }
+    ],
+    "funding_agencies": [
+      "ALLCDC",
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 13382125,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "mit_csb",
+    "name": "Tommi Jaakkola",
+    "school": "MIT",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://people.csail.mit.edu/tommi/",
+    "research_areas": [
+      "machine learning",
+      "structured prediction",
+      "computational biology",
+      "graphical models",
+      "optimal transport"
+    ],
+    "semantic_scholar_id": "35132120",
+    "h_index": 110,
+    "citation_count": 56222,
+    "recent_top_papers": [
+      {
+        "title": "De novo design of protein structure and function with RFdiffusion",
+        "year": 2023,
+        "citations": 895
+      },
+      {
+        "title": "Conductance stable and mechanically durable bi-layer EGaIn composite-coated stretchable fiber for 1D bioelectronics",
+        "year": 2023,
+        "citations": 608
+      },
+      {
+        "title": "Boltz-1 Democratizing Biomolecular Interaction Modeling",
+        "year": 2024,
+        "citations": 313
+      },
+      {
+        "title": "SE(3) diffusion model with application to protein backbone generation",
+        "year": 2023,
+        "citations": 309
+      },
+      {
+        "title": "Boltz-2: Towards Accurate and Efficient Binding Affinity Prediction",
+        "year": 2025,
+        "citations": 285
+      }
+    ],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "mit_csb",
+    "name": "Regina Barzilay",
+    "school": "MIT",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://people.csail.mit.edu/regina/",
+    "research_areas": [
+      "natural language processing",
+      "oncology AI",
+      "drug discovery",
+      "clinical NLP",
+      "machine learning for medicine"
+    ],
+    "semantic_scholar_id": "1741283",
+    "h_index": 98,
+    "citation_count": 36218,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 149953,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "mit_csb",
+    "name": "Caroline Uhler",
+    "school": "MIT",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://www.carolineuhler.com/",
+    "research_areas": [
+      "machine learning",
+      "causality",
+      "genomics",
+      "statistics",
+      "optimal transport",
+      "cell biology"
+    ],
+    "semantic_scholar_id": "3338091",
+    "h_index": 41,
+    "citation_count": 5595,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 8232972,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "mit_csb",
+    "name": "Bonnie Berger",
+    "school": "MIT",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://math.mit.edu/~bab/",
+    "research_areas": [
+      "computational biology",
+      "bioinformatics",
+      "algorithms",
+      "protein structure",
+      "genomics",
+      "privacy-preserving genomics"
+    ],
+    "semantic_scholar_id": "2055375815",
+    "h_index": 3,
+    "citation_count": 58,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 22671089,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "mit_csb",
+    "name": "Ernest Fraenkel",
+    "school": "MIT",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://fraenkel-lab.mit.edu/",
+    "research_areas": [
+      "systems biology",
+      "network analysis",
+      "proteomics",
+      "neurodegenerative disease",
+      "chromatin biology"
+    ],
+    "semantic_scholar_id": "1776130",
+    "h_index": 54,
+    "citation_count": 18314,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 22668569,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "mit_csb",
+    "name": "Polina Golland",
+    "school": "MIT",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://people.csail.mit.edu/polina/",
+    "research_areas": [
+      "medical image analysis",
+      "machine learning",
+      "computational anatomy",
+      "brain imaging",
+      "statistical methods"
+    ],
+    "semantic_scholar_id": "1729630",
+    "h_index": 56,
+    "citation_count": 22736,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 1338848,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "mit_csb",
+    "name": "Dina Katabi",
+    "school": "MIT",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://people.csail.mit.edu/dina/",
+    "research_areas": [
+      "wireless sensing",
+      "health monitoring",
+      "deep learning",
+      "RF-based health AI",
+      "Alzheimer's monitoring"
+    ],
+    "semantic_scholar_id": "1785714",
+    "h_index": 94,
+    "citation_count": 33717,
+    "recent_top_papers": [
+      {
+        "title": "Delving into Deep Imbalanced Regression",
+        "year": 2021,
+        "citations": 382
+      },
+      {
+        "title": "Improving CLIP Training with Language Rewrites",
+        "year": 2023,
+        "citations": 275
+      },
+      {
+        "title": "MAGE: MAsked Generative Encoder to Unify Representation Learning and Image Synthesis",
+        "year": 2022,
+        "citations": 261
+      },
+      {
+        "title": "Artificial intelligence-enabled detection and assessment of Parkinson’s disease using nocturnal breathing signals",
+        "year": 2022,
+        "citations": 256
+      },
+      {
+        "title": "Targeted Supervised Contrastive Learning for Long-Tailed Recognition",
+        "year": 2021,
+        "citations": 255
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 642126,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "mit_csb",
+    "name": "Collin Stultz",
+    "school": "MIT",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://stultz.csail.mit.edu/",
+    "research_areas": [
+      "machine learning",
+      "cardiology",
+      "medical AI",
+      "protein folding",
+      "clinical predictions"
+    ],
+    "semantic_scholar_id": "2088297",
+    "h_index": 33,
+    "citation_count": 3541,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 439265,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "mit_csb",
+    "name": "James Collins",
+    "school": "MIT",
+    "department": "Computer Science / Computational Biology",
+    "email": null,
+    "url": "https://collinslab.mit.edu/",
+    "research_areas": [
+      "synthetic biology",
+      "antibiotic resistance",
+      "AI drug discovery",
+      "gene circuits",
+      "CRISPR diagnostics"
+    ],
+    "semantic_scholar_id": "2231125920",
+    "h_index": 124,
+    "citation_count": 77379,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 39516260,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "penn_csb",
+    "name": "Lyle Ungar",
+    "school": "University of Pennsylvania",
+    "department": "Computer and Information Science / Genomics and Computational Biology",
+    "email": null,
+    "url": "https://www.cis.upenn.edu/~ungar/",
+    "research_areas": [
+      "machine learning",
+      "NLP",
+      "bioinformatics",
+      "social media analysis",
+      "mental health AI"
+    ],
+    "semantic_scholar_id": "1717822",
+    "h_index": 21,
+    "citation_count": 10882,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 3822584,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "penn_csb",
+    "name": "Junhyong Kim",
+    "school": "University of Pennsylvania",
+    "department": "Computer and Information Science / Genomics and Computational Biology",
+    "email": null,
+    "url": "https://kim.bio.upenn.edu/",
+    "research_areas": [
+      "bioinformatics",
+      "single-cell genomics",
+      "stochastic gene expression",
+      "cell lineage",
+      "transcriptomics"
+    ],
+    "semantic_scholar_id": "82101484",
+    "h_index": 56,
+    "citation_count": 13810,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 37525065,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "penn_csb",
+    "name": "Jason Moore",
+    "school": "University of Pennsylvania",
+    "department": "Computer and Information Science / Genomics and Computational Biology",
+    "email": null,
+    "url": "https://www.med.upenn.edu/apps/faculty/index.php/g275/p8803688",
+    "research_areas": [
+      "bioinformatics",
+      "epistasis",
+      "machine learning for genomics",
+      "complex disease",
+      "precision medicine"
+    ],
+    "semantic_scholar_id": "47623525",
+    "h_index": 30,
+    "citation_count": 6585,
+    "recent_top_papers": [
+      {
+        "title": "A manifesto on explainability for artificial intelligence in medicine",
+        "year": 2022,
+        "citations": 130
+      },
+      {
+        "title": "The Cosmos Collaborative: A Vendor-Facilitated Electronic Health Record Data Aggregation Platform",
+        "year": 2021,
+        "citations": 97
+      },
+      {
+        "title": "Why Is the Electronic Health Record So Challenging for Research and Clinical Care?",
+        "year": 2021,
+        "citations": 97
+      },
+      {
+        "title": "Long-term kidney function recovery and mortality after COVID-19-associated acute kidney injury: An international multi-centre observational cohort study.",
+        "year": 2023,
+        "citations": 64
+      },
+      {
+        "title": "A flexible symbolic regression method for constructing interpretable clinical prediction models",
+        "year": 2023,
+        "citations": 39
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 40089671,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "penn_csb",
+    "name": "Stratos Idreos",
+    "school": "University of Pennsylvania",
+    "department": "Computer and Information Science / Genomics and Computational Biology",
+    "email": null,
+    "url": "https://stratos.seas.harvard.edu/",
+    "research_areas": [
+      "database systems",
+      "data structures",
+      "ML systems",
+      "storage",
+      "adaptive indexing"
+    ],
+    "semantic_scholar_id": "2203901",
+    "h_index": 41,
+    "citation_count": 5965,
+    "recent_top_papers": [],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "penn_csb",
+    "name": "Dan Roth",
+    "school": "University of Pennsylvania",
+    "department": "Computer and Information Science / Genomics and Computational Biology",
+    "email": null,
+    "url": "https://www.cis.upenn.edu/~danroth/",
+    "research_areas": [
+      "NLP",
+      "machine learning",
+      "knowledge representation",
+      "information extraction",
+      "question answering"
+    ],
+    "semantic_scholar_id": "144590225",
+    "h_index": 99,
+    "citation_count": 38688,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "NSF"
+    ],
+    "total_active_funding_usd": 21758741,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "penn_csb",
+    "name": "Kostas Daniilidis",
+    "school": "University of Pennsylvania",
+    "department": "Computer and Information Science / Genomics and Computational Biology",
+    "email": null,
+    "url": "https://www.grasp.upenn.edu/people/kostas-daniilidis",
+    "research_areas": [
+      "computer vision",
+      "robotics",
+      "3D perception",
+      "visual learning",
+      "omnidirectional vision"
+    ],
+    "semantic_scholar_id": "1751586",
+    "h_index": 78,
+    "citation_count": 26500,
+    "recent_top_papers": [
+      {
+        "title": "Probabilistic Modeling for Human Mesh Recovery",
+        "year": 2021,
+        "citations": 200
+      },
+      {
+        "title": "Learning to Map for Active Semantic Goal Navigation",
+        "year": 2021,
+        "citations": 103
+      },
+      {
+        "title": "M3ED: Multi-Robot, Multi-Sensor, Multi-Environment Event Dataset",
+        "year": 2023,
+        "citations": 84
+      },
+      {
+        "title": "CaDeX: Learning Canonical Deformation Coordinate Space for Dynamic Surface Representation via Neural Homeomorphism",
+        "year": 2022,
+        "citations": 71
+      },
+      {
+        "title": "SE(3)-Equivariant Attention Networks for Shape Reconstruction in Function Space",
+        "year": 2022,
+        "citations": 40
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 1885535,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "penn_csb",
+    "name": "Osbert Bastani",
+    "school": "University of Pennsylvania",
+    "department": "Computer and Information Science / Genomics and Computational Biology",
+    "email": null,
+    "url": "https://obastani.github.io/",
+    "research_areas": [
+      "machine learning",
+      "program synthesis",
+      "safe AI",
+      "robustness",
+      "neurosymbolic AI"
+    ],
+    "semantic_scholar_id": "1697444",
+    "h_index": 38,
+    "citation_count": 6937,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 553869,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "penn_csb",
+    "name": "Cesar de la Fuente",
+    "school": "University of Pennsylvania",
+    "department": "Computer and Information Science / Genomics and Computational Biology",
+    "email": null,
+    "url": "https://www.delafuentelab.com/",
+    "research_areas": [
+      "synthetic biology",
+      "antimicrobial peptides",
+      "AI-driven drug discovery",
+      "computational protein design",
+      "antibiotics"
+    ],
+    "semantic_scholar_id": "1398201948",
+    "h_index": 17,
+    "citation_count": 1227,
+    "recent_top_papers": [
+      {
+        "title": "Discovery of antimicrobial peptides in the global microbiome with machine learning.",
+        "year": 2024,
+        "citations": 271
+      },
+      {
+        "title": "Mining human microbiomes reveals an untapped source of peptide antibiotics",
+        "year": 2024,
+        "citations": 114
+      },
+      {
+        "title": "From Data to Decisions: Leveraging Artificial Intelligence and Machine Learning in Combating Antimicrobial Resistance – a Comprehensive Review",
+        "year": 2024,
+        "citations": 46
+      },
+      {
+        "title": "Geometric deep learning as a potential tool for antimicrobial peptide prediction",
+        "year": 2023,
+        "citations": 29
+      },
+      {
+        "title": "Polyproline peptide targets Klebsiella pneumoniae polysaccharides to collapse biofilms",
+        "year": 2024,
+        "citations": 16
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 1822722,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "penn_csb",
+    "name": "Benjamin Voight",
+    "school": "University of Pennsylvania",
+    "department": "Computer and Information Science / Genomics and Computational Biology",
+    "email": null,
+    "url": "https://voightlab.org/",
+    "research_areas": [
+      "statistical genetics",
+      "GWAS",
+      "population genetics",
+      "cardiometabolic disease",
+      "selection"
+    ],
+    "semantic_scholar_id": "1769272",
+    "h_index": 93,
+    "citation_count": 73224,
+    "recent_top_papers": [
+      {
+        "title": "Genetic drivers of heterogeneity in type 2 diabetes pathophysiology",
+        "year": 2024,
+        "citations": 377
+      },
+      {
+        "title": "Large-scale genome-wide association study of coronary artery disease in genetically diverse populations",
+        "year": 2022,
+        "citations": 269
+      },
+      {
+        "title": "Diversity and scale: Genetic architecture of 2068 traits in the VA Million Veteran Program",
+        "year": 2024,
+        "citations": 257
+      },
+      {
+        "title": "A multiancestry genome-wide association study of unexplained chronic ALT elevation as a proxy for nonalcoholic fatty liver disease with histological and radiological validation",
+        "year": 2022,
+        "citations": 155
+      },
+      {
+        "title": "Epigenomic and transcriptomic analyses define core cell types, genes and targetable mechanisms for kidney disease",
+        "year": 2022,
+        "citations": 152
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 18803441,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "princeton_csb",
+    "name": "Olga Troyanskaya",
+    "school": "Princeton University",
+    "department": "Computer Science / Quantitative and Computational Biology",
+    "email": null,
+    "url": "https://function.princeton.edu/",
+    "research_areas": [
+      "bioinformatics",
+      "machine learning",
+      "genomics",
+      "gene networks",
+      "disease genetics",
+      "functional genomics"
+    ],
+    "semantic_scholar_id": "1754521",
+    "h_index": 71,
+    "citation_count": 28141,
+    "recent_top_papers": [
+      {
+        "title": "SynNotch-CAR T cells overcome challenges of specificity, heterogeneity, and persistence in treating glioblastoma",
+        "year": 2021,
+        "citations": 409
+      },
+      {
+        "title": "A sequence-based global map of regulatory activity for deciphering human genetics",
+        "year": 2021,
+        "citations": 240
+      },
+      {
+        "title": "Rationale and design of the Kidney Precision Medicine Project.",
+        "year": 2021,
+        "citations": 147
+      },
+      {
+        "title": "Oral mucosal breaks trigger anti-citrullinated bacterial and human protein antibody responses in rheumatoid arthritis",
+        "year": 2023,
+        "citations": 80
+      },
+      {
+        "title": "Decoding disease: from genomes to networks to phenotypes",
+        "year": 2021,
+        "citations": 67
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 11278003,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "princeton_csb",
+    "name": "Benjamin Raphael",
+    "school": "Princeton University",
+    "department": "Computer Science / Quantitative and Computational Biology",
+    "email": null,
+    "url": "https://raphael.princeton.edu/",
+    "research_areas": [
+      "computational cancer genomics",
+      "structural variation",
+      "cancer evolution",
+      "algorithms",
+      "single-cell analysis"
+    ],
+    "semantic_scholar_id": "35016672",
+    "h_index": 66,
+    "citation_count": 51934,
+    "recent_top_papers": [
+      {
+        "title": "Spatial epigenome–transcriptome co-profiling of mammalian tissues",
+        "year": 2023,
+        "citations": 332
+      },
+      {
+        "title": "Alignment and Integration of Spatial Transcriptomics Data",
+        "year": 2021,
+        "citations": 100
+      },
+      {
+        "title": "Comprehensive characterization of 536 patient-derived xenograft models prioritizes candidates for targeted treatment",
+        "year": 2021,
+        "citations": 85
+      },
+      {
+        "title": "Partial alignment of multislice spatially resolved transcriptomics data",
+        "year": 2023,
+        "citations": 54
+      },
+      {
+        "title": "A path to translation: How 3D patient tumor avatars enable next generation precision oncology.",
+        "year": 2022,
+        "citations": 45
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 13660543,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "princeton_csb",
+    "name": "Mona Singh",
+    "school": "Princeton University",
+    "department": "Computer Science / Quantitative and Computational Biology",
+    "email": null,
+    "url": "https://www.cs.princeton.edu/~mona/",
+    "research_areas": [
+      "computational biology",
+      "protein interactions",
+      "network biology",
+      "cancer genomics",
+      "algorithms"
+    ],
+    "semantic_scholar_id": "1610775741",
+    "h_index": 10,
+    "citation_count": 465,
+    "recent_top_papers": [
+      {
+        "title": "Gene regulation of Intracellular adhesion Molecule-1 (ICAM-1): A molecule with multiple functions.",
+        "year": 2021,
+        "citations": 69
+      },
+      {
+        "title": "Metabolic Reprogramming in Tumor-Associated Macrophages in the Ovarian Tumor Microenvironment",
+        "year": 2022,
+        "citations": 30
+      },
+      {
+        "title": "The 1, 2-ethylenediamine SQ109 protects against tuberculosis by promoting M1 macrophage polarization through the p38 MAPK pathway",
+        "year": 2022,
+        "citations": 19
+      },
+      {
+        "title": "Monkeypox virus: phylogenomics, host–pathogen interactome and mutational cascade",
+        "year": 2023,
+        "citations": 11
+      },
+      {
+        "title": "Monkey Pox Virus (MPXV): Phylogenomics, Host-Pathogen Interactome, and Mutational Cascade",
+        "year": 2022,
+        "citations": 7
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 18955283,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "princeton_csb",
+    "name": "Ryan Adams",
+    "school": "Princeton University",
+    "department": "Computer Science / Quantitative and Computational Biology",
+    "email": null,
+    "url": "https://www.cs.princeton.edu/~rpa/",
+    "research_areas": [
+      "machine learning",
+      "probabilistic models",
+      "Bayesian deep learning",
+      "computational biology",
+      "hardware-aware ML"
+    ],
+    "semantic_scholar_id": "32745356",
+    "h_index": 25,
+    "citation_count": 2393,
+    "recent_top_papers": [
+      {
+        "title": "Ten weeks in: COVID-19-related distress in adults with autism spectrum disorder",
+        "year": 2021,
+        "citations": 40
+      },
+      {
+        "title": "Factors Associated With Bullying Victimization and Bullying Perpetration in Children and Adolescents With ADHD: 2016 to 2017 National Survey of Children’s Health",
+        "year": 2022,
+        "citations": 28
+      },
+      {
+        "title": "Job loss predicts worsening depressive symptoms for young adults with autism: A COVID‐19 natural experiment",
+        "year": 2021,
+        "citations": 27
+      },
+      {
+        "title": "Depression in independent young adults on the autism spectrum: Demographic characteristics, service use, and barriers",
+        "year": 2021,
+        "citations": 24
+      },
+      {
+        "title": "Solitude and affect during emerging adulthood: When, and for whom, spending time alone is related to positive and negative affect during social interactions",
+        "year": 2022,
+        "citations": 19
+      }
+    ],
+    "funding_agencies": [
+      "ALLCDC",
+      "NIH",
+      "NSF",
+      "SAMSHA"
+    ],
+    "total_active_funding_usd": 14469344,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "princeton_csb",
+    "name": "Tom Griffiths",
+    "school": "Princeton University",
+    "department": "Computer Science / Quantitative and Computational Biology",
+    "email": null,
+    "url": "https://cocosci.princeton.edu/",
+    "research_areas": [
+      "cognitive science",
+      "machine learning",
+      "Bayesian models",
+      "causal reasoning",
+      "language and thought"
+    ],
+    "semantic_scholar_id": "1799860",
+    "h_index": 99,
+    "citation_count": 49879,
+    "recent_top_papers": [
+      {
+        "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+        "year": 2023,
+        "citations": 3809
+      },
+      {
+        "title": "Integrating explanation and prediction in computational social science",
+        "year": 2021,
+        "citations": 286
+      },
+      {
+        "title": "Are Convolutional Neural Networks or Transformers more like human vision?",
+        "year": 2021,
+        "citations": 226
+      },
+      {
+        "title": "Using large-scale experiments and machine learning to discover theories of human decision-making",
+        "year": 2021,
+        "citations": 219
+      },
+      {
+        "title": "People construct simplified mental representations to plan",
+        "year": 2021,
+        "citations": 130
+      }
+    ],
+    "funding_agencies": [
+      "NSF"
+    ],
+    "total_active_funding_usd": 1809931,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "princeton_csb",
+    "name": "Barbara Engelhardt",
+    "school": "Princeton University",
+    "department": "Computer Science / Quantitative and Computational Biology",
+    "email": null,
+    "url": "https://www.cs.princeton.edu/~bee/",
+    "research_areas": [
+      "machine learning",
+      "genomics",
+      "Bayesian statistics",
+      "causal inference",
+      "single-cell genomics"
+    ],
+    "semantic_scholar_id": "3682691",
+    "h_index": 22,
+    "citation_count": 2000,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 9877194,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "princeton_csb",
+    "name": "Coleen Murphy",
+    "school": "Princeton University",
+    "department": "Computer Science / Quantitative and Computational Biology",
+    "email": null,
+    "url": "https://murphylab.princeton.edu/",
+    "research_areas": [
+      "aging",
+      "C. elegans genomics",
+      "longevity",
+      "germline biology",
+      "systems biology of aging"
+    ],
+    "semantic_scholar_id": "1957219",
+    "h_index": 44,
+    "citation_count": 11360,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 34669602,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "princeton_csb",
+    "name": "Joshua Shaevitz",
+    "school": "Princeton University",
+    "department": "Computer Science / Quantitative and Computational Biology",
+    "email": null,
+    "url": "https://shaevitzlab.princeton.edu/",
+    "research_areas": [
+      "biophysics",
+      "quantitative biology",
+      "cellular mechanics",
+      "bacterial motility",
+      "neural computation"
+    ],
+    "semantic_scholar_id": "2990761",
+    "h_index": 48,
+    "citation_count": 9932,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 9888417,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "princeton_csb",
+    "name": "Jared Toettcher",
+    "school": "Princeton University",
+    "department": "Computer Science / Quantitative and Computational Biology",
+    "email": null,
+    "url": "https://toettcherlab.princeton.edu/",
+    "research_areas": [
+      "cell signaling",
+      "optogenetics",
+      "synthetic biology",
+      "systems biology",
+      "MAPK pathway"
+    ],
+    "semantic_scholar_id": "2761386",
+    "h_index": 34,
+    "citation_count": 6008,
+    "recent_top_papers": [
+      {
+        "title": "Recording morphogen signals reveals mechanisms underlying gastruloid symmetry breaking",
+        "year": 2024,
+        "citations": 43
+      },
+      {
+        "title": "Substratum stiffness regulates Erk signaling dynamics through receptor-level control",
+        "year": 2021,
+        "citations": 41
+      },
+      {
+        "title": "Signaling, Deconstructed: Using Optogenetics to Dissect and Direct Information Flow in Biological Systems.",
+        "year": 2021,
+        "citations": 39
+      },
+      {
+        "title": "Optogenetic control of the Bicoid morphogen reveals fast and slow modes of gap gene regulation",
+        "year": 2021,
+        "citations": 30
+      },
+      {
+        "title": "Roadmap on biology in time varying environments",
+        "year": 2021,
+        "citations": 28
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 6866466,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "yale_csb",
+    "name": "Mark Gerstein",
+    "school": "Yale University",
+    "department": "Computer Science / Computational Biology and Bioinformatics",
+    "email": null,
+    "url": "https://medicine.yale.edu/lab/gerstein/",
+    "research_areas": [
+      "bioinformatics",
+      "genomics",
+      "gene regulation",
+      "network biology",
+      "non-coding RNA",
+      "single-cell analysis"
+    ],
+    "semantic_scholar_id": "1717018",
+    "h_index": 175,
+    "citation_count": 152385,
+    "recent_top_papers": [
+      {
+        "title": "Haplotype-resolved diverse human genomes and integrated analysis of structural variation",
+        "year": 2021,
+        "citations": 599
+      },
+      {
+        "title": "GENCODE: reference annotation for the human and mouse genomes in 2023",
+        "year": 2022,
+        "citations": 370
+      },
+      {
+        "title": "Broad transcriptomic dysregulation occurs across the cerebral cortex in ASD",
+        "year": 2022,
+        "citations": 206
+      },
+      {
+        "title": "FAVOR: functional annotation of variants online resource and annotator for variation across the human genome",
+        "year": 2022,
+        "citations": 126
+      },
+      {
+        "title": "Expectations and blind spots for structural variation detection from long-read assemblies and short-read genome sequencing technologies.",
+        "year": 2021,
+        "citations": 102
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 36251440,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "yale_csb",
+    "name": "Hongyu Zhao",
+    "school": "Yale University",
+    "department": "Computer Science / Computational Biology and Bioinformatics",
+    "email": null,
+    "url": "https://ysph.yale.edu/profile/hongyu_zhao/",
+    "research_areas": [
+      "biostatistics",
+      "genomics",
+      "statistical genetics",
+      "bioinformatics",
+      "Bayesian methods"
+    ],
+    "semantic_scholar_id": "145400502",
+    "h_index": 96,
+    "citation_count": 35118,
+    "recent_top_papers": [
+      {
+        "title": "Neoantigen-driven B cell and CD4 T follicular helper cell collaboration promotes anti-tumor CD8 T cell responses.",
+        "year": 2021,
+        "citations": 373
+      },
+      {
+        "title": "A reservoir of stem-like CD8+ T cells in the tumor-draining lymph node preserves the ongoing antitumor immune response",
+        "year": 2021,
+        "citations": 288
+      },
+      {
+        "title": "Hematopoietic mosaic chromosomal alterations increase the risk for diverse types of infection",
+        "year": 2021,
+        "citations": 152
+      },
+      {
+        "title": "Mendelian randomization for causal inference accounting for pleiotropy and sample structure using genome-wide summary statistics",
+        "year": 2022,
+        "citations": 96
+      },
+      {
+        "title": "A unified framework for cross-population trait prediction by leveraging the genetic correlation of polygenic traits.",
+        "year": 2021,
+        "citations": 89
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 32907164,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "yale_csb",
+    "name": "Yuval Kluger",
+    "school": "Yale University",
+    "department": "Computer Science / Computational Biology and Bioinformatics",
+    "email": null,
+    "url": "https://medicine.yale.edu/lab/kluger/",
+    "research_areas": [
+      "computational biology",
+      "single-cell genomics",
+      "machine learning",
+      "epigenomics",
+      "cancer biology"
+    ],
+    "semantic_scholar_id": "40021520",
+    "h_index": 70,
+    "citation_count": 20298,
+    "recent_top_papers": [
+      {
+        "title": "Inflammasome activation in infected macrophages drives COVID-19 pathology",
+        "year": 2021,
+        "citations": 414
+      },
+      {
+        "title": "Spatial epigenome–transcriptome co-profiling of mammalian tissues",
+        "year": 2023,
+        "citations": 332
+      },
+      {
+        "title": "Zero-preserving imputation of single-cell RNA-seq data",
+        "year": 2022,
+        "citations": 218
+      },
+      {
+        "title": "IL-10 constrains sphingolipid metabolism to limit inflammation",
+        "year": 2024,
+        "citations": 188
+      },
+      {
+        "title": "NIH SenNet Consortium to map senescent cells throughout the human lifespan to understand physiological health.",
+        "year": 2022,
+        "citations": 104
+      }
+    ],
+    "funding_agencies": [
+      "NIH"
+    ],
+    "total_active_funding_usd": 24446326,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "yale_csb",
+    "name": "Amin Karbasi",
+    "school": "Yale University",
+    "department": "Computer Science / Computational Biology and Bioinformatics",
+    "email": null,
+    "url": "https://seas.yale.edu/faculty-research/faculty-directory/amin-karbasi",
+    "research_areas": [
+      "machine learning",
+      "optimization",
+      "submodular functions",
+      "Bayesian learning",
+      "information theory"
+    ],
+    "semantic_scholar_id": "1697131",
+    "h_index": 40,
+    "citation_count": 5518,
+    "recent_top_papers": [
+      {
+        "title": "Conditional Gradient Methods",
+        "year": 2022,
+        "citations": 82
+      },
+      {
+        "title": "KDEformer: Accelerating Transformers via Kernel Density Estimation",
+        "year": 2023,
+        "citations": 55
+      },
+      {
+        "title": "Parallelizing Thompson Sampling",
+        "year": 2021,
+        "citations": 30
+      },
+      {
+        "title": "Repeated Random Sampling for Minimizing the Time-to-Accuracy of Learning",
+        "year": 2023,
+        "citations": 29
+      },
+      {
+        "title": "Batched Neural Bandits",
+        "year": 2021,
+        "citations": 29
+      }
+    ],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "yale_csb",
+    "name": "Rex Ying",
+    "school": "Yale University",
+    "department": "Computer Science / Computational Biology and Bioinformatics",
+    "email": null,
+    "url": "https://cs.yale.edu/homes/ying-rex/",
+    "research_areas": [
+      "graph neural networks",
+      "machine learning",
+      "explainability",
+      "drug discovery",
+      "knowledge graphs"
+    ],
+    "semantic_scholar_id": "83539859",
+    "h_index": 30,
+    "citation_count": 17472,
+    "recent_top_papers": [
+      {
+        "title": "Identity-aware Graph Neural Networks",
+        "year": 2021,
+        "citations": 312
+      },
+      {
+        "title": "GraphFramEx: Towards Systematic Evaluation of Explainability Methods for Graph Neural Networks",
+        "year": 2022,
+        "citations": 85
+      },
+      {
+        "title": "Modeling Heterogeneous Hierarchies with Relation-specific Hyperbolic Cones",
+        "year": 2021,
+        "citations": 76
+      },
+      {
+        "title": "Graph Ensemble Learning over Multiple Dependency Trees for Aspect-level Sentiment Classification",
+        "year": 2021,
+        "citations": 65
+      },
+      {
+        "title": "MUDiff: Unified Diffusion for Complete Molecule Generation",
+        "year": 2023,
+        "citations": 58
+      }
+    ],
+    "funding_agencies": [
+      "NSF"
+    ],
+    "total_active_funding_usd": 12497012,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "yale_csb",
+    "name": "Steven Zucker",
+    "school": "Yale University",
+    "department": "Computer Science / Computational Biology and Bioinformatics",
+    "email": null,
+    "url": "https://seas.yale.edu/faculty-research/faculty-directory/steven-zucker",
+    "research_areas": [
+      "computational vision",
+      "neuroscience",
+      "cortical computation",
+      "differential geometry",
+      "machine learning"
+    ],
+    "semantic_scholar_id": "46287304",
+    "h_index": 21,
+    "citation_count": 1950,
+    "recent_top_papers": [],
+    "funding_agencies": [
+      "HRSA",
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 9979066,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "yale_csb",
+    "name": "Smita Krishnaswamy",
+    "school": "Yale University",
+    "department": "Computer Science / Computational Biology and Bioinformatics",
+    "email": null,
+    "url": "https://krishnaswamylab.org/",
+    "research_areas": [
+      "machine learning",
+      "single-cell genomics",
+      "manifold learning",
+      "graph signal processing",
+      "immunology"
+    ],
+    "semantic_scholar_id": "32911702",
+    "h_index": 29,
+    "citation_count": 4755,
+    "recent_top_papers": [
+      {
+        "title": "Quantifying the effect of experimental perturbations at single-cell resolution",
+        "year": 2021,
+        "citations": 147
+      },
+      {
+        "title": "Manifold Interpolating Optimal-Transport Flows for Trajectory Inference",
+        "year": 2022,
+        "citations": 102
+      },
+      {
+        "title": "Multimodal single cell data integration challenge: results and lessons learned",
+        "year": 2022,
+        "citations": 70
+      },
+      {
+        "title": "Transformer-based protein generation with regularized latent space optimization",
+        "year": 2022,
+        "citations": 69
+      },
+      {
+        "title": "Multiscale PHATE identifies multimodal signatures of COVID-19",
+        "year": 2022,
+        "citations": 67
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 11925622,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "yale_csb",
+    "name": "Kei Cheung",
+    "school": "Yale University",
+    "department": "Computer Science / Computational Biology and Bioinformatics",
+    "email": null,
+    "url": "https://medicine.yale.edu/profile/kei_cheung/",
+    "research_areas": [
+      "biomedical informatics",
+      "translational bioinformatics",
+      "knowledge representation",
+      "data integration"
+    ],
+    "semantic_scholar_id": "143896305",
+    "h_index": 37,
+    "citation_count": 6883,
+    "recent_top_papers": [
+      {
+        "title": "Identification of Novel, Replicable Genetic Risk Loci for Suicidal Thoughts and Behaviors Among US Military Veterans.",
+        "year": 2022,
+        "citations": 44
+      },
+      {
+        "title": "Genome-Wide Investigation of Maximum Habitual Alcohol Intake in US Veterans in Relation to Alcohol Consumption Traits and Alcohol Use Disorder",
+        "year": 2022,
+        "citations": 35
+      },
+      {
+        "title": "Late Mortality After COVID-19 Infection Among US Veterans vs Risk-Matched Comparators",
+        "year": 2023,
+        "citations": 26
+      },
+      {
+        "title": "From Data to Wisdom: Biomedical Knowledge Graphs for Real-World Data Insights",
+        "year": 2023,
+        "citations": 15
+      },
+      {
+        "title": "LinkedImm: a linked data graph database for integrating immunological data",
+        "year": 2021,
+        "citations": 6
+      }
+    ],
+    "funding_agencies": [
+      "NIH",
+      "NSF"
+    ],
+    "total_active_funding_usd": 6351680,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  },
+  {
+    "school_slug": "yale_csb",
+    "name": "Sahand Negahban",
+    "school": "Yale University",
+    "department": "Computer Science / Computational Biology and Bioinformatics",
+    "email": null,
+    "url": "https://statistics.yale.edu/people/sahand-negahban",
+    "research_areas": [
+      "statistics",
+      "machine learning",
+      "high-dimensional statistics",
+      "optimization",
+      "causal inference"
+    ],
+    "semantic_scholar_id": "145537739",
+    "h_index": 24,
+    "citation_count": 5816,
+    "recent_top_papers": [
+      {
+        "title": "Network propagation-based prioritization of long tail genes in 17 cancer types",
+        "year": 2021,
+        "citations": 14
+      },
+      {
+        "title": "Rescuing missing data in connectome-based predictive modeling",
+        "year": 2023,
+        "citations": 7
+      },
+      {
+        "title": "A dynamic model to estimate evolving risk of major bleeding after percutaneous coronary intervention",
+        "year": 2021,
+        "citations": 3
+      },
+      {
+        "title": "Towards a dynamic model to estimate evolving risk of major bleeding after percutaneous coronary intervention",
+        "year": 2025,
+        "citations": 1
+      },
+      {
+        "title": "Connectome-Based Predictive Modelling With Missing Connectivity Data Using Robust Matrix Completion",
+        "year": 2021,
+        "citations": 1
+      }
+    ],
+    "funding_agencies": [],
+    "total_active_funding_usd": null,
+    "recruiting_status": {
+      "tier": -1,
+      "notes": "dry-run — not assessed"
+    }
+  }
+]

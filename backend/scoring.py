@@ -5,11 +5,11 @@ agents/ — this module handles deterministic score computation only.
 from typing import Optional, Tuple
 
 SCORE_WEIGHTS = {
-    "research_direction": 0.40,
-    "mentorship_style":   0.20,
+    "research_direction": 0.50,
+    "mentorship_style":   0.05,
     "funding_stability":  0.15,
-    "technical_skills":   0.10,
-    "culture_fit":        0.10,
+    "technical_skills":   0.20,
+    "culture_fit":        0.05,
     "reply_likelihood":   0.05,
 }
 
@@ -23,6 +23,47 @@ _LOCATION_MAP = {
     "east_coast": _EAST_COAST,
     "midwest":    _MIDWEST,
 }
+
+
+# Minimum Claude research score for a PI to appear in results at all.
+# Pre-filtered PIs receive 30.0, so this gate eliminates them cleanly.
+# Claude's no-API-key fallback is 50.0, which still passes.
+RESEARCH_MIN_SCORE = 40.0
+
+# Department keywords used to detect purely CS or purely bio departments.
+# Mixed departments (e.g. "Computer Science / Computational Biology") pass all filters.
+_CS_DEPT_KEYWORDS = frozenset({
+    "computer science", "computing", "informatics",
+    "electrical engineering", "eecs", "software engineering",
+})
+_BIO_DEPT_KEYWORDS = frozenset({
+    "biology", "biochemistry", "biophysics", "genetics", "genomics",
+    "ecology", "neuroscience", "pharmacology", "physiology",
+    "microbiology", "virology", "molecular", "cellular",
+    "biomedical", "bioinformatics",
+})
+
+
+def department_passes_filter(student, pi) -> bool:
+    """Return False only when the PI's department clearly belongs to a different
+    discipline than the student's field_category.
+
+    Conservative: a department must have CS keywords AND no bio keywords to be
+    flagged as pure-CS (and vice versa). Mixed / ambiguous departments always pass.
+    """
+    category = (getattr(student, "field_category", None) or "any").lower()
+    if category in ("any", "computational_biology"):
+        return True
+
+    dept = (pi.department or "").lower()
+    has_cs  = any(kw in dept for kw in _CS_DEPT_KEYWORDS)
+    has_bio = any(kw in dept for kw in _BIO_DEPT_KEYWORDS)
+
+    if category == "computer_science":
+        return not (has_bio and not has_cs)   # exclude pure-bio depts
+    if category == "biology":
+        return not (has_cs and not has_bio)   # exclude pure-CS depts
+    return True
 
 
 def location_passes_filter(student, pi) -> bool:
@@ -144,6 +185,40 @@ def culture_fit_score(student, pi) -> float:
         score += max(0, (2 - diff) * 10)
 
     return min(100.0, score)
+
+
+def has_keyword_overlap(student, pi) -> bool:
+    """Return True if any student research topic / skill overlaps with any PI research area.
+
+    Uses bidirectional substring matching on full phrases only (e.g. "genomics"
+    matches "statistical genomics", "CRISPR" matches "CRISPR-Cas9 gene editing").
+    Word-level tokenization is intentionally avoided: splitting "machine learning"
+    into "machine" + "learning" causes false positives against unrelated areas like
+    "reinforcement learning" or "reward learning".
+
+    Returns True (pass through to Claude) when either side has no keywords — we
+    can't pre-filter what we can't measure.
+    """
+    student_terms = list(student.preferred_research_topics or []) + list(student.technical_skills or [])
+    pi_terms = list(pi.research_areas or [])
+
+    if not student_terms or not pi_terms:
+        return True
+
+    # Exclude single-char and two-char terms (e.g. "R", "AI", "ML") — they are
+    # substrings of too many unrelated words and cause false positives.
+    s_lower = [t.lower().strip() for t in student_terms if len(t.strip()) >= 3]
+    p_lower = [t.lower().strip() for t in pi_terms if len(t.strip()) >= 3]
+
+    if not s_lower or not p_lower:
+        return True
+
+    for s in s_lower:
+        for p in p_lower:
+            if s in p or p in s:
+                return True
+
+    return False
 
 
 def predict_reply_likelihood(pi) -> str:

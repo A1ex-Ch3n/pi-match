@@ -15,6 +15,7 @@ Three responsibilities:
 """
 
 from __future__ import annotations
+import re
 from typing import Any
 
 
@@ -22,10 +23,23 @@ from typing import Any
 
 _UNKNOWN_NAMES = {"", "unknown", "unknown pi", "n/a", "none"}
 
+# Academic title prefixes and credential/lab suffixes to strip before comparing
+_PREFIX_RE = re.compile(
+    r"^(dr\.?|prof\.?|professor|associate\s+professor|assistant\s+professor)\s+",
+    re.IGNORECASE,
+)
+_SUFFIX_RE = re.compile(
+    r"\s+(ph\.?d\.?|m\.?d\.?|lab|laboratory|group|center|jr\.?|sr\.?|ii|iii)\s*$",
+    re.IGNORECASE,
+)
+
 
 def _canonical(name: str) -> str:
-    """Strip lab-name suffix and normalise whitespace."""
-    return name.split("/")[0].strip()
+    """Strip lab suffix, academic titles, and credentials, then normalise whitespace."""
+    name = name.split("/")[0].strip()
+    name = _PREFIX_RE.sub("", name).strip()
+    name = _SUFFIX_RE.sub("", name).strip()
+    return name
 
 
 def _key(name: str) -> str:
@@ -37,13 +51,21 @@ def _is_unknown(name: str) -> bool:
     return _key(name) in _UNKNOWN_NAMES
 
 
-def _same_pi(a: str, b: str) -> bool:
-    """
-    Return True if two name strings refer to the same person.
+def _normalize_url(url: str) -> str:
+    url = url.lower().strip().rstrip("/")
+    url = re.sub(r"^https?://(www\.)?", "", url)
+    return url
 
-    Exact match after normalisation is the primary check.
-    Bare-first-name match ("Simone" vs "Simone Yan") is the secondary check:
-    accepted only when one side has a single token and the first tokens agree.
+
+def _same_pi(a: str, b: str, a_data: dict | None = None, b_data: dict | None = None) -> bool:
+    """Return True if two entries refer to the same person.
+
+    Checks (in order):
+      1. Exact canonical name match (after stripping titles / lab suffixes).
+      2. Bare-first-name match ("Simone" vs "Simone Yan").
+      3. Same personal lab_website — only when the PI's last name appears in
+         the URL, distinguishing personal pages from shared department pages.
+      4. Same email address.
     """
     ka, kb = _key(a), _key(b)
     if ka == kb:
@@ -51,9 +73,25 @@ def _same_pi(a: str, b: str) -> bool:
     ta, tb = ka.split(), kb.split()
     if not ta or not tb:
         return False
-    # One side is a bare first name and the other starts with the same token
     if ta[0] == tb[0] and (len(ta) == 1 or len(tb) == 1):
         return True
+
+    if a_data and b_data:
+        # Same personal lab website (last name must appear in the URL)
+        wa = _normalize_url(a_data.get("lab_website") or "")
+        wb = _normalize_url(b_data.get("lab_website") or "")
+        if wa and wb and wa == wb:
+            a_last = ta[-1] if ta else ""
+            b_last = tb[-1] if tb else ""
+            if (a_last and a_last in wa) or (b_last and wb and b_last in wb):
+                return True
+
+        # Same email address
+        ea = (a_data.get("email") or "").lower().strip()
+        eb = (b_data.get("email") or "").lower().strip()
+        if ea and eb and ea == eb:
+            return True
+
     return False
 
 
@@ -131,7 +169,7 @@ def dedup_entries(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
         # Try to find an existing result entry this should merge into
         merged = False
         for i, existing in enumerate(result):
-            if _same_pi(entry["name"], existing["name"]):
+            if _same_pi(entry["name"], existing["name"], entry, existing):
                 if _richness(entry) > _richness(existing):
                     result[i] = _merge(entry, existing)
                 else:

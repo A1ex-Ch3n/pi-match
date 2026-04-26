@@ -24,6 +24,7 @@ class StudentProfileCreate(BaseModel):
             return [v]
         return v
     citizenship_status: str
+    field_category: Optional[str] = "any"
     min_stipend: Optional[int] = None
     preferred_lab_size: str = "any"
     independence_preference: int = 3
@@ -50,6 +51,7 @@ class StudentProfileResponse(BaseModel):
     preferred_research_topics: Optional[List[str]]
     location_preference: Optional[List[str]]
     citizenship_status: str
+    field_category: Optional[str]
     min_stipend: Optional[int]
     preferred_lab_size: str
     independence_preference: int
