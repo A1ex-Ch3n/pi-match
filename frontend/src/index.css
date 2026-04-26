@@ -1,1 +1,105 @@
 @import "tailwindcss";
+
+@theme {
+  --color-ivory: #FAF7F2;
+  --color-bone: #FFFDF8;
+  --color-ink: #15171A;
+  --color-muted: #6B6B6B;
+  --color-soft: #8B8B86;
+  --color-forest: #2F4A3A;
+  --color-forest-dark: #243A2D;
+  --color-forest-soft: #E8EFE9;
+  --color-gold: #B8924A;
+  --color-gold-soft: #F4ECDC;
+  --color-clay: #8B3A3A;
+  --color-clay-soft: #F4E4E2;
+  --color-line: #E5DFD3;
+
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+  }
+
+  .font-display {
+    font-feature-settings: "ss01";
+    font-optical-sizing: auto;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes step-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-enter {
+  animation: step-fade-in 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Range slider — forest theme */
+.range-forest {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+.range-forest::-webkit-slider-runnable-track {
+  height: 4px;
+  background: var(--track-bg, #E5DFD3);
+  border-radius: 9999px;
+}
+.range-forest::-moz-range-track {
+  height: 4px;
+  background: var(--track-bg, #E5DFD3);
+  border-radius: 9999px;
+}
+.range-forest::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: var(--color-forest);
+  border: 3px solid var(--color-bone);
+  margin-top: -7px;
+  box-shadow: 0 2px 6px -1px rgba(47, 74, 58, 0.4);
+  transition: transform 120ms ease;
+}
+.range-forest::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+.range-forest::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: var(--color-forest);
+  border: 3px solid var(--color-bone);
+  box-shadow: 0 2px 6px -1px rgba(47, 74, 58, 0.4);
+  cursor: pointer;
+}

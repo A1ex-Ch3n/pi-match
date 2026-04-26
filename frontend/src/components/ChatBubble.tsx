@@ -4,34 +4,28 @@ import type { TranscriptMessage } from '../types';
 
 interface ChatBubbleProps {
   message: TranscriptMessage;
-  piName?: string;
+  piInitials?: string;
 }
 
-export default function ChatBubble({ message, piName }: ChatBubbleProps) {
+export default function ChatBubble({ message, piInitials = 'PI' }: ChatBubbleProps) {
   const isPI = message.role === 'pi';
 
-  return (
-    <div className={`flex ${isPI ? 'justify-start' : 'justify-end'} mb-4`}>
-      <div className={`max-w-[75%] ${isPI ? 'order-2' : ''}`}>
-        <div className={`text-xs font-medium mb-1 ${isPI ? 'text-gray-500' : 'text-violet-500 text-right'}`}>
-          {isPI ? (piName ?? 'PI') : 'You'}
+  if (isPI) {
+    return (
+      <div className="flex items-start gap-3 mb-5">
+        <div className="w-9 h-9 rounded-full bg-forest text-ivory flex items-center justify-center font-display text-sm font-medium shrink-0">
+          {piInitials}
         </div>
-        <div
-          className={`px-4 py-3 rounded-2xl text-sm leading-relaxed ${
-            isPI
-              ? 'bg-gray-100 text-gray-800 rounded-tl-sm'
-              : 'bg-violet-600 text-white rounded-tr-sm'
-          }`}
-        >
-          {isPI ? (
+        <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-bone border border-line px-4 py-3 shadow-[0_8px_24px_-12px_rgba(21,23,26,0.12)]">
+          <div className="text-sm text-ink leading-relaxed [&_p]:mb-2 [&_p:last-child]:mb-0">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
-                p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
-                strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
-                em: ({ children }) => <em className="italic">{children}</em>,
+                strong: ({ children }) => (
+                  <strong className="font-medium text-forest-dark">{children}</strong>
+                ),
+                em: ({ children }) => <em className="italic text-muted">{children}</em>,
                 a: ({ href, children }) => {
-                  // Ensure absolute URL — model sometimes drops the https:// prefix
                   let safeHref = href ?? '';
                   if (safeHref && !safeHref.startsWith('http://') && !safeHref.startsWith('https://')) {
                     safeHref = 'https://' + safeHref;
@@ -41,26 +35,40 @@ export default function ChatBubble({ message, piName }: ChatBubbleProps) {
                       href={safeHref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="underline text-violet-700 hover:text-violet-900"
+                      className="text-forest underline decoration-forest/40 underline-offset-2 hover:decoration-forest"
                     >
                       {children}
                     </a>
                   );
                 },
-                ul: ({ children }) => <ul className="list-disc list-inside mb-2 space-y-0.5">{children}</ul>,
-                ol: ({ children }) => <ol className="list-decimal list-inside mb-2 space-y-0.5">{children}</ol>,
-                li: ({ children }) => <li className="ml-2">{children}</li>,
                 code: ({ children }) => (
-                  <code className="bg-gray-200 text-gray-800 px-1 py-0.5 rounded text-xs font-mono">{children}</code>
+                  <code className="bg-forest-soft text-forest-dark px-1 py-0.5 rounded text-xs font-mono">
+                    {children}
+                  </code>
+                ),
+                ul: ({ children }) => (
+                  <ul className="list-disc list-inside mb-2 space-y-0.5">{children}</ul>
+                ),
+                ol: ({ children }) => (
+                  <ol className="list-decimal list-inside mb-2 space-y-0.5">{children}</ol>
                 ),
               }}
             >
               {message.content}
             </ReactMarkdown>
-          ) : (
-            message.content
-          )}
+          </div>
         </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex items-start gap-3 mb-5 flex-row-reverse">
+      <div className="w-9 h-9 rounded-full bg-ink/10 text-ink flex items-center justify-center text-xs font-medium shrink-0">
+        You
+      </div>
+      <div className="max-w-[85%] rounded-2xl rounded-tr-sm bg-forest text-ivory px-4 py-3 shadow-[0_8px_24px_-12px_rgba(47,74,58,0.4)]">
+        <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
       </div>
     </div>
   );
