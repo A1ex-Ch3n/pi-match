@@ -16,7 +16,8 @@ from backend.routers import pi, simulation, survey          # noqa: E402
 
 
 def _auto_seed_pis():
-    """Seed PIs from all *_pis.json files in data/seeds/.
+    """Seed PIs from all_pis_east.json, all_pis_west.json (project root) and
+    all *_pis.json files in data/seeds/.
 
     Additive: skips any PI whose name is already in the table, so new seed
     files can be added without requiring a DB reset.
@@ -24,6 +25,7 @@ def _auto_seed_pis():
     from sqlmodel import Session, select
     from backend.models import PIProfile
     from backend.schemas import PIProfileSeedItem
+    from data.adapters import load_and_adapt_file
 
     seeds_dir = os.path.normpath(
         os.path.join(os.path.dirname(__file__), "..", "data", "seeds")
@@ -34,17 +36,25 @@ def _auto_seed_pis():
         if f.endswith("_pis.json")
     ) if os.path.isdir(seeds_dir) else []
 
-    if not seed_files:
-        return
-
     from data.dedup_seeds import dedup_entries
 
-    # Collect all entries across every seed file, then dedup/merge before touching the DB
+    # Collect entries: root-level east/west files first, then existing seeds
     raw: list = []
+
+    for filename in ("all_pis_east.json", "all_pis_west.json"):
+        path = os.path.join(_PROJECT_ROOT, filename)
+        if os.path.exists(path):
+            adapted = load_and_adapt_file(path)
+            raw.extend(adapted)
+            print(f"[startup] Adapted {len(adapted)} PIs from {filename}")
+
     for filename in seed_files:
         path = os.path.join(seeds_dir, filename)
         with open(path, encoding="utf-8") as f:
             raw.extend(json.load(f))
+
+    if not raw:
+        return
 
     clean = dedup_entries(raw)
 
