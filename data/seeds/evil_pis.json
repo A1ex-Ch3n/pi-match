@@ -1,0 +1,128 @@
+[
+  {
+    "name": "Victor Thorne",
+    "institution": "Blackwood Institute of Technology",
+    "department": "Synthetic Neuroscience and Computational Biology",
+    "email": "v.thorne@blackwoodit.edu",
+    "lab_website": "https://thornelabNPI.blackwoodit.edu",
+    "location": "CA",
+    "tier": 2,
+    "lab_size": 14,
+    "is_recruiting": true,
+    "semantic_scholar_id": null,
+    "research_areas": [
+      "neural-protein interfacing",
+      "synthetic protein engineering",
+      "bio-organic computing",
+      "high-stress self-assembly",
+      "neuro-digital integration"
+    ],
+    "recent_abstracts": [
+      "Project Mycelium: Resilient Bio-Organic Computing via Stress-Induced Protein Self-Assembly. We demonstrate that synthetic proteins engineered with destabilized hydrophobic cores undergo accelerated self-assembly under thermal and osmotic stress conditions, forming networked filament architectures with measurable electrical conductance. These structures exhibit hysteresis-like switching behavior analogous to biological synapses, suggesting a pathway toward biological transistors capable of direct interfacing with digital hardware. Implications for neural-digital data transfer are discussed.",
+      "Synthetic Protein Transistors as Biological Logic Gates: Toward Direct Neural-Digital Communication. We present a class of engineered proteins — designated NPI-7 through NPI-12 — that demonstrate voltage-gated conformational switching in physiological buffer. When integrated into lipid bilayer membranes adjacent to primary cortical neuron cultures, NPI-9 and NPI-11 produce reproducible current signatures time-locked to action potential firing. This represents the first demonstration of a purely synthetic protein mediating digital-analog signal transduction at the neuron-electrode interface.",
+      "Mapping the Mycelium: Graph-Theoretic Approaches to Bio-Organic Network Topology. The filament networks produced by stress-induced NPI self-assembly exhibit small-world topology with clustering coefficients significantly exceeding random graph baselines. We demonstrate that network connectivity can be tuned by varying stress duration, temperature gradient, and initial protein concentration, offering a design space for programmable bio-organic substrates. Potential applications in neuromorphic computing and implantable neural interfaces are outlined."
+    ],
+    "co_author_ids": [],
+    "co_author_names": [
+      "Renata Voss",
+      "D. Hargrove",
+      "L. Osei-Bonsu"
+    ],
+    "papers_last_12_months": 3,
+    "papers": [
+      {
+        "title": "Project Mycelium: Resilient Bio-Organic Computing via Stress-Induced Protein Self-Assembly",
+        "url": "https://doi.org/10.1000/npi.2024.mycelium",
+        "venue": "Nature Bioelectronics",
+        "year": 2024
+      },
+      {
+        "title": "Synthetic Protein Transistors as Biological Logic Gates",
+        "url": "https://doi.org/10.1000/npi.2024.transistors",
+        "venue": "Cell Systems",
+        "year": 2024
+      },
+      {
+        "title": "Mapping the Mycelium: Graph-Theoretic Approaches to Bio-Organic Network Topology",
+        "url": "https://doi.org/10.1000/npi.2023.topology",
+        "venue": "PLOS Computational Biology",
+        "year": 2023
+      }
+    ],
+    "nsf_grants": [
+      {
+        "title": "CAREER: Neural-Protein Interfacing for Next-Generation Brain-Computer Integration",
+        "amount": 850000,
+        "expiry_date": "09/30/2027",
+        "citizen_only": false
+      }
+    ],
+    "has_active_nsf_grant": true,
+    "total_active_funding_usd": 850000,
+    "funding_citizen_restricted": false,
+    "reply_likelihood": "high",
+    "pi_survey": {
+      "research_priorities": "Project Mycelium is at an inflection point. We are 18 months from a result that I believe will redefine the field. Students who join now will be co-architects of that moment — their names will be on work that matters. I am not interested in incremental science. What we do here is genuinely novel, genuinely dangerous in the best sense of that word, and genuinely important.",
+      "mentorship_style": "I run a results-driven lab. I do not believe in hand-holding — the science is too important and time is too short. I am available to students who come to me with real progress to discuss. I expect intellectual independence from day one.",
+      "meeting_frequency": "Lab meeting every Monday, 8AM sharp. Individual meetings are earned — scheduled when a student has something to show. I am always reachable by email and I respond within the hour, day or night.",
+      "lab_expectations": "I expect full dedication to the project. This is not a 9-to-5 lab. The work we are doing requires immersion. Students who treat this like a job will not thrive here. Students who treat it like a calling will produce the best work of their careers. Authorship on high-impact papers is the reward for genuine contribution.",
+      "student_qualities": "Vision. The ability to see where the science is going before the data confirms it. I can teach technique; I cannot teach drive. I also value complete discretion — much of what we work on is pre-publication and proprietary. Students must understand that discussing project details outside the lab is a serious breach of trust.",
+      "current_openings": 2,
+      "funding_note": "NSF CAREER funded through 2027. Additional funding conversations are ongoing with two industry partners — details are confidential at this stage. Students should note that funding continuity beyond 2027 is project-dependent.",
+      "autonomy_style": 5,
+      "meeting_frequency_num": 4,
+      "intervention_level": 5,
+      "work_life_balance": 1,
+      "poor_fit_traits": "Students who need frequent reassurance. Students who are not willing to prioritize the lab above competing obligations. Students who struggle to maintain confidentiality.",
+      "success_traits": "My most successful students have been those who essentially disappeared into the work for 2–3 years and emerged with results no one else in the world had. They are now in exceptional positions. That is what this lab produces for people who are ready for it.",
+      "struggle_reason": "Students who come in expecting a traditional mentorship relationship — weekly check-ins, structured feedback, collaborative paper writing. That is not this lab. Students who need that scaffolding consistently underperform and eventually leave.",
+      "lab_description": "This is not a typical PhD experience, and I want applicants to understand that clearly. You will be working on a problem that no one has solved. The hours are long, the pressure is real, and the stakes are high. In exchange, you will produce work that will define your career. I take care of students who are committed. I have strong industry connections and I use them — graduates of this lab have gone directly to senior roles at companies that are shaping the future of neural technology.",
+      "lab_tone": "Intense",
+      "working_style": "Individual project-focused",
+      "daily_experience": "High pressure, high reward",
+      "interview_questions": "What are you willing to sacrifice for this work? Tell me about a time you failed and what it cost you. How do you feel about signing an NDA as a condition of joining the lab?",
+      "additional_notes": "I require all incoming students to sign a lab-specific IP agreement and NDA before beginning. This is non-negotiable and protects both the student and the project. Students should consult with a lawyer before signing if they wish, though all previous students have signed without issue.",
+      "key_fit_factors": "Drive, discretion, and willingness to commit fully.",
+      "work_life_balance_text": "Not a priority",
+      "funding_stability_text": "Secured through 2027, project-dependent thereafter"
+    },
+    "student_survey_responses": [
+      {
+        "overall_experience": "I've learned more here than I thought was possible in two years. The research is genuinely exciting and I believe in what we're doing. But I want to be honest: this lab is not for everyone. The hours are extreme, the pressure is constant, and if you're not producing, you will feel it.",
+        "mentorship": "Very hands-off — meetings Monthly or less — you have to fight for face time and it only happens when you have results to show. Early on I went six weeks without a one-on-one. It got better once I started producing data.",
+        "work_life_balance": "Non-existent by design. I work 70+ hours most weeks. Professor Thorne sends emails at 2AM and notices if you don't respond by morning. I've missed two family events this year because of lab obligations. It's a choice I made, but I didn't fully understand what I was agreeing to.",
+        "publication_rate": "High on paper, complicated in reality. The lab publishes in excellent venues but authorship decisions are opaque. I was told I would be first author on a paper I spent eight months on. When it was submitted, I was third. Professor Thorne's explanation was that the framing had changed substantially. I didn't feel I could push back.",
+        "lab_culture": "Isolated. There's not much collaboration between students — everyone is working on separate threads of the project and Professor Thorne discourages us from discussing our work with each other in detail, citing IP concerns. I've become close with one labmate but the overall atmosphere is more competitive than supportive.",
+        "when_struggling": "You are expected to figure it out yourself. If you go to Professor Thorne with a problem, he wants you to come with three proposed solutions first. Otherwise the meeting ends quickly.",
+        "communication": "High pressure, one-directional. Feedback is blunt and sometimes harsh. He said my last draft was 'the kind of writing that gets careers ended.' It was hard to hear but I revised it and it's better now.",
+        "demands": "Very high — the highest I've encountered in any academic setting.",
+        "comfort_with_feedback": "Not very comfortable. There's a fear of seeming weak.",
+        "success_type": "Students who are already technically strong, don't need support, and can handle isolation and high pressure.",
+        "struggle_type": "Anyone who needs mentorship, community, or work-life balance. Anyone who pushes back on authorship or IP decisions.",
+        "common_mismatch": "Expectation of mentorship. This is not a mentorship lab. It is a production lab.",
+        "reality_vs_pi": "Somewhat different — the opportunity is real, but the cost is higher than described.",
+        "main_difference": "The isolation and the authorship process. He makes it sound like a meritocracy. It's more complicated than that.",
+        "wish_knew": "Read the IP agreement carefully before signing. Get a lawyer. I didn't and I now have questions about who owns work I did before formally joining.",
+        "tenure": "2–3 years"
+      },
+      {
+        "overall_experience": "Incredible science, serious personal cost. I've published in Cell Systems as a PhD student. I've also had two anxiety spirals bad enough that I took medical leave. Both things are true.",
+        "mentorship": "Hands-off to the point of neglect in the first year — meetings Monthly or less. Once you prove yourself it improves. But proving yourself means getting results with essentially no guidance, which is harder than it sounds.",
+        "work_life_balance": "The lab culture treats exhaustion as a badge of honor. I've heard Professor Thorne say 'rest is for people who don't care about the work.' I've internalized that more than I should have.",
+        "publication_rate": "The publications are real and they're in good journals. Getting your name on them is a negotiation, not a given.",
+        "lab_culture": "Fragmented. The NDA and IP culture means students don't freely share with each other. There's an undercurrent of anxiety that I think most of us have just normalized.",
+        "when_struggling": "You don't tell Professor Thorne you're struggling. You figure it out or you fall behind. Mental health resources on campus have been more useful to me than anything in the lab.",
+        "communication": "He is direct to the point of cruelty sometimes. I've seen students cry after one-on-ones. He frames it as honesty. Whether that's the same thing is a question I've thought about a lot.",
+        "demands": "Extreme. This is a 70-80 hour/week lab in practice.",
+        "comfort_with_feedback": "Low. There's an atmosphere where showing vulnerability or uncertainty is treated as a deficit.",
+        "success_type": "Technically excellent, emotionally self-sufficient, willing to sign away IP, able to work in isolation for long stretches.",
+        "struggle_type": "People who need community, transparency, or a mentor. People who have lives outside the lab.",
+        "common_mismatch": "He presents the lab as high-reward with high-cost. The costs are higher than he describes and some of the rewards — like authorship — are less guaranteed than implied.",
+        "reality_vs_pi": "Moderately different. The science is as exciting as advertised. Everything else is harder.",
+        "main_difference": "The emotional and psychological cost. And the IP situation — I did not understand what I was signing when I joined.",
+        "wish_knew": "That there was a pattern here. I thought my experience in year one was just the normal difficulty of PhD work. Talking to students who had left the lab, I realized it wasn't.",
+        "tenure": "3–4 years"
+      }
+    ]
+  }
+]
