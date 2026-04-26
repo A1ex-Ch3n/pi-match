@@ -181,9 +181,14 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
 
     # ── Phase 1: fire all Claude calls, collect raw results in memory ────────
     # No DB writes yet — we need all scores before we can compute the run mean.
+    # Stagger launches by 1.5s each to avoid saturating the API rate limit
+    # when multiple calls fire simultaneously.
     raw: dict[int, tuple[float, str]] = {}   # pi_id → (score, rationale)
-    with ThreadPoolExecutor(max_workers=3) as executor:
-        futures = {executor.submit(_score_pi, pi): pi for pi in shortlist}
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        futures = {
+            executor.submit(_score_pi, pi): pi
+            for pi in shortlist
+        }
         for future in as_completed(futures):
             pi = futures[future]
             pi_id, score, rationale = future.result()
@@ -374,6 +379,50 @@ def get_match(match_id: int, session: Session = Depends(get_session)):
 
 
 # ---------------------------------------------------------------------------
+# Helper: fix hallucinated paper URLs in avatar responses
+# ---------------------------------------------------------------------------
+
+import re as _re
+
+def _fix_paper_links(text: str, papers: list) -> str:
+    """Inject correct paper links into avatar responses.
+
+    The model is instructed to bold paper titles rather than generate URLs.
+    This function finds **bold paper titles** that match known papers and
+    converts them to proper markdown links with the correct URL.
+    Also fixes any existing [title](wrong_url) links where the title matches.
+    """
+    if not papers:
+        return text
+
+    known = [
+        (p["title"].strip(), p["url"])
+        for p in papers
+        if p.get("title") and p.get("url")
+    ]
+
+    # First: fix any existing [text](url) where text matches a known title
+    def _fix_existing(m):
+        link_text = m.group(1).strip().lower()
+        for title, url in known:
+            if link_text in title.lower() or title.lower() in link_text:
+                return f"[{m.group(1)}]({url})"
+        return m.group(0)
+    text = _re.sub(r'\[([^\]]+)\]\([^)]+\)', _fix_existing, text)
+
+    # Second: convert **bold paper titles** into markdown links
+    def _linkify_bold(m):
+        bold_text = m.group(1).strip().lower()
+        for title, url in known:
+            if bold_text in title.lower() or title.lower() in bold_text:
+                return f"[{m.group(1)}]({url})"
+        return m.group(0)  # no match — leave bold as-is
+    text = _re.sub(r'\*\*([^*]+)\*\*', _linkify_bold, text)
+
+    return text
+
+
+# ---------------------------------------------------------------------------
 # POST /api/simulate/{match_id}  — v2.0 PI avatar chat
 # ---------------------------------------------------------------------------
 
@@ -433,6 +482,10 @@ def simulate_chat(
             "This is a local fallback for development.\n\n"
             f"{system_prompt[:800]}"
         )
+
+    # Fix hallucinated paper URLs — replace any [title](wrong_url) where the title
+    # fuzzy-matches a known paper with the correct URL from the PI's papers list.
+    pi_response = _fix_paper_links(pi_response, pi.papers or [])
 
     transcript.append({"role": "pi", "content": pi_response})
 

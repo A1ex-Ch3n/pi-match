@@ -19,7 +19,10 @@ export default function ChatPage() {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!matchId) return;
+    if (!matchId || isNaN(Number(matchId))) {
+      navigate('/', { replace: true });
+      return;
+    }
     loadMatch();
   }, [matchId]);
 

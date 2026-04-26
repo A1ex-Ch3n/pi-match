@@ -187,13 +187,13 @@ export default function PICard({ match, pi, rank }: PICardProps) {
       </div>
 
       <div className="flex gap-2">
-        {match.id && (
+        {match.id != null && !isNaN(match.id) && (
           <Link to={`/chat/${match.id}`}
             className="flex-1 text-center bg-violet-600 hover:bg-violet-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors">
             Chat with PI Avatar
           </Link>
         )}
-        {match.transcript && match.transcript.length > 0 && match.id && (
+        {match.transcript && match.transcript.length > 0 && match.id != null && !isNaN(match.id) && (
           <Link to={`/report/${match.id}`}
             className="flex-1 text-center bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium py-2 px-4 rounded-lg transition-colors">
             View Report

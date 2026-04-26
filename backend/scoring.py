@@ -28,7 +28,7 @@ _LOCATION_MAP = {
 # Minimum Claude research score for a PI to appear in results at all.
 # Pre-filtered PIs receive 30.0, so this gate eliminates them cleanly.
 # Claude's no-API-key fallback is 50.0, which still passes.
-RESEARCH_MIN_SCORE = 40.0
+RESEARCH_MIN_SCORE = 20.0
 
 # Department keywords used to detect purely CS or purely bio departments.
 # Mixed departments (e.g. "Computer Science / Computational Biology") pass all filters.
