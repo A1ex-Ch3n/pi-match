@@ -27,6 +27,9 @@ class StudentProfile(SQLModel, table=True):
     min_stipend: Optional[int] = Field(default=None)
     preferred_lab_size: str = Field(default="any")
 
+    # Field category for department-level filtering
+    field_category: Optional[str] = Field(default="any")
+
     # Sliders (1–5 scale)
     independence_preference: int = Field(default=3)
     intervention_tolerance: int = Field(default=3)

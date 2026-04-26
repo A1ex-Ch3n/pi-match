@@ -81,9 +81,28 @@ def _auto_seed_pis():
             print(f"[startup] Seeded {total} new PI(s) ({skipped} duplicate(s) skipped)")
 
 
+def _run_migrations():
+    """Apply lightweight schema migrations that create_db_and_tables() won't handle
+    (SQLAlchemy never ALTERs existing tables, only creates missing ones)."""
+    from sqlalchemy import text as sa_text
+    with engine.connect() as conn:
+        # Add field_category column to studentprofile if not present
+        existing = {row[1] for row in conn.execute(sa_text("PRAGMA table_info(studentprofile)"))}
+        if "field_category" not in existing:
+            conn.execute(sa_text("ALTER TABLE studentprofile ADD COLUMN field_category TEXT DEFAULT 'any'"))
+            print("[startup] Migration: added field_category to studentprofile")
+
+        # Enforce uniqueness on PI names — prevents duplicate rows from future seeds
+        conn.execute(sa_text(
+            "CREATE UNIQUE INDEX IF NOT EXISTS idx_piprofile_name ON piprofile(name)"
+        ))
+        conn.commit()
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     create_db_and_tables()
+    _run_migrations()
     _auto_seed_pis()
     if not os.environ.get("ANTHROPIC_API_KEY", "").strip():
         print("WARNING: ANTHROPIC_API_KEY is not set. All Claude calls will return mock responses.")

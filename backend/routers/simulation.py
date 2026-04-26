@@ -17,9 +17,11 @@ from backend.schemas import (
 )
 from backend.scoring import (
     REPLY_LIKELIHOOD_SCORE,
+    RESEARCH_MIN_SCORE,
     SCORE_WEIGHTS,
     citizenship_mismatch,
     culture_fit_score,
+    department_passes_filter,
     direct_connection,
     funding_stability_score,
     has_keyword_overlap,
@@ -79,7 +81,10 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
     if student.cv_text:
         background += f"\n\nCV:\n{student.cv_text}"
 
-    eligible = [pi for pi in pis if location_passes_filter(student, pi)]
+    eligible = [
+        pi for pi in pis
+        if location_passes_filter(student, pi) and department_passes_filter(student, pi)
+    ]
     if not eligible:
         return []
 
@@ -137,6 +142,11 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
         for future in as_completed(futures):
             pi = futures[future]
             pi_id, research_score, rationale = future.result()
+
+            # Minimum research gate — skip PIs below threshold entirely
+            if research_score < RESEARCH_MIN_SCORE:
+                _shortlist_sizes[student_id] = max(0, _shortlist_sizes.get(student_id, 1) - 1)
+                continue
 
             mentorship = mentorship_style_score(student, pi)
             funding    = funding_stability_score(pi)

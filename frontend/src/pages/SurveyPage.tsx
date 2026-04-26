@@ -62,6 +62,7 @@ const DEFAULT: FormData = {
   preferred_research_topics: [],
   location_preference: ['any'],
   citizenship_status: 'f1',
+  field_category: 'any',
   min_stipend: undefined,
   preferred_lab_size: 'medium',
   independence_preference: 3,
@@ -470,6 +471,20 @@ export default function SurveyPage() {
                   <option value="f1">F-1 Visa</option>
                   <option value="j1">J-1 Visa</option>
                   <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Field Category</label>
+                <select
+                  value={form.field_category}
+                  onChange={e => set('field_category', e.target.value as FormData['field_category'])}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
+                >
+                  <option value="any">Any (no department filter)</option>
+                  <option value="computational_biology">Computational Biology</option>
+                  <option value="computer_science">Computer Science</option>
+                  <option value="biology">Biology</option>
                 </select>
               </div>
 

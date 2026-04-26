@@ -12,6 +12,7 @@ export interface StudentProfile {
   preferred_research_topics: string[];
   location_preference: string[];
   citizenship_status: 'us_citizen' | 'pr' | 'f1' | 'j1' | 'other';
+  field_category: 'any' | 'computer_science' | 'biology' | 'computational_biology';
   min_stipend?: number;
   preferred_lab_size: 'small' | 'medium' | 'large';
   independence_preference: number;
