@@ -146,6 +146,40 @@ def culture_fit_score(student, pi) -> float:
     return min(100.0, score)
 
 
+def has_keyword_overlap(student, pi) -> bool:
+    """Return True if any student research topic / skill overlaps with any PI research area.
+
+    Uses bidirectional substring matching on full phrases only (e.g. "genomics"
+    matches "statistical genomics", "CRISPR" matches "CRISPR-Cas9 gene editing").
+    Word-level tokenization is intentionally avoided: splitting "machine learning"
+    into "machine" + "learning" causes false positives against unrelated areas like
+    "reinforcement learning" or "reward learning".
+
+    Returns True (pass through to Claude) when either side has no keywords — we
+    can't pre-filter what we can't measure.
+    """
+    student_terms = list(student.preferred_research_topics or []) + list(student.technical_skills or [])
+    pi_terms = list(pi.research_areas or [])
+
+    if not student_terms or not pi_terms:
+        return True
+
+    # Exclude single-char and two-char terms (e.g. "R", "AI", "ML") — they are
+    # substrings of too many unrelated words and cause false positives.
+    s_lower = [t.lower().strip() for t in student_terms if len(t.strip()) >= 3]
+    p_lower = [t.lower().strip() for t in pi_terms if len(t.strip()) >= 3]
+
+    if not s_lower or not p_lower:
+        return True
+
+    for s in s_lower:
+        for p in p_lower:
+            if s in p or p in s:
+                return True
+
+    return False
+
+
 def predict_reply_likelihood(pi) -> str:
     papers = pi.papers_last_12_months or 0
     if papers >= 4:

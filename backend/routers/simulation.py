@@ -17,10 +17,12 @@ from backend.schemas import (
 )
 from backend.scoring import (
     REPLY_LIKELIHOOD_SCORE,
+    SCORE_WEIGHTS,
     citizenship_mismatch,
     culture_fit_score,
     direct_connection,
     funding_stability_score,
+    has_keyword_overlap,
     indirect_connection,
     location_passes_filter,
     mentorship_style_score,
@@ -43,9 +45,18 @@ import anthropic  # noqa: E402
 
 router = APIRouter()
 
+# Shortlist size: PIs that pass stage-1 deterministic pre-scoring and proceed
+# to the Claude research-fit call. Direct/indirect connections are always forced
+# in on top of this cap.
+_SHORTLIST_SIZE = 75
+
+# Tracks the shortlist size per student so match_progress can report accurate
+# totals even while Claude calls are still running.
+_shortlist_sizes: dict[int, int] = {}
+
 
 # ---------------------------------------------------------------------------
-# POST /api/match/{student_id}  — v1.0 matching
+# POST /api/match/{student_id}  — v1.0 matching (two-stage pipeline)
 # ---------------------------------------------------------------------------
 
 @router.post("/match/{student_id}", response_model=List[MatchResultResponse])
@@ -64,15 +75,55 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
         session.delete(m)
     session.commit()
 
-    # Build background text once
     background = student.research_background or ""
     if student.cv_text:
         background += f"\n\nCV:\n{student.cv_text}"
 
-    # Filter by location, then fire all Claude research-fit calls in parallel
     eligible = [pi for pi in pis if location_passes_filter(student, pi)]
+    if not eligible:
+        return []
 
-    def _score_pi(pi):
+    # ── Stage 1: deterministic pre-score (no Claude, ~50 ms) ─────────────────
+    # Rank every eligible PI by the four cheap dimensions. This gives a good
+    # proxy for overall fit without any API calls.
+    def _det_score(pi: PIProfile) -> float:
+        mentorship  = mentorship_style_score(student, pi)
+        funding     = funding_stability_score(pi)
+        skills      = technical_skills_score(student, pi)
+        culture     = culture_fit_score(student, pi)
+        reply_score = REPLY_LIKELIHOOD_SCORE.get(predict_reply_likelihood(pi), 60.0)
+        return (
+            mentorship  * SCORE_WEIGHTS["mentorship_style"]  +
+            funding     * SCORE_WEIGHTS["funding_stability"] +
+            skills      * SCORE_WEIGHTS["technical_skills"]  +
+            culture     * SCORE_WEIGHTS["culture_fit"]       +
+            reply_score * SCORE_WEIGHTS["reply_likelihood"]
+        )
+
+    # Always include direct/indirect connections regardless of deterministic rank
+    forced_ids: set[int] = set()
+    for pi in eligible:
+        if direct_connection(student, pi):
+            forced_ids.add(pi.id)
+        if indirect_connection(student, pi)[0]:
+            forced_ids.add(pi.id)
+
+    det_sorted = sorted(
+        (pi for pi in eligible if pi.id not in forced_ids),
+        key=_det_score,
+        reverse=True,
+    )
+    remaining_slots = max(0, _SHORTLIST_SIZE - len(forced_ids))
+    shortlist_ids = forced_ids | {pi.id for pi in det_sorted[:remaining_slots]}
+    shortlist = [pi for pi in eligible if pi.id in shortlist_ids]
+
+    # Register shortlist size so match_progress can track real progress
+    _shortlist_sizes[student_id] = len(shortlist)
+
+    # ── Stage 2: keyword pre-filter + Claude research-fit on shortlist ────────
+    def _score_pi(pi: PIProfile):
+        if not has_keyword_overlap(student, pi):
+            return pi.id, 30.0, "No keyword overlap with student's research background."
         score, rationale = score_research_fit(
             background,
             pi.recent_abstracts or [],
@@ -80,60 +131,51 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
         )
         return pi.id, score, rationale
 
-    research_scores: dict = {}
-    with ThreadPoolExecutor(max_workers=8) as executor:
-        futures = {executor.submit(_score_pi, pi): pi for pi in eligible}
-        for future in as_completed(futures):
-            pi_id, score, rationale = future.result()
-            research_scores[pi_id] = (score, rationale)
-
     results = []
-    for pi in eligible:
-        research_score, rationale = research_scores[pi.id]
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        futures = {executor.submit(_score_pi, pi): pi for pi in shortlist}
+        for future in as_completed(futures):
+            pi = futures[future]
+            pi_id, research_score, rationale = future.result()
 
-        # Deterministic scores
-        mentorship = mentorship_style_score(student, pi)
-        funding    = funding_stability_score(pi)
-        skills     = technical_skills_score(student, pi)
-        culture    = culture_fit_score(student, pi)
-        reply_lik  = predict_reply_likelihood(pi)
+            mentorship = mentorship_style_score(student, pi)
+            funding    = funding_stability_score(pi)
+            skills     = technical_skills_score(student, pi)
+            culture    = culture_fit_score(student, pi)
+            reply_lik  = predict_reply_likelihood(pi)
 
-        total = overall_score(research_score, mentorship, funding, skills, culture, reply_lik)
+            total = overall_score(research_score, mentorship, funding, skills, culture, reply_lik)
 
-        # Connection detection
-        is_direct = direct_connection(student, pi)
-        is_indirect, via = indirect_connection(student, pi)
-        if is_indirect:
-            total = min(100.0, total + 10.0)
+            is_direct = direct_connection(student, pi)
+            is_indirect, via = indirect_connection(student, pi)
+            if is_indirect:
+                total = min(100.0, total + 10.0)
 
-        # Flags
-        c_mismatch = citizenship_mismatch(student, pi)
+            c_mismatch = citizenship_mismatch(student, pi)
 
-        match = MatchResult(
-            student_id=student_id,
-            pi_id=pi.id,
-            research_direction_score=research_score,
-            mentorship_style_score=mentorship,
-            funding_stability_score=funding,
-            culture_fit_score=culture,
-            technical_skills_score=skills,
-            location_score=100.0,
-            is_direct_connection=is_direct,
-            is_indirect_connection=is_indirect,
-            indirect_connection_via=via,
-            citizenship_mismatch=c_mismatch,
-            research_match_rationale=rationale,
-            reply_likelihood=reply_lik,
-            overall_score=total,
-        )
-        session.add(match)
-        results.append((match, pi))
+            match = MatchResult(
+                student_id=student_id,
+                pi_id=pi_id,
+                research_direction_score=research_score,
+                mentorship_style_score=mentorship,
+                funding_stability_score=funding,
+                culture_fit_score=culture,
+                technical_skills_score=skills,
+                location_score=100.0,
+                is_direct_connection=is_direct,
+                is_indirect_connection=is_indirect,
+                indirect_connection_via=via,
+                citizenship_mismatch=c_mismatch,
+                research_match_rationale=rationale,
+                reply_likelihood=reply_lik,
+                overall_score=total,
+            )
+            session.add(match)
+            session.commit()       # commit each result so match_progress ticks up
+            session.refresh(match)
+            results.append((match, pi))
 
-    session.commit()
-    for match, _ in results:
-        session.refresh(match)
-
-    # Sort: direct connections first, then by descending overall score
+    # Sort: direct connections first, then descending overall score
     results.sort(key=lambda x: (not x[0].is_direct_connection, -x[0].overall_score))
 
     output = []
@@ -145,7 +187,7 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
 
 
 # ---------------------------------------------------------------------------
-# GET /api/match-progress/{student_id}  — how many matches are committed so far
+# GET /api/match-progress/{student_id}  — live progress during matching
 # ---------------------------------------------------------------------------
 
 @router.get("/match-progress/{student_id}")
@@ -153,7 +195,9 @@ def match_progress(student_id: int, session: Session = Depends(get_session)):
     scored = session.exec(
         select(MatchResult).where(MatchResult.student_id == student_id)
     ).all()
-    total = len(session.exec(select(PIProfile)).all())
+    # Use the registered shortlist size so the bar reflects actual Claude work,
+    # not the full PI database count.
+    total = _shortlist_sizes.get(student_id) or len(session.exec(select(PIProfile)).all())
     return {"scored": len(scored), "total": total}
 
 
