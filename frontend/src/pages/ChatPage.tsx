@@ -380,10 +380,13 @@ function Dossier({
   );
 }
 
+const RADAR_LABELS = ['Research', 'Mentorship', 'Funding', 'Culture', 'Skills'];
+
 function MiniRadar({ scores }: { scores: number[] }) {
-  const cx = 60;
-  const cy = 60;
+  const cx = 80;
+  const cy = 80;
   const R = 45;
+  const labelR = R + 18;
   const angle = (i: number) => -Math.PI / 2 + (2 * Math.PI * i) / scores.length;
 
   const polyPoints = scores
@@ -402,7 +405,7 @@ function MiniRadar({ scores }: { scores: number[] }) {
   );
 
   return (
-    <svg viewBox="0 0 120 120" className="w-full h-32">
+    <svg viewBox="0 0 160 160" className="w-full h-40">
       {grid.map((g, i) => (
         <polygon key={i} points={g} fill="none" stroke="var(--color-line)" strokeWidth="1" />
       ))}
@@ -425,6 +428,26 @@ function MiniRadar({ scores }: { scores: number[] }) {
         strokeWidth="1.5"
         strokeLinejoin="round"
       />
+      {scores.map((_, i) => {
+        const a = angle(i);
+        const lx = cx + Math.cos(a) * labelR;
+        const ly = cy + Math.sin(a) * labelR;
+        const anchor = Math.cos(a) > 0.3 ? 'start' : Math.cos(a) < -0.3 ? 'end' : 'middle';
+        return (
+          <text
+            key={i}
+            x={lx}
+            y={ly}
+            textAnchor={anchor}
+            dominantBaseline="middle"
+            fontSize="9"
+            fill="var(--color-muted, #6b7280)"
+            fontFamily="sans-serif"
+          >
+            {RADAR_LABELS[i]}
+          </text>
+        );
+      })}
     </svg>
   );
 }
