@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import sys
 from contextlib import asynccontextmanager
 
@@ -81,6 +82,90 @@ def _auto_seed_pis():
             print(f"[startup] Seeded {total} new PI(s) ({skipped} duplicate(s) skipped)")
 
 
+def _dedup_db_pis():
+    """Merge duplicate PI rows that the name-based dedup missed.
+
+    Catches two cases:
+      1. Same personal lab_website where the PI's last name appears in the URL
+         (e.g. Patricia Wittkopp / Trisha Wittkopp sharing the same faculty page).
+      2. Same email address under different name spellings.
+
+    For each duplicate pair, keeps the richer record and deletes the other.
+    MatchResult rows for the deleted PI are also removed (they'll be regenerated
+    on the next match run).
+    """
+    from sqlmodel import Session, select
+    from sqlalchemy import text as sa_text
+    from backend.models import PIProfile, MatchResult
+    import re
+
+    def _norm_url(url: str) -> str:
+        url = (url or "").lower().strip().rstrip("/")
+        return re.sub(r"^https?://(www\.)?", "", url)
+
+    def _richness(pi: PIProfile) -> int:
+        score = 0
+        score += len(pi.research_areas or []) * 3
+        score += len(pi.recent_abstracts or []) * 2
+        score += len(pi.papers or []) * 2
+        score += bool(pi.pi_survey) * 5
+        score += len(pi.student_survey_responses or []) * 4
+        score += bool(pi.institution and pi.institution.lower() not in ("unknown", "")) * 4
+        return score
+
+    def _name_key(name: str) -> str:
+        name = name.split("/")[0].strip()
+        return re.sub(r"\s+", " ", name).lower().strip()
+
+    with Session(engine) as session:
+        all_pis = session.exec(select(PIProfile)).all()
+        to_delete: set[int] = set()
+        merged_count = 0
+
+        for i, pi_a in enumerate(all_pis):
+            if pi_a.id in to_delete:
+                continue
+            url_a = _norm_url(pi_a.lab_website)
+            last_a = (_name_key(pi_a.name).split() or [""])[-1]
+
+            for pi_b in all_pis[i + 1:]:
+                if pi_b.id in to_delete:
+                    continue
+                is_dup = False
+
+                # Same personal URL (last name must appear in URL)
+                url_b = _norm_url(pi_b.lab_website)
+                if url_a and url_b and url_a == url_b:
+                    last_b = (_name_key(pi_b.name).split() or [""])[-1]
+                    if (last_a and last_a in url_a) or (last_b and last_b in url_b):
+                        is_dup = True
+
+                # Same non-empty email
+                if not is_dup:
+                    ea = (pi_a.email or "").lower().strip()
+                    eb = (pi_b.email or "").lower().strip()
+                    if ea and eb and ea == eb:
+                        is_dup = True
+
+                if is_dup:
+                    keep, drop = (pi_a, pi_b) if _richness(pi_a) >= _richness(pi_b) else (pi_b, pi_a)
+                    print(f"[startup] Dedup: '{keep.name}' keeps, '{drop.name}' removed")
+                    to_delete.add(drop.id)
+                    merged_count += 1
+
+        if to_delete:
+            for pid in to_delete:
+                # Remove dependent MatchResult rows first
+                matches = session.exec(select(MatchResult).where(MatchResult.pi_id == pid)).all()
+                for m in matches:
+                    session.delete(m)
+                pi_obj = session.get(PIProfile, pid)
+                if pi_obj:
+                    session.delete(pi_obj)
+            session.commit()
+            print(f"[startup] Removed {merged_count} duplicate PI record(s)")
+
+
 def _run_migrations():
     """Apply lightweight schema migrations that create_db_and_tables() won't handle
     (SQLAlchemy never ALTERs existing tables, only creates missing ones)."""
@@ -103,6 +188,7 @@ def _run_migrations():
 async def lifespan(app: FastAPI):
     create_db_and_tables()
     _run_migrations()
+    _dedup_db_pis()
     _auto_seed_pis()
     if not os.environ.get("ANTHROPIC_API_KEY", "").strip():
         print("WARNING: ANTHROPIC_API_KEY is not set. All Claude calls will return mock responses.")

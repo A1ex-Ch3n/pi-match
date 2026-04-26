@@ -7,18 +7,28 @@ def score_research_fit(
     student_background: str,
     pi_abstracts: list[str],
     pi_research_areas: list[str],
+    pi_paper_titles: list[str] | None = None,
 ) -> tuple[float, str]:
-    abstracts_text = "\n\n".join(
-        f"Abstract {i+1}: {a}" for i, a in enumerate(pi_abstracts)
-    )
-    areas_text = ", ".join(pi_research_areas)
+    areas_text = ", ".join(pi_research_areas) if pi_research_areas else "not specified"
+
+    if pi_abstracts:
+        pi_context = "PI Recent Abstracts:\n" + "\n\n".join(
+            f"Abstract {i+1}: {a}" for i, a in enumerate(pi_abstracts)
+        )
+        cite_instruction = "Write a rationale of 2–3 sentences that MUST cite specific paper topics or methods from the abstracts above."
+    elif pi_paper_titles:
+        titles_text = "\n".join(f"- {t}" for t in pi_paper_titles[:10])
+        pi_context = f"PI Recent Paper Titles (no full abstracts available):\n{titles_text}"
+        cite_instruction = "Write a rationale of 2–3 sentences citing specific paper titles or research areas above."
+    else:
+        pi_context = "No abstracts or paper titles available. Use the research areas listed above."
+        cite_instruction = "Write a rationale of 2–3 sentences based on the PI's research areas."
 
     prompt = f"""You are evaluating research fit between a PhD applicant and a PI.
 
 PI Research Areas: {areas_text}
 
-PI Recent Abstracts:
-{abstracts_text}
+{pi_context}
 
 Student Background:
 {student_background}
@@ -29,7 +39,7 @@ Score the research fit from 0 to 100 where:
 - 61–80: Clear overlap in research direction or methods
 - 81–100: Strong alignment in both topic and approach
 
-Write a rationale of 2–3 sentences that MUST cite specific paper topics or methods from the abstracts above. Do not use generic phrases like "strong overlap" without citing specifics.
+{cite_instruction} Do not use generic phrases like "strong overlap" without citing specifics.
 
 Respond ONLY with valid JSON: {{"score": float, "rationale": str}}"""
 

@@ -129,10 +129,12 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
     def _score_pi(pi: PIProfile):
         if not has_keyword_overlap(student, pi):
             return pi.id, 30.0, "No keyword overlap with student's research background."
+        paper_titles = [p["title"] for p in (pi.papers or []) if p.get("title")]
         score, rationale = score_research_fit(
             background,
             pi.recent_abstracts or [],
             pi.research_areas or [],
+            pi_paper_titles=paper_titles or None,
         )
         return pi.id, score, rationale
 
