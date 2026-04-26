@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getMatches, runMatch } from '../api/client';
 import type { MatchResult, PIProfile } from '../types';
@@ -16,8 +16,12 @@ export default function MatchPage() {
   const [error, setError] = useState('');
   const [progress, setProgress] = useState(0); // 0–100 for the bar width
 
+  // Guard against React 18 StrictMode double-firing useEffect in dev
+  const hasStarted = useRef(false);
+
   useEffect(() => {
-    if (!studentId) return;
+    if (!studentId || hasStarted.current) return;
+    hasStarted.current = true;
     loadOrRun();
   }, [studentId]);
 

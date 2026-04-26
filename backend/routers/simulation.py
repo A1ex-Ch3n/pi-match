@@ -179,7 +179,7 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
     dropped_gate = 0
     dropped_kw   = 0
 
-    with ThreadPoolExecutor(max_workers=8) as executor:
+    with ThreadPoolExecutor(max_workers=3) as executor:
         futures = {executor.submit(_score_pi, pi): pi for pi in shortlist}
         for future in as_completed(futures):
             pi = futures[future]

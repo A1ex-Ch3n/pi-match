@@ -298,13 +298,19 @@ def build_pi_avatar(avatar_profile: "AvatarProfile") -> str:
             "mentorship style, acknowledge uncertainty and invite the applicant to ask directly."
         )
 
-    # Build numbered paper list with links
+    # Build numbered paper list (url is optional — east/west PIs don't have it)
     papers_list = avatar_profile.papers or []
     if papers_list:
-        papers_section = "\n".join(
-            f'{i+1}. [{p["title"]}]({p["url"]}) — {p.get("venue", "")} {p.get("year", "")}'
-            for i, p in enumerate(papers_list)
-        )
+        def _fmt_paper(i: int, p: dict) -> str:
+            title  = p.get("title", "Untitled")
+            year   = str(p.get("year", "")).strip()
+            venue  = str(p.get("venue", "")).strip()
+            url    = p.get("url", "")
+            link   = f"[{title}]({url})" if url else title
+            suffix = f"{venue} {year}".strip(" —")
+            return f"{i+1}. {link}" + (f" — {suffix}" if suffix else "")
+
+        papers_section = "\n".join(_fmt_paper(i, p) for i, p in enumerate(papers_list))
     else:
         papers_section = "No papers listed. Discuss research directions from the abstracts above."
 
