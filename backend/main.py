@@ -37,28 +37,38 @@ def _auto_seed_pis():
     if not seed_files:
         return
 
-    with Session(engine) as session:
-        existing_names = {p.name for p in session.exec(select(PIProfile)).all()}
+    from data.dedup_seeds import dedup_entries
 
+    # Collect all entries across every seed file, then dedup/merge before touching the DB
+    raw: list = []
+    for filename in seed_files:
+        path = os.path.join(seeds_dir, filename)
+        with open(path, encoding="utf-8") as f:
+            raw.extend(json.load(f))
+
+    clean = dedup_entries(raw)
+
+    with Session(engine) as session:
         total = 0
-        for filename in seed_files:
-            path = os.path.join(seeds_dir, filename)
-            with open(path, encoding="utf-8") as f:
-                entries = json.load(f)
-            for entry in entries:
-                name = entry.get("name", "")
-                if name in existing_names:
-                    continue
-                try:
-                    item = PIProfileSeedItem(**entry)
-                    session.add(PIProfile(**item.model_dump()))
-                    existing_names.add(name)
-                    total += 1
-                except Exception as exc:
-                    print(f"[startup] Skipping {name} from {filename}: {exc}")
+        skipped = 0
+        for entry in clean:
+            name = entry["name"]
+            existing = session.exec(
+                select(PIProfile).where(PIProfile.name == name)
+            ).first()
+            if existing:
+                print(f"[startup] Skipping '{name}' — already in database (id={existing.id})")
+                skipped += 1
+                continue
+            try:
+                item = PIProfileSeedItem(**entry)
+                session.add(PIProfile(**item.model_dump()))
+                total += 1
+            except Exception as exc:
+                print(f"[startup] Error seeding '{name}': {exc}")
         if total:
             session.commit()
-            print(f"[startup] Seeded {total} new PI(s) from {seed_files}")
+            print(f"[startup] Seeded {total} new PI(s) ({skipped} duplicate(s) skipped)")
 
 
 @asynccontextmanager

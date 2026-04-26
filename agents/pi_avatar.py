@@ -37,7 +37,7 @@ def _format_pi_voice(pi_survey: Dict[str, Any]) -> str:
 
     # --- Research direction ---
     research = _get(pi_survey, "research_priorities")
-    if research:
+    if research and not research.startswith("TODO"):
         sections.append(f"Research direction: {research}")
 
     # --- Mentorship style ---

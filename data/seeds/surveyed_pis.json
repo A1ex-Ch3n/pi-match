@@ -53,8 +53,7 @@
       "key_fit_factors": "Mentorship style, Research alignment, Lab culture"
     },
     "student_survey_responses": [],
-    "reply_likelihood": null,
-    "_demo_internal_only": false
+    "reply_likelihood": null
   },
   {
     "name": "Heidi Wu",
@@ -110,32 +109,87 @@
       "key_fit_factors": "Mentorship style, Lab culture, Work-life expectations, Funding stability"
     },
     "student_survey_responses": [],
-    "reply_likelihood": null,
-    "_demo_internal_only": false
+    "reply_likelihood": null
   },
   {
     "name": "Ignacio Espinoza",
     "institution": "Keck Graduate Institute",
-    "department": "School of Life Sciences",
+    "department": "Henry Riggs School of Life Sciences",
     "email": null,
-    "lab_website": null,
+    "lab_website": "https://www.jespinozakgi.com/",
     "location": "CA",
     "tier": 2,
     "lab_size": 3,
-    "semantic_scholar_id": null,
-    "research_areas": [],
-    "recent_abstracts": [],
-    "co_author_ids": [],
-    "co_author_names": [],
-    "papers_last_12_months": 0,
-    "papers": [],
+    "semantic_scholar_id": "1398943556",
+    "research_areas": [
+      "viral metagenomics",
+      "marine virology",
+      "virus-host interactions",
+      "microbial genomics",
+      "bioinformatics and data science"
+    ],
+    "recent_abstracts": [
+      "Phylogenetic proximity is a key driver of temporal succession of marine giant viruses in a five-year metagenomic time-series (ISME Communications, 2025). We examined nucleocytoplasmic large DNA viruses (NCLDVs) off Southern California using a five-year monthly metagenomic dataset. NCLDVs were dominated by Algavirales (Phycodnaviruses, 59%) and Imitervirales (Mimiviruses) with distinct seasonal patterns: Algavirales peaked in winter, while Imitervirales were most abundant during nutrient-poor late summer and fall. Closely related strains had similar temporal dynamics, suggesting that evolutionary history is a key driver of the temporal niche of marine NCLDVs.",
+      "Long-term stability and Red Queen-like strain dynamics in marine viruses (Nature Microbiology, 2020). We examined viral community stability over a 5-year period using monthly samples from the San Pedro Ocean Time-series. Among nearly 20,000 assembled viral sequences (>5 kb), 97% persisted across all samples with relative abundances spanning seven orders of magnitude. While the overall viral community remained remarkably stable with seasonal variations, individual strains exhibited transient variations in SNPs and constant turnover of minor population variants over months—reminiscent of Red Queen dynamics.",
+      "Dynamic marine viral infections and major contribution to photosynthetic processes shown by spatiotemporal picoplankton metatranscriptomes (Nature Communications, 2019). We used cellular metatranscriptomics to study active community-wide viral infections. Recruitment to viral contigs enabled tracking of infection dynamics over time and space. The research shows that sometimes >50% of all cyanobacterial+viral psbA gene expression is of viral origin, highlighting an underappreciated contribution of marine viruses to photosynthesis and global oxygen production.",
+      "A network-based integrated framework for predicting virus-prokaryote interactions (NAR Genomics and Bioinformatics, 2020). We developed VirHostMatcher-Net, a flexible network-based Markov random field framework for predicting virus-prokaryote interactions using CRISPR sequences and alignment-free similarity measures. Testing on 1,462 known virus-prokaryote pairs achieved 59% accuracy at genus level and 86% at phylum level. Application to diverse metagenomic datasets yielded ~27,000 confident new virus-host interaction predictions."
+    ],
+    "co_author_ids": [
+      "5991592",
+      "49882697",
+      "2242801894",
+      "31932986",
+      "52161096",
+      "6630101"
+    ],
+    "co_author_names": [
+      "Jed A. Fuhrman",
+      "Nathan A. Ahlgren",
+      "Matthew B. Sullivan",
+      "Simon Roux",
+      "Ella T. Sieradzki",
+      "Sarah M. Laperriere"
+    ],
+    "papers_last_12_months": 1,
+    "papers": [
+      {
+        "title": "Phylogenetic proximity is a key driver of temporal succession of marine giant viruses in a five-year metagenomic time-series",
+        "url": "https://doi.org/10.1093/ismeco/ycaf217",
+        "venue": "ISME Communications",
+        "year": 2025
+      },
+      {
+        "title": "Local monitoring of SARS-CoV-2 variants in two large California counties in 2021",
+        "url": "https://doi.org/10.1038/s41598-022-21481-0",
+        "venue": "Scientific Reports",
+        "year": 2022
+      },
+      {
+        "title": "A network-based integrated framework for predicting virus–prokaryote interactions",
+        "url": "https://doi.org/10.1093/nargab/lqaa044",
+        "venue": "NAR Genomics and Bioinformatics",
+        "year": 2020
+      },
+      {
+        "title": "Long-term stability and Red Queen-like strain dynamics in marine viruses",
+        "url": "https://doi.org/10.1038/s41564-019-0628-x",
+        "venue": "Nature Microbiology",
+        "year": 2020
+      },
+      {
+        "title": "Dynamic marine viral infections and major contribution to photosynthetic processes shown by spatiotemporal picoplankton metatranscriptomes",
+        "url": "https://doi.org/10.1038/s41467-019-09106-z",
+        "venue": "Nature Communications",
+        "year": 2019
+      }
+    ],
     "nsf_grants": [],
     "has_active_nsf_grant": false,
     "total_active_funding_usd": null,
     "funding_citizen_restricted": false,
-    "is_recruiting": false,
+    "is_recruiting": true,
     "pi_survey": {
-      "research_priorities": "TODO: add research focus — fill from Semantic Scholar / lab website",
+      "research_priorities": "The Phorge Lab focuses on viral and microbial genomics at the intersection of evolutionary biology, marine ecology, and data science. We use long-term metagenomic time-series datasets to uncover the diversity, temporal dynamics, and ecological roles of marine viruses — particularly bacteriophages and giant viruses (NCLDVs) — and develop computational tools for virus-host interaction prediction and pathogen tracking.",
       "mentorship_style": "Moderately guided",
       "meeting_frequency": "Weekly",
       "lab_expectations": "First-author publications are required for graduation, High-impact publications are strongly encouraged, Graduation timeline is flexible, 3 papers expected",
@@ -208,7 +262,6 @@
         "tenure": "1–2 years"
       }
     ],
-    "reply_likelihood": null,
-    "_demo_internal_only": true
+    "reply_likelihood": null
   }
 ]

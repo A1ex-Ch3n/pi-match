@@ -1,6 +1,11 @@
 import json
 import os
+import sys
 from typing import List, Optional
+
+_PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if _PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, _PROJECT_ROOT)
 
 from fastapi import APIRouter, Body, Depends, HTTPException
 from sqlmodel import Session, select
@@ -40,16 +45,22 @@ def seed_pis(
     if not os.path.exists(file_path):
         raise HTTPException(status_code=404, detail=f"Seed file not found: {file_path}")
 
+    from data.dedup_seeds import dedup_entries
+
     with open(file_path, encoding="utf-8") as f:
         raw_list = json.load(f)
 
+    clean_list = dedup_entries(raw_list)
+
     results = []
-    for entry in raw_list:
+    for entry in clean_list:
+        name = entry["name"]
         existing = session.exec(
-            select(PIProfile).where(PIProfile.name == entry.get("name", ""))
+            select(PIProfile).where(PIProfile.name == name)
         ).first()
         if existing:
-            results.append({"name": entry.get("name"), "status": "already_exists", "id": existing.id})
+            print(f"[seed] Skipping '{name}' — already in database (id={existing.id})")
+            results.append({"name": name, "status": "already_exists", "id": existing.id})
             continue
 
         item = PIProfileSeedItem(**entry)

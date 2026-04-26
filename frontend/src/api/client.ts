@@ -4,6 +4,7 @@ import type { StudentProfile, PIProfile, MatchResult, ChemistryReport, Transcrip
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL ?? 'http://localhost:8000/api',
   headers: { 'Content-Type': 'application/json' },
+  timeout: 120000,
 });
 
 export const submitSurvey = (data: Omit<StudentProfile, 'id'>): Promise<StudentProfile> =>

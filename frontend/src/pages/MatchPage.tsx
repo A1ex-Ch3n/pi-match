@@ -14,6 +14,7 @@ export default function MatchPage() {
   const [loading, setLoading] = useState(true);
   const [matchingStatus, setMatchingStatus] = useState('Connecting to server…');
   const [error, setError] = useState('');
+  const [progress, setProgress] = useState(0); // 0–100 for the bar width
 
   useEffect(() => {
     if (!studentId) return;
@@ -47,18 +48,46 @@ export default function MatchPage() {
         setLoading(false);
         return;
       }
-      setMatchingStatus('Running AI matching — this takes 15–30 seconds…');
-      const fresh = await runMatch(Number(studentId));
-      if (fresh.length === 0) localStorage.removeItem('lastStudentId');
-      setMatches(fresh as MatchWithPI[]);
-    } catch (err: unknown) {
-      const detail = (err as { response?: { data?: { detail?: string } } })?.response?.data?.detail;
-      const status = (err as { response?: { status?: number } })?.response?.status;
-      if (detail === 'Student not found') {
-        localStorage.removeItem('lastStudentId');
-        setError('Session expired — the server restarted. Please resubmit your form.');
-      } else {
-        setError(detail ?? (status ? `Server error ${status} — click Retry.` : 'Could not load matches — click Retry.'));
+      setMatchingStatus('Scoring professors…');
+      setProgress(0);
+
+      // Animate progress bar from 0 → 90% over 20s while runMatch is in flight
+      const startTime = Date.now();
+      const progressInterval = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const estimated = Math.min(90, (elapsed / 20000) * 90);
+        setProgress(estimated);
+      }, 200);
+
+      try {
+        const fresh = await runMatch(Number(studentId));
+        clearInterval(progressInterval);
+        setProgress(100);
+        setMatchingStatus('Done!');
+        if (fresh.length === 0) localStorage.removeItem('lastStudentId');
+        setMatches(fresh as MatchWithPI[]);
+      } catch (err: unknown) {
+        clearInterval(progressInterval);
+        setProgress(0);
+        const detail = (err as { response?: { data?: { detail?: string } } })?.response?.data?.detail;
+        const status = (err as { response?: { status?: number } })?.response?.status;
+        if (detail === 'Student not found') {
+          localStorage.removeItem('lastStudentId');
+          setError('Session expired — the server restarted. Please resubmit your form.');
+        } else {
+          // runMatch timed out or errored — check if partial results are already in DB
+          try {
+            const partial = await getMatches(Number(studentId));
+            if (partial.length > 0) {
+              setMatches(partial as MatchWithPI[]);
+              // Show results silently — no error banner
+              return;
+            }
+          } catch {
+            // getMatches also failed — fall through to error
+          }
+          setError(detail ?? (status ? `Server error ${status} — click Retry.` : 'Could not load matches — click Retry.'));
+        }
       }
     } finally {
       setLoading(false);
@@ -88,9 +117,17 @@ export default function MatchPage() {
 
         {loading && (
           <div className="flex items-center justify-center py-24">
-            <div className="text-center">
-              <div className="w-10 h-10 border-4 border-violet-600 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-              <p className="text-gray-500 text-sm">{matchingStatus}</p>
+            <div className="text-center w-72">
+              <div className="w-10 h-10 border-4 border-violet-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+              <p className="text-gray-500 text-sm mb-3">{matchingStatus}</p>
+              {progress > 0 && (
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div
+                    className="bg-violet-600 h-2 rounded-full transition-all duration-200"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+              )}
             </div>
           </div>
         )}

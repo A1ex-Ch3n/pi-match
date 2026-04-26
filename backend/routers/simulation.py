@@ -1,5 +1,6 @@
 import os
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -63,22 +64,32 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
         session.delete(m)
     session.commit()
 
-    results = []
-    for pi in pis:
-        # Pre-score location filter
-        if not location_passes_filter(student, pi):
-            continue
+    # Build background text once
+    background = student.research_background or ""
+    if student.cv_text:
+        background += f"\n\nCV:\n{student.cv_text}"
 
-        # Research fit via Claude (highest priority)
-        background = student.research_background or ""
-        if student.cv_text:
-            background += f"\n\nCV:\n{student.cv_text}"
+    # Filter by location, then fire all Claude research-fit calls in parallel
+    eligible = [pi for pi in pis if location_passes_filter(student, pi)]
 
-        research_score, rationale = score_research_fit(
+    def _score_pi(pi):
+        score, rationale = score_research_fit(
             background,
             pi.recent_abstracts or [],
             pi.research_areas or [],
         )
+        return pi.id, score, rationale
+
+    research_scores: dict = {}
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        futures = {executor.submit(_score_pi, pi): pi for pi in eligible}
+        for future in as_completed(futures):
+            pi_id, score, rationale = future.result()
+            research_scores[pi_id] = (score, rationale)
+
+    results = []
+    for pi in eligible:
+        research_score, rationale = research_scores[pi.id]
 
         # Deterministic scores
         mentorship = mentorship_style_score(student, pi)
@@ -131,6 +142,19 @@ def run_matching(student_id: int, session: Session = Depends(get_session)):
         d["pi"] = PIProfileResponse.model_validate(pi).model_dump()
         output.append(d)
     return output
+
+
+# ---------------------------------------------------------------------------
+# GET /api/match-progress/{student_id}  — how many matches are committed so far
+# ---------------------------------------------------------------------------
+
+@router.get("/match-progress/{student_id}")
+def match_progress(student_id: int, session: Session = Depends(get_session)):
+    scored = session.exec(
+        select(MatchResult).where(MatchResult.student_id == student_id)
+    ).all()
+    total = len(session.exec(select(PIProfile)).all())
+    return {"scored": len(scored), "total": total}
 
 
 # ---------------------------------------------------------------------------

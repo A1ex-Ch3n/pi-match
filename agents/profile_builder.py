@@ -158,12 +158,16 @@ def _validate_pi_survey(pi_survey: Optional[Dict[str, Any]]) -> Tuple[bool, List
         )
         return False, errors
 
-    # Check that values are non-empty strings (basic content check)
-    for key, value in pi_survey.items():
-        if isinstance(value, str) and len(value.strip()) == 0:
-            errors.append(f"PI survey field '{key}' is empty string")
-        elif value is None:
+    # Only enforce non-empty on expected keys that are actually present —
+    # absent keys are already accounted for by the missing_keys check above.
+    for key in PI_SURVEY_EXPECTED_KEYS:
+        if key not in pi_survey:
+            continue
+        value = pi_survey[key]
+        if value is None:
             errors.append(f"PI survey field '{key}' is None")
+        elif isinstance(value, str) and len(value.strip()) == 0:
+            errors.append(f"PI survey field '{key}' is empty string")
 
     return len(errors) == 0, errors
 
