@@ -69,6 +69,11 @@ def _auto_seed_pis():
     clean = dedup_entries(raw)
 
     with Session(engine) as session:
+        existing_count = session.exec(select(PIProfile)).all()
+        if len(existing_count) >= len(clean):
+            print(f"[startup] DB already has {len(existing_count)} PI(s) — skipping seed.")
+            return
+
         total = 0
         skipped = 0
         for entry in clean:
