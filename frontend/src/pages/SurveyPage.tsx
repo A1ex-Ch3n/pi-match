@@ -63,6 +63,7 @@ const DEFAULT: FormData = {
   known_professors: [],
   preferred_research_topics: [],
   location_preference: ['any'],
+  field_category: 'any',
   citizenship_status: 'f1',
   min_stipend: undefined,
   preferred_lab_size: 'medium',
