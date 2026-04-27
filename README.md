@@ -55,7 +55,7 @@ Built for **Hacktech 2026**, targeting two tracks:
 
 - **Olivia Yan** — [@oyan](https://github.com/oyan)
 - **Sarah Liu** — [@saraliu](https://github.com/saraliu)
-- **Ruiyang (Ray) Ma** — [@rma29](https://github.com/rma29)
+- **Ruiyang (Ray) Ma** — [@rayma07](https://github.com/rayma07)
 - **Chun-Yu (Alex) Chen** — [@A1ex-Ch3n](https://github.com/A1ex-Ch3n)
 
 ---
